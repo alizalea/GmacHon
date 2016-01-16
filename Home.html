@@ -5,31 +5,21 @@
     <meta charset="utf-8" />
     <title>b</title>
     <link type="text/css" href="CSS/GmacHon.css" rel="stylesheet"/>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript">
 $(document).ready(function () {
-  //  $('header').hide();
-    $.get("Header.html", function (data) {
-        $("#header").html(data);
+        $.get('HTML/Header.html', function (data) {
+        $('#header').html(data);
     });
 });
     </script>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="Third Party Code/Logo.png" />
-        </div>
-        <nav>
-            <ul>
-                <li> <a href="/"><img src="Third Party Code/Icon_Home.png" /></a></li>
-                <li> <a href="/"><img src="Third Party Code/Icon_Contact.png" /><span>אנשי קשר</span></a></li>
-                <li> <a href="/"><img src="Third Party Code/Icon_Transaction.png" />תנועות</a></li>
-                <li> <a href="/"><img src="Third Party Code/Icon_Report.png" />דוחות</a></li>
-
-            </ul>
-        </nav>
-    </header>
+    
+        <header id="header">
+            <!-- Content will be inserted by jQuery from header.html --> 
+        </header>
+    
     <main>
         <div class="panel">
             <div>הון הגמ"ח</div>
