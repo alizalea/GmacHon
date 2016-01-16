@@ -1,0 +1,65 @@
+﻿        body {
+            font-size: 25px;
+            font-family: Arial;
+            font-weight: bold;
+            direction: rtl;
+            margin: 10px;
+        }
+
+
+        .logo {
+            margin-right: 400px;
+        }
+
+        header li {
+            width: 30%;
+            display: inline-block;
+            height: 65px;
+            vertical-align: middle;
+            background: rgba(43, 132, 0, 1);
+            color: white;
+        }
+
+            header li:hover {
+                background-color: darkgreen;
+                 transition: background .5s ease-out;
+            }
+
+        
+
+
+        header li img {
+            padding: 15px;
+        }
+
+        header li a {
+            color: white;
+        }
+
+        header li:first-child {
+            width: 7%;
+        }
+
+        main {
+            width: 960px;
+            vertical-align: middle;
+        }
+
+        ul {
+            padding: 0px;
+        }
+
+
+
+        .panel {
+            width: 40%;
+            height: 100px;
+            float: right;
+            background: rgba(43, 132, 0, 1);
+            color: white;
+            margin: 10px;
+            text-align: center;
+        }
+
+            .panel div {
+            }
