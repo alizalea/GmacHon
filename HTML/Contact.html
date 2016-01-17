@@ -4,9 +4,19 @@
     <meta charset="utf-8" />
     <title>איש קשר</title>
     <link type="text/css" href="../CSS/GmacHon.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.get('HTML/Header.html', function (data) {
+                $('#header').html(data);
+            });
+        });
+    </script>
 </head>
 <body>
-    <header></header>
+    <header id="header">
+        <!-- Content will be inserted by jQuery from header.html -->
+    </header>
     <main>
         <form id="Contact-form" action="#">
             <div>
@@ -52,14 +62,14 @@
                     <div>
                         <span>הלוואות</span>
                         <table></table>
-                        <label >סה"כ הלוואות פתוחות:</label>
+                        <label>סה"כ הלוואות פתוחות:</label>
                         <label id="SumDebit">25</label><span>ש"ח</span>
                     </div>
 
                     <div>
                         <span>הפקדות</span>
                         <table></table>
-                        <label >סה"כ הפקדות פתוחות:</label>
+                        <label>סה"כ הפקדות פתוחות:</label>
                         <label id="SumDebit">15</label><span>ש"ח</span>
                     </div>
 
