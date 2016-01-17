@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>תנועה</title>
+    <link type="text/css" href="../CSS/GmacHon.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.get('Header.html', function (data) {
+                $('#header').html(data);
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <header id="header">
+        <!-- Content will be inserted by jQuery from header.html -->
+    </header>
+    <main>
+        <form id="Transaction-form" action="#">
+            <div>
+                <h1>תנועה</h1>
+                <h2>#הלוואה #משה #כהן</h2>
+                <section>
+
+                    <div>
+                        <label for="TransactionType">סוג תנועה:</label>
+                        <select id="TransactionType" name="TransactionType">
+                            <option value="1">הלוואה</option>
+                            <option value="2">פירעון הלוואה</option>
+                            <option value="3">הפקדה</option>
+                            <option value="4">משיכת הפקדה</option>
+                            <option value="5">תרומה</option>
+                        </select>
+
+                        <div>
+                            <label for="Contact">איש קשר:</label>
+                            <input id="Contact" name="Contact" type="text">
+                        </div>
+
+                        <div>
+                            <label for="Amount">סכום בשקלים:</label>
+                            <input id="Amount" name="Amount" type="number">
+                        </div>
+
+                        <div>
+                            <label for="TransactionDate">תאריך:</label>
+                            <input id="TransactionDate" name="TransactionDate" type="date">
+                        </div>
+
+                        <div>
+                            <label for="ReturnDate">תאריך החזרה מתוכנן:</label>
+                            <input id="ReturnDate" name="ReturnDate" type="date">
+                        </div>
+
+                        <div>
+                            <input id="Returned" name="Returned" type="checkbox" />הוחזר
+                        </div>
+
+                        <div>
+                            <label for="ReturnAmount">סכום בשקלים:</label>
+                            <input id="ReturnAmount" name="ReturnAmount" type="number">
+                        </div>
+
+                    </div>
+
+
+                </section>
+            </div>
+        </form>
+
+
+
+    </main>
+</body>
+</html>
