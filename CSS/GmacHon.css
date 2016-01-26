@@ -54,13 +54,13 @@ ul {
 
 
 .panel {
-    width: 40%;
-    height: 100px;
+    width: 30%;
+    height: 200px;
     float: right;
-    background: rgba(43, 132, 0, 1);
-    color: white;
+    color: rgba(43, 132, 0, 1);
     margin: 10px;
     text-align: center;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
 }
 
     .panel div {
