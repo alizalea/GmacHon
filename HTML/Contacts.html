@@ -1,1 +1,80 @@
-﻿<a href="/HTML/Contact.html">הוסף איש קשר</a>
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>אנשי קשר</title>
+    <link type="text/css" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" rel="stylesheet"/>
+    <link type="text/css" href="../CSS/GmacHon.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript">
+            function Contact(first_name, last_name, tz, tel, pel, notes) {
+                this.first_name = first_name;
+                this.last_name = last_name;
+                this.tz = tz;
+                this.tel = tel;
+                this.pel = pel;
+                this.notes = notes;
+            }
+            var Contacts = [new Contact("משה", "כהן", "111111111", "02-1111111", "054-8402125", "תורם חבל על הזמן"),
+                             new Contact("יוסי", "לוי", "222222222", "024444444", "085-9999999", "חיחחייח"),
+                             new Contact("יוסי", "כהן", "33333333", "024444444", "085-4444444", "חיחחייח"),
+                             new Contact("יוסי", "לוי", "44444444", "024444444", "085-5555555", "חיחחייח"),
+                             new Contact("חיים", "טויו", "222222222", "024444444", "085-9999999", "חיחחייח"),
+                             new Contact("אריאל", "פכטר", "222222222", "024444444", "085-9999999", "חיחחייח")];
+        $(document).ready(function () {
+            $.get('Header.html', function (data) {
+                $('#header').html(data);
+
+            });
+            $('#contacts').DataTable({
+
+                data: Contacts,
+
+                columns: [
+                     { "data": "first_name" },
+                     { "data": "last_name" },
+                     { "data": "tz" },
+                     { "data": "tel" },
+                     { "data": "pel" },
+                     { "data": "notes" }
+                     ]
+        } );
+
+        });
+    </script>
+</head>
+<body>
+    <header id="header">
+        <!-- Content will be inserted by jQuery from header.html -->
+    </header>
+    <main>
+        <a href="/HTML/Contact.html">הוסף איש קשר</a>
+        <div class="contacts">
+            <table width="100%" class="display" id="contacts">
+                <thead>
+
+                    <tr>
+
+                        <th>שם פרטי</th>
+
+                        <th>שם משפחה</th>
+
+                        <th>ת. זהות</th>
+
+                        <th>טלפון</th>
+
+                        <th>פלפון</th>
+
+                        <th>הערות</th>
+
+                    </tr>
+
+                </thead>
+            </table>
+        </div>
+
+
+    </main>
+</body>
+</html>
