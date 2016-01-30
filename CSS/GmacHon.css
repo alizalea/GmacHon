@@ -1,4 +1,5 @@
-﻿body {
+﻿
+body {
     font-size: 25px;
     font-family: Arial;
     font-weight: bold;
@@ -18,12 +19,14 @@ header li {
     display: inline-block;
     height: 65px;
     vertical-align: middle;
-    background: rgba(43, 132, 0, 1);
-    color: white;
+    background: #375D3B;
+    /*rgba(43, 132, 0, 1);*/
+    border-radius: 10px;
+
 }
 
     header li:hover {
-        background-color: darkgreen;
+        background-color: #ABC8A4;
         transition: background .5s ease-out;
     }
 
@@ -32,14 +35,15 @@ header li {
 
     header li img {
         padding: 15px;
+        vertical-align: middle;
     }
 
     header li a {
-        color: white;
+        color: #E1E6B9;
     }
 
     header li:first-child {
-        width: 7%;
+        width: 70px;
     }
 
 main {
@@ -57,7 +61,7 @@ ul {
     width: 30%;
     height: 200px;
     float: right;
-    color: rgba(43, 132, 0, 1);
+    color: #375D3B;
     margin: 10px;
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
@@ -65,7 +69,8 @@ ul {
 
     .panel div {
     }
-.contacts{
-    width:80%;
-    margin:auto;
+
+.contacts {
+    width: 80%;
+    margin: auto;
 }
