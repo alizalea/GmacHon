@@ -7,6 +7,7 @@
     */
 body {
     font-size: 25px;
+    color: #375D3B;
     font-family: Arial;
     font-weight: bold;
     direction: rtl;
@@ -19,6 +20,10 @@ body {
 
 .logo {
     margin-right: 400px;
+}
+
+ul {
+    padding: 0px;
 }
 
 header li {
@@ -35,8 +40,6 @@ header li {
         background-color: #ABC8A4;
         transition: background .5s ease-out;
     }
-
-
 
 
     header li img {
@@ -57,9 +60,7 @@ main {
     margin: 0 auto;
 }
 
-ul {
-    padding: 0px;
-}
+
 
 
 
@@ -81,4 +82,19 @@ ul {
 .contacts {
     width: 80%;
     margin: auto;
+}
+
+
+#Contact-form {
+}
+
+button {
+    background: #375D3B;
+    color: #E1E6B9;
+    width: 140px;
+    height: 40px;
+    vertical-align: middle;
+    border-radius: 10px;
+    border: none;
+    font-size: inherit;
 }
