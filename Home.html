@@ -1,41 +1,48 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <title>b</title>
-    <link type="text/css" href="CSS/GmacHon.css" rel="stylesheet"/>
+    <link type="text/css" href="CSS/GmacHon.css" rel="stylesheet" />
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script type="text/javascript">
-$(document).ready(function () {
-        $.get('HTML/Header.html', function (data) {
-        $('#header').html(data);
-    });
-});
+        $(document).ready(function () {
+            $.get('HTML/Header.html', function (data) {
+                $('#header').html(data);
+            });
+        });
     </script>
 </head>
 <body>
-    
-        <header id="header">
-            <!-- Content will be inserted by jQuery from header.html --> 
-        </header>
-    
+
+    <header id="header">
+        <!-- Content will be inserted by jQuery from header.html -->
+    </header>
+
     <main>
         <div class="panel">
-            <div>הון הגמ"ח</div>
-            <div class="input-money">2,000</div><span>ש"ח</span>
+            <div class="paneldata">
+                <div>הון הגמ"ח</div>
+                <div class="input-money">2,000</div><span>ש"ח</span>
+            </div>
+        </div>
+        <div class="panel" >
+            <div class="paneldata">
+                <div>סה"כ הלוואות</div>
+                <div class="output-money">1,000</div><span>ש"ח</span>
+            </div>
         </div>
         <div class="panel">
-            <div>סה"כ הלוואות</div>
-            <div class="output-money">1,000</div><span>ש"ח</span>
+            <div class="paneldata">
+                <div>יתרה פנויה</div>
+                <div class="diff-money">500</div><span>ש"ח</span>
+            </div>
         </div>
         <div class="panel">
-            <div>יתרה פנויה</div>
-            <div class="diff-money">500</div><span>ש"ח</span>
-        </div>
-        <div class="panel">
-            <div>עדכונים</div>
-            <div class="massage"></div>
+            <div class="paneldata">
+                <div>עדכונים</div>
+                <div class="massage"></div>
+            </div>
         </div>
     </main>
 </body>

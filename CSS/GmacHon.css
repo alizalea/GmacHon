@@ -13,7 +13,7 @@ body {
     margin: 10px;
     background-image: url("/Third Party Code/background.jpg");
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
 }
 
 
@@ -71,10 +71,12 @@ ul {
     margin: 10px;
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+    background: white;
 }
 
-    .panel div {
-    }
+.paneldata {
+    padding-top: 20%;
+}
 
 .contacts {
     width: 80%;
