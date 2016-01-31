@@ -1,4 +1,10 @@
-﻿
+﻿/*
+    #E1E6B9 כהה
+    #375D3B
+    #ABC8A4
+    #C4D7A4
+    #E1E6B9 בהיר
+    */
 body {
     font-size: 25px;
     font-family: Arial;
@@ -22,7 +28,6 @@ header li {
     background: #375D3B;
     /*rgba(43, 132, 0, 1);*/
     border-radius: 10px;
-
 }
 
     header li:hover {
