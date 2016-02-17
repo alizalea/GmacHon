@@ -1,11 +1,12 @@
-﻿$(document).ready(function () {
+﻿var gg = new GMach.GetAllContacts();
+$(document).ready(function () {
     $.get('Header.html', function (data) {
         $('#header').html(data);
 
     });
     $('#contacts').DataTable({
 
-        data: Contacts,
+        data: gg,
 
         columns: [
              { "data": "first_name" },
