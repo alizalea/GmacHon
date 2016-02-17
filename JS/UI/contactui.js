@@ -1,4 +1,4 @@
-﻿var gg = new GMach.GetAllContacts();
+﻿var allContacts = new GMach.GetAllContacts();
 $(document).ready(function () {
     $.get('Header.html', function (data) {
         $('#header').html(data);
@@ -6,15 +6,15 @@ $(document).ready(function () {
     });
     $('#contacts').DataTable({
 
-        data: gg,
+        data: allContacts,
 
         columns: [
+              { "data": "last_name" },
              { "data": "first_name" },
-             { "data": "last_name" },
-             { "data": "tz" },
-             { "data": "tel" },
-             { "data": "pel" },
-             { "data": "notes" }
+            { "data": "IdNumber" },
+             { "data": "phoneNumber" },
+             { "data": "mobileNumber" },
+             { "data": "remarks" }
         ],
         "language": {
 
