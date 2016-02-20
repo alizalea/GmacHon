@@ -1,4 +1,6 @@
-﻿var GMach = {
+﻿var GMach = GMach || {};
+
+var GMach = {
 
     Contact: function (first_name, last_name, IdNumber, phoneNumber, mobileNumber, address, remarks) {
         this.first_name = first_name;
