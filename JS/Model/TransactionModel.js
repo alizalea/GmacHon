@@ -54,7 +54,7 @@ var GMach = {
                             new GMach.Transaction_Loan(gm.transaction_type.Loan, "aa", 20, 21 / 2 / 2012)
         ];
 
-        return Contacts;
+        return Transactions;
 
     }
 
