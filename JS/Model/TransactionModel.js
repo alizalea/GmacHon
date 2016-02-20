@@ -49,8 +49,9 @@ var GMach = {
     },
 
     GetAllTransactions: function () {
-        var Transactions = [new GMach.Transaction(gm.transaction_type.Loan, "aa", 20, 21 / 2 / 2012),
-                                    ,
+        var Transactions = [new GMach.Transaction(GMach.transaction_type.Loan, "aa", 20, 21 / 2 / 2012),
+                            new GMach.Transaction_Deposit( "aa", 20, 21 / 2 / 2012,10/10/2010,false,0),
+                            new GMach.Transaction_Loan(gm.transaction_type.Loan, "aa", 20, 21 / 2 / 2012)
         ];
 
         return Contacts;
