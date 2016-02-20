@@ -79,7 +79,7 @@ main {
     padding-top: 20%;
 }
 
-.contacts {
+.contacts, transactions {
     width: 80%;
     margin: auto;
 }
