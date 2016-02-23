@@ -41,7 +41,7 @@ $(document).ready(function () {
     $('#contacts').DataTable({
     dom: "Bfrtip",
 
-    ajax: "../php/todo.php",
+    //ajax: "../php/todo.php",
         data: allContacts,
 
         columns: [

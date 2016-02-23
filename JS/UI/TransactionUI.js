@@ -1,5 +1,23 @@
 ﻿
-var allTransactions = new GMach.tr.GetAllTransactions();
+function GetAllTransactionsVM(transList) {
+    var trans = new Array();
+    transList.forEach(function (tran) {
+        var t=new Object();
+        t.transaction_type = tran.constructor.name;
+        t.contact = tran.contact;
+        t.amount = tran.amount;
+        t.transaction_date = tran.transaction_date;
+
+        trans.push(t);
+    }
+     );
+
+    return trans;
+
+};
+
+var allTransactions = GetAllTransactionsVM(new GMach.transaction.GetAllTransactions());
+
 $(document).ready(function () {
     $.get('Header.html', function (data) {
         $('#header').html(data);
