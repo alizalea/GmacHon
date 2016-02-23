@@ -16,7 +16,7 @@ function GetAllTransactionsVM(transList) {
 
 };
 
-var allTransactions = GetAllTransactionsVM(new GMach.transaction.GetAllTransactions());
+var allTransactions = GetAllTransactionsVM(new GMach.DAL.Transaction.GetAllTransactions());
 
 $(document).ready(function () {
     $.get('Header.html', function (data) {
