@@ -2,7 +2,7 @@
 function GetAllTransactionsVM(transList) {
     var trans = new Array();
     transList.forEach(function (tran) {
-        var t=new Object();
+        var t = new Object();
         t.transaction_type = tran.constructor.name;
         t.contact = tran.contact;
         t.amount = tran.amount;
@@ -16,7 +16,7 @@ function GetAllTransactionsVM(transList) {
 
 };
 
-var allTransactions = GetAllTransactionsVM(new GMach.DAL.Transaction.GetAllTransactions());
+var allTransactions = GetAllTransactionsVM(new GMach.Model.Transaction.GetAllTransactions());
 
 $(document).ready(function () {
     $.get('Header.html', function (data) {
