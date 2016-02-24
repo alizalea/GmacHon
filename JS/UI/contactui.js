@@ -12,11 +12,11 @@ $(document).ready(function () {
         table: "#contacts",
         fields: [{
             label: "שם משפחה:",
-            name: "last_name"
+            name: "lastName"
         },
           {
               label: "שם פרטי:",
-              name: "first_name",
+              name: "firstName",
           },
 
           {
@@ -46,9 +46,9 @@ $(document).ready(function () {
         data: allContacts,
 
         columns: [
-              { "data": "last_name" },
-             { "data": "first_name" },
-            { "data": "IdNumber" },
+             { "data": "lastName" },
+             { "data": "firstName" },
+             { "data": "IdNumber" },
              { "data": "phoneNumber" },
              { "data": "mobileNumber" },
              { "data": "remarks" }
