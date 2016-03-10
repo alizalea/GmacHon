@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $.get('../Header.html', function (data) {
+    $.get('/HTML/Header.html', function (data) {
         $('#header').html(data);
     });
 });

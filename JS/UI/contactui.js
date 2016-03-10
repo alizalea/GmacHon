@@ -2,10 +2,7 @@
 
 var editor;
 $(document).ready(function () {
-    $.get('Header.html', function (data) {
-        $('#header').html(data);
-
-    });
+   
 
     editor = new $.fn.dataTable.Editor({
         ajax: "../php/todo.php",

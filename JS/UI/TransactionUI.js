@@ -19,10 +19,7 @@ function GetAllTransactionsVM(transList) {
 var allTransactions = GetAllTransactionsVM(new GMach.Model.Transaction.GetAllTransactions());
 
 $(document).ready(function () {
-    $.get('Header.html', function (data) {
-        $('#header').html(data);
-
-    });
+ 
     $('#transactions').DataTable({
 
         data: allTransactions,
