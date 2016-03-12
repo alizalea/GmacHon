@@ -16,7 +16,8 @@ function GetAllTransactionsVM(transList) {
 
 };
 
-var allTransactions = GetAllTransactionsVM(new GMach.Model.Transaction.GetAllTransactions());
+var oneGmach = new GMach.Model.OneGmach();
+var allTransactions = GetAllTransactionsVM(oneGmach.Transactions());
 
 $(document).ready(function () {
  
