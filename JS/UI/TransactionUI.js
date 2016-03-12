@@ -20,7 +20,7 @@ var oneGmach = new GMach.Model.OneGmach();
 var allTransactions = GetAllTransactionsVM(oneGmach.Transactions());
 
 $(document).ready(function () {
- 
+
     $('#transactions').DataTable({
 
         data: allTransactions,
