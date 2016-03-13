@@ -34,14 +34,11 @@ GMach.DAL.Contact.GetDatataContact = function (id) {
    
 
 }
-GMach.DAL.Contact.SetDatataContact = function (contact) {
+GMach.DAL.Contact.SetDatataContact = function (contact,edit) {
     try {
         var c = null;
-        if (contact.id == undefined) {
-             c = new GMach.Model.Contact();
-        } else {
+        if (edit) {//צריך לראות איך לעדכן את האובייקט במערך
             c = GMach.DAL.Contact.GetDatataContact(contact.id)
-        }
             c.firstName = contact.firstName;
             c.lastName = contact.lastName;
             c.IdNumber = contact.IdNumber;
@@ -50,7 +47,11 @@ GMach.DAL.Contact.SetDatataContact = function (contact) {
             c.address = contact.address;
             c.remarks = contact.remarks;
 
-            Contacts.push(c);
+        } else {
+            Contacts.push(contact);//צריך להוסיף למשתנה הגלובלי של אנשי קשר לראות איך מוגדר מההתחלה
+        }
+           
+           
             return true;
         
     } catch (e) {
