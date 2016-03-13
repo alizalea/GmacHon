@@ -1,85 +1,104 @@
 ﻿<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="he" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <title>גמחהון - איש קשר</title>
     <link type="text/css" href="../CSS/GmacHon.css" rel="stylesheet" />
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script type="text/javascript" src="../JS/DAL/ContactDAL.js"></script>
+    <script type="text/javascript" src="../JS/Model/ContactModel.js"></script>
     <script src="../JS/UI/HeaderUI.js"></script>
+    <script>
+        var idfromqs = 1;
+        var app = angular.module('myApp', []);
+        app.controller('editCon', function($scope) {
+            $scope.contact = GMach.Model.Contact.GetDatataContact(idfromqs);
+            $scope.saveEdit = function (contact) {
+                GMach.Model.Contact.SetDatataContact(contact);
+
+            };
+
+        });
+    </script>
+
 </head>
 <body>
     <header id="header">
         <!-- Content will be inserted by jQuery from header.html -->
     </header>
     <main>
-        <form id="Contact-form" action="#">
-            <div>
-                <h1>איש קשר</h1>
-                <h2>#משה #כהן</h2>
-                <section>
+        <div id="Contact-form"  ng-app="myApp" ng-controller="editCon"> 
+            <form novalidate>
+
+                <div>
+                    <h1>איש קשר</h1>
+                    <h2>#משה #כהן</h2>
+                    <section>
 
 
-                    <div>
-                        <label for="FirstName">שם פרטי:</label>
-                        <input id="FirstName" name="FirstName" type="text">
-                    </div>
+                        <div>
+                            <label for="FirstName">שם פרטי:</label>
+                            <input id="FirstName" name="FirstName" type="text" ng-model="contact.firstName">
+                        </div>
 
-                    <div>
-                        <label for="LastName">שם משפחה:</label>
-                        <input id="LastName" name="LastName" type="text">
-                    </div>
+                        <div>
+                            <label for="LastName">שם משפחה:</label>
+                            <input id="LastName" name="LastName" type="text" ng-model="contact.lastName">
+                        </div>
 
-                    <div>
-                        <label for="IdNumber">תעודת זהות:</label>
-                        <input id="IdNumber" name="IdNumber" type="text">
-                    </div>
+                        <div>
+                            <label for="IdNumber">תעודת זהות:</label>
+                            <input id="IdNumber" name="IdNumber" type="text" ng-model="contact.IdNumber">
+                        </div>
 
-                    <div>
-                        <label for="PhoneNumber">טלפון:</label>
-                        <input id="PhoneNumber" name="PhoneNumber" type="text">
-                    </div>
+                        <div>
+                            <label for="PhoneNumber">טלפון:</label>
+                            <input id="PhoneNumber" name="PhoneNumber" type="text" ng-model="contact.phoneNumber">
+                        </div>
 
-                    <div>
-                        <label for="MobileNumber">נייד:</label>
-                        <input id="MobileNumber" name="MobileNumber" type="text">
-                    </div>
+                        <div>
+                            <label for="MobileNumber">נייד:</label>
+                            <input id="MobileNumber" name="MobileNumber" type="text" ng-model="contact.mobileNumber">
+                        </div>
 
-                    <div>
-                        <label for="Address">כתובת:</label>
-                        <input id="Address" name="Address" type="text">
-                    </div>
+                        <div>
+                            <label for="Address">כתובת:</label>
+                            <input id="Address" name="Address" type="text" ng-model="contact.address">
+                        </div>
 
-                    <div>
-                        <label for="Remarks">הערות:</label>
-                        <input id="Remarks" name="Remarks" type="text">
-                    </div>
+                        <div>
+                            <label for="Remarks">הערות:</label>
+                            <input id="Remarks" name="Remarks" type="text" ng-model="contact.remarks">
+                        </div>
 
-                    <div>
-                        <span>הלוואות</span>
-                        <table></table>
-                        <label>סה"כ הלוואות פתוחות:</label>
-                        <label id="SumDebit">25</label><span>ש"ח</span>
-                    </div>
+                        <div>
+                            <span>הלוואות</span>
+                            <table></table>
+                            <label>סה"כ הלוואות פתוחות:</label>
+                            <label id="SumDebit">25</label><span>ש"ח</span>
+                        </div>
 
-                    <div>
-                        <span>הפקדות</span>
-                        <table></table>
-                        <label>סה"כ הפקדות פתוחות:</label>
-                        <label id="SumDebit">15</label><span>ש"ח</span>
-                    </div>
+                        <div>
+                            <span>הפקדות</span>
+                            <table></table>
+                            <label>סה"כ הפקדות פתוחות:</label>
+                            <label id="SumDebit">15</label><span>ש"ח</span>
+                        </div>
 
-                    <div>
-                        <span>תרומות</span>
-                        <table></table>
-                    </div>
-                    
-                    <button type="button" id="btn_save">שמירה</button>
-                    <button type="button" id="btn_cancel">ביטול</button> 
-                  
-                </section>
-            </div>
-        </form>
+                        <div>
+                            <span>תרומות</span>
+                            <table></table>
+                        </div>
+
+                        <button type="button" id="btn_save" ng-click="saveEdit(contact)">שמירה</button>
+                        <button type="button" id="btn_cancel">ביטול</button>
+
+                    </section>
+                </div>
+            </form>
+</div>
 
 
 
