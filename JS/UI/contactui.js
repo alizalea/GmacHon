@@ -1,5 +1,6 @@
-﻿var oneGmach = new GMach.Model.OneGmach();
-var allContacts = oneGmach.Contacts();
+﻿//var oneGmach = new GMach.Model.OneGmach();
+var allContacts = GMach.Model.Contact.GetAllContacts();
+    //oneGmach.Contacts();
 
 
 $(document).ready(function () {

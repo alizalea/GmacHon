@@ -2,9 +2,9 @@
  
     var oneGmach = new GMach.Model.OneGmach();
    
-    $("#inputMoney").text(numberWithCommas(oneGmach.GetInputMoney()));
-    $("#outputMoney").text(numberWithCommas(oneGmach.GetOutputMoney()));
-    $("#diffMoney").text(numberWithCommas(oneGmach.GetDiffMoney()));
+    $("#inputMoney").text(numberWithCommas(oneGmach.inputMoney));
+    $("#outputMoney").text(numberWithCommas(oneGmach.outputMoney));
+    $("#diffMoney").text(numberWithCommas(oneGmach.diffMoney));
 });
 
 function numberWithCommas(x) {

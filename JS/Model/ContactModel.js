@@ -1,5 +1,5 @@
 ﻿
-var GMach = GMach || {};
+//var GMach = GMach || {};
 GMach.Model = GMach.Model || {};
 GMach.Model.Contact = GMach.Model.Contact || {};
 
@@ -22,13 +22,25 @@ GMach.Model.Contact = function (firstName, lastName, IdNumber, phoneNumber, mobi
 },
 
 GMach.Model.Contact.GetAllContacts = function () {
-   
+    var con = JSON.parse(localStorage.getItem('Gmach1Contacts'));
+    if (con != null && con != undefined) {
+        return con;
+    }
+    else
     return GMach.DAL.Contact.GetAllContacts();
 
 }
 GMach.Model.Contact.GetDatataContact = function (id) {
-
-    return GMach.DAL.Contact.GetDatataContact(id);
+    var con = JSON.parse(localStorage.getItem('Gmach1Contacts'));
+    var result = $.grep(con, function (e) { return e.id == id; });
+    if (result.length == 0) {
+        // not found
+        return new GMach.Model.Contact();
+    } else if (result.length == 1) {
+        return result[0];
+    }
+    return null
+   // return GMach.DAL.Contact.GetDatataContact(id);
 
 }
 GMach.Model.Contact.SetDatataContact = function (contact) {
