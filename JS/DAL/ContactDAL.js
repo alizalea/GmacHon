@@ -1,4 +1,4 @@
-﻿//var Contacts = {};
+﻿ //var Contacts = {};
 var GMach = GMach || {};
 GMach.DAL = GMach.DAL || {};
 GMach.DAL.Contact = GMach.DAL.Contact || {};
