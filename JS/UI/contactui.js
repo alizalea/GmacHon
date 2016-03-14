@@ -57,4 +57,14 @@ $(document).ready(function () {
         }
     });
 
+    var table = $('#contacts').DataTable();
+
+    $('#contacts tbody').on('click', 'tr', function () {
+        var id = table.row(this).data().id;
+        window.location = "/HTML/Contact.html?id=" + id;
+      
+    });
+
+  
+
 });

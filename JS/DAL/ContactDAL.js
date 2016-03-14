@@ -36,29 +36,36 @@ GMach.DAL.Contact.GetDatataContact = function (id) {
    
 
 }
-GMach.DAL.Contact.SetDatataContact = function (contact,edit) {
+GMach.DAL.Contact.SetDatataContact = function (contact,editid) {
     try {
         var con = JSON.parse(localStorage.getItem('Gmach1Contacts'));
-        var c = null;
-        if (edit) {//צריך לראות איך לעדכן את האובייקט במערך
-            c = GMach.DAL.Contact.GetDatataContact(contact.id)
-            c.firstName = contact.firstName;
-            c.lastName = contact.lastName;
-            c.IdNumber = contact.IdNumber;
-            c.phoneNumber = contact.phoneNumber;
-            c.mobileNumber = contact.mobileNumber;
-            c.address = contact.address;
-            c.remarks = contact.remarks;
+    
+        if (editid!=null) {//צריך לראות איך לעדכן את האובייקט במערך
+            
+            for (var i in con) {
+                if (con[i].id == editid) {
+                    con[i].firstName = contact.firstName;
+                    con[i].lastName = contact.lastName;
+                    con[i].IdNumber = contact.IdNumber;
+                    con[i].phoneNumber = contact.phoneNumber;
+                    con[i].mobileNumber = contact.mobileNumber;
+                    con[i].address = contact.address;
+                    con[i].remarks = contact.remarks;
+                        break; //Stop this loop, we found it!
+                    }
+                }
+          
+           
 
         } else {
 
             con.push(contact);//צריך להוסיף למשתנה הגלובלי של אנשי קשר לראות איך מוגדר מההתחלה
-            var contactsTostore = JSON.stringify(con);
-            localStorage.setItem('Gmach1Contacts', contactsTostore);
-            contactsTostore = null;
+            
         }
            
-           
+        var contactsTostore = JSON.stringify(con);
+        localStorage.setItem('Gmach1Contacts', contactsTostore);
+        contactsTostore = null;
             return true;
         
     } catch (e) {

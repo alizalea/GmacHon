@@ -27,7 +27,7 @@ GMach.Model.OneGmach.prototype.Transactions = function () {
 //יצירת מופע של גמח ושמירתו בlacalstorage
 var oneGmach = new GMach.Model.OneGmach();
 
-
+localStorage.clear();
 var contactsTostore = JSON.stringify(oneGmach.Contacts());
 localStorage.setItem('Gmach1Contacts', contactsTostore);
 contactsTostore = null;

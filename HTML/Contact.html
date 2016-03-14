@@ -11,12 +11,32 @@
     <script type="text/javascript" src="../JS/Model/ContactModel.js"></script>
     <script src="../JS/UI/HeaderUI.js"></script>
     <script>
-        var idfromqs = 1;
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+        var idfromqs = getUrlParameter('id') ? getUrlParameter('id') : null;
+        
         var app = angular.module('myApp', []);
-        app.controller('editCon', function($scope) {
-            $scope.contact = GMach.Model.Contact.GetDatataContact(idfromqs);
+        app.controller('editCon', function ($scope) {
+            if (idfromqs!= null) {
+                $scope.contact = GMach.Model.Contact.GetDatataContact(idfromqs);
+            } else {
+                $scope.contact = new GMach.Model.Contact();
+            }
+            
             $scope.saveEdit = function (contact) {
-                GMach.Model.Contact.SetDatataContact(contact);
+                GMach.Model.Contact.SetDatataContact(contact, idfromqs);
 
             };
 
@@ -34,7 +54,7 @@
 
                 <div>
                     <h1>איש קשר</h1>
-                    <h2>#משה #כהן</h2>
+                    <h2>{{contact.firstName}} &nbsp; {{contact.lastName}}</h2>
                     <section>
 
 

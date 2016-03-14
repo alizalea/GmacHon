@@ -43,9 +43,9 @@ GMach.Model.Contact.GetDatataContact = function (id) {
    // return GMach.DAL.Contact.GetDatataContact(id);
 
 }
-GMach.Model.Contact.SetDatataContact = function (contact) {
+GMach.Model.Contact.SetDatataContact = function (contact, idcon) {
 
-    return GMach.DAL.Contact.SetDatataContact(contact);
+    return GMach.DAL.Contact.SetDatataContact(contact, idcon);
 
 }
 
