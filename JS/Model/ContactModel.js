@@ -26,8 +26,19 @@ GMach.Model.Contact.GetAllContacts = function () {
     if (con != null && con != undefined) {
         return con;
     }
-    else
-    return GMach.DAL.Contact.GetAllContacts();
+    else {
+        return GMach.DAL.Contact.GetAllContacts();
+        //var databaseData = GMach.DAL.Contact.GetAllContacts();
+        //var modelData=new Array();
+        //databaseData.forEach(function (row) {
+        //    var curr = GetContactObject(row);
+        //    modelData.push(curr);
+        //});
+
+        //localStorage.setItem('Gmach1Contacts', modelData);
+       
+        //return modelData;
+    }
 
 }
 GMach.Model.Contact.GetDatataContact = function (id) {
@@ -48,6 +59,22 @@ GMach.Model.Contact.SetDatataContact = function (contact, idcon) {
     return GMach.DAL.Contact.SetDatataContact(contact, idcon);
 
 }
+
+function GetContactObject(dataBaseRow) {
+    var curr = new GMach.Model.Contact();
+
+    curr.id = dataBaseRow.id;
+    curr.firstName = dataBaseRow.firstName;
+    curr.lastName = dataBaseRow.lastName;
+    curr.IdNumber = dataBaseRow.IdNumber;
+    curr.phoneNumber = dataBaseRow.phoneNumber;
+    curr.mobileNumber = dataBaseRow.mobileNumber;
+    curr.address = dataBaseRow.address;
+    curr.remarks = dataBaseRow.remarks;
+
+    return curr;
+
+};
 
 
 

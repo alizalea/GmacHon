@@ -15,6 +15,7 @@ GMach.DAL.Contact.GetAllContacts = function () {
                                 new GMach.Model.Contact("חיים", "טויו", "222222222", "024444444", "085-9999999", "", "חיחחייח"),
                                 new GMach.Model.Contact("אריאל", "פכטר", "222222222", "024444444", "085-9999999", "", "חיחחייח")];
    return conddal;
+   //return contactData;
 
 }
 
