@@ -1,0 +1,22 @@
+﻿var contactData = [
+  {
+    "id": 1,
+    "firstName": "אלון",
+    "lastName": "כהן",
+    "IdNumber": "",
+    "phoneNumber": "02-5648885",
+    "mobileNumber": "050-41446367",
+    "address": "רמות, ירושלים",
+    "remarks":"נדיב ביותר."
+  },
+  {
+    "id": 1,
+    "firstName": "חיים",
+    "lastName": "כהן",
+    "IdNumber": "",
+    "phoneNumber": "02-5648885",
+    "mobileNumber": "050-41446367",
+    "address": "",
+    "remarks":"בקש להזכיר לו שבוע קודם."
+  }
+]
