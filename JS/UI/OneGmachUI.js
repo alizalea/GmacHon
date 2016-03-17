@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
  
-    var oneGmach = new GMach.Model.OneGmach();
+    var oneGmach = new GMach.Model.OneGmachObject();
    
     $("#inputMoney").text(numberWithCommas(oneGmach.inputMoney));
     $("#outputMoney").text(numberWithCommas(oneGmach.outputMoney));
