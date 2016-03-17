@@ -35,7 +35,7 @@ GMach.Model.Contact.GetAllContacts = function () {
         //    modelData.push(curr);
         //});
 
-        //localStorage.setItem('Gmach1Contacts', modelData);
+        //localStorage.setItem('Gmach1Contacts', JSON.stringify(modelData));
        
         //return modelData;
     }
