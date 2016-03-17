@@ -5,8 +5,8 @@
     <title>גמחהון - איש קשר</title>
     <link type="text/css" href="../CSS/GmacHon.css" rel="stylesheet" />
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script type="text/javascript" src="../Third Party Code/jquery.min.js"></script>
+   
     <script type="text/javascript" src="../JS/DAL/ContactDAL.js"></script>
     <script type="text/javascript" src="../JS/Model/ContactModel.js"></script>
     <script src="../JS/UI/HeaderUI.js"></script>
@@ -27,19 +27,45 @@
         };
         var idfromqs = getUrlParameter('id') ? getUrlParameter('id') : null;
         
-        var app = angular.module('myApp', []);
-        app.controller('editCon', function ($scope) {
+        var contact; 
+        $(document).ready(function () {
+       
             if (idfromqs!= null) {
-                $scope.contact = GMach.Model.Contact.GetDatataContact(idfromqs);
+                 contact = GMach.Model.Contact.GetDatataContact(idfromqs);
+               $('#FirstName').val(contact.firstName);
+              $('#LastName').val(contact.lastName);
+              $('#IdNumber').val(contact.IdNumber);
+              $('#PhoneNumber').val(contact.phoneNumber);
+              $('#MobileNumber').val(contact.mobileNumber);
+              $('#Address').val(contact.address);
+              $('#Remarks').val(contact.remarks);
+                //$('h2').text(f+" " +l);
             } else {
-                $scope.contact = new GMach.Model.Contact();
+                contact = new GMach.Model.Contact();
             }
             
-            $scope.saveEdit = function (contact) {
-                GMach.Model.Contact.SetDatataContact(contact, idfromqs);
+            $("#btn_save").click(function (contact) {
+               // if (isvalid()) {
 
-            };
+               // }
+                contact.firstName = $('#FirstName').val();
+                contact.lastName=$('#LastName').val();
+                contact.IdNumber= $('#IdNumber').val();
+                contact.phoneNumber = $('#PhoneNumber').val();
+                contact.mobileNumber = $('#MobileNumber').val();
+                contact.address = $('#Address').val();
+                contact.remarks = $('#Remarks').val();
+                debugger;
+                if ( GMach.Model.Contact.SetDatataContact(contact, idfromqs)) {
+                    window.location = "/HTML/Contacts.html";
+                }
+               
 
+            });
+            $("#btn_cancel").click(function (contact) {
+                window.location = "/HTML/Contacts.html";
+
+            });
         });
     </script>
 
@@ -49,48 +75,48 @@
         <!-- Content will be inserted by jQuery from header.html -->
     </header>
     <main>
-        <div id="Contact-form"  ng-app="myApp" ng-controller="editCon"> 
+        <div id="Contact-form"  > 
             <form novalidate>
 
                 <div>
                     <h1>איש קשר</h1>
-                    <h2>{{contact.firstName}} &nbsp; {{contact.lastName}}</h2>
+                    <h2></h2>
                     <section>
 
 
                         <div>
                             <label for="FirstName">שם פרטי:</label>
-                            <input id="FirstName" name="FirstName" type="text" ng-model="contact.firstName">
+                            <input id="FirstName" name="FirstName" type="text" >
                         </div>
 
                         <div>
                             <label for="LastName">שם משפחה:</label>
-                            <input id="LastName" name="LastName" type="text" ng-model="contact.lastName">
+                            <input id="LastName" name="LastName" type="text" >
                         </div>
 
                         <div>
                             <label for="IdNumber">תעודת זהות:</label>
-                            <input id="IdNumber" name="IdNumber" type="text" ng-model="contact.IdNumber">
+                            <input id="IdNumber" name="IdNumber" type="text" >
                         </div>
 
                         <div>
                             <label for="PhoneNumber">טלפון:</label>
-                            <input id="PhoneNumber" name="PhoneNumber" type="text" ng-model="contact.phoneNumber">
+                            <input id="PhoneNumber" name="PhoneNumber" type="text" >
                         </div>
 
                         <div>
                             <label for="MobileNumber">נייד:</label>
-                            <input id="MobileNumber" name="MobileNumber" type="text" ng-model="contact.mobileNumber">
+                            <input id="MobileNumber" name="MobileNumber" type="text" >
                         </div>
 
                         <div>
                             <label for="Address">כתובת:</label>
-                            <input id="Address" name="Address" type="text" ng-model="contact.address">
+                            <input id="Address" name="Address" type="text" >
                         </div>
 
                         <div>
                             <label for="Remarks">הערות:</label>
-                            <input id="Remarks" name="Remarks" type="text" ng-model="contact.remarks">
+                            <input id="Remarks" name="Remarks" type="text" >
                         </div>
 
                         <div>
@@ -112,7 +138,7 @@
                             <table></table>
                         </div>
 
-                        <button type="button" id="btn_save" ng-click="saveEdit(contact)">שמירה</button>
+                        <button type="button" id="btn_save" >שמירה</button>
                         <button type="button" id="btn_cancel">ביטול</button>
 
                     </section>
