@@ -6,8 +6,8 @@
     "IdNumber": "",
     "phoneNumber": "02-5648885",
     "mobileNumber": "050-41446367",
-    "address": "",
-    "remarks":""
+    "address": "רמות, ירושלים",
+    "remarks":"נדיב ביותר."
   },
   {
     "id": 1,
@@ -17,6 +17,6 @@
     "phoneNumber": "02-5648885",
     "mobileNumber": "050-41446367",
     "address": "",
-    "remarks":""
+    "remarks":"בקש להזכיר לו שבוע קודם."
   }
 ]
