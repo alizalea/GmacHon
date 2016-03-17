@@ -20,7 +20,7 @@ GMach.DAL.Contact.GetAllContacts = function () {
 }
 
 
-GMach.DAL.Contact.SetDatataContact = function (contact,editid) {
+GMach.DAL.Contact.SetDataContact = function (contact,editid) {
     try {
         var con = JSON.parse(localStorage.getItem('Gmach1Contacts'));
     

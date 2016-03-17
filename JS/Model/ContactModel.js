@@ -57,9 +57,9 @@ GMach.Model.Contact.GetDataContact = function (id) {
         throw "Error During GetDataContact"
     }
 }
-GMach.Model.Contact.SetDatataContact = function (contact, idcon) {
+GMach.Model.Contact.SetDataContact = function (contact, idcon) {
 
-    return GMach.DAL.Contact.SetDatataContact(contact, idcon);
+    return GMach.DAL.Contact.SetDataContact(contact, idcon);
 
 }
 
