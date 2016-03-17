@@ -8,35 +8,18 @@ GMach.DAL.Contact = GMach.DAL.Contact || {};
 
 GMach.DAL.Contact.GetAllContacts = function () {
 
-   var conddal = [new GMach.Model.Contact("משה", "כהן", "111111111", "02-1111111", "054-8402125", "", "תורם חבל על הזמן"),
-                                new GMach.Model.Contact("יוסי", "לוי", "222222222", "024444444", "085-9999999", "", "חיחחייח"),
-                                new GMach.Model.Contact("יוסי", "כהן", "33333333", "024444444", "085-4444444", "", "חיחחייח"),
-                                new GMach.Model.Contact("יוסי", "לוי", "44444444", "024444444", "085-5555555", "", "חיחחייח"),
-                                new GMach.Model.Contact("חיים", "טויו", "222222222", "024444444", "085-9999999", "", "חיחחייח"),
-                                new GMach.Model.Contact("אריאל", "פכטר", "222222222", "024444444", "085-9999999", "", "חיחחייח")];
-   return conddal;
-   //return contactData;
+   //var conddal = [new GMach.Model.Contact("משה", "כהן", "111111111", "02-1111111", "054-8402125", "", "תורם חבל על הזמן"),
+   //                             new GMach.Model.Contact("יוסי", "לוי", "222222222", "024444444", "085-9999999", "", "חיחחייח"),
+   //                             new GMach.Model.Contact("יוסי", "כהן", "33333333", "024444444", "085-4444444", "", "חיחחייח"),
+   //                             new GMach.Model.Contact("יוסי", "לוי", "44444444", "024444444", "085-5555555", "", "חיחחייח"),
+   //                             new GMach.Model.Contact("חיים", "טויו", "222222222", "024444444", "085-9999999", "", "חיחחייח"),
+   //                             new GMach.Model.Contact("אריאל", "פכטר", "222222222", "024444444", "085-9999999", "", "חיחחייח")];
+   //return conddal;
+   return contactData;
 
 }
 
-GMach.DAL.Contact.GetDatataContact = function (id) {
-    var con = JSON.parse(localStorage.getItem('Gmach1Contacts'));
-    var result = $.grep(con, function (e) { return e.id == id; });
-    if (result.length == 0) {
-        // not found
-        return new GMach.Model.Contact();
-    } else if (result.length == 1) {
-        return result[0];
-    }
-    return null
-    //else {
-        // multiple items found
-   // }
-    
 
-   
-
-}
 GMach.DAL.Contact.SetDatataContact = function (contact,editid) {
     try {
         var con = JSON.parse(localStorage.getItem('Gmach1Contacts'));

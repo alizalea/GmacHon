@@ -27,32 +27,35 @@ GMach.Model.Contact.GetAllContacts = function () {
         return con;
     }
     else {
-        return GMach.DAL.Contact.GetAllContacts();
-        //var databaseData = GMach.DAL.Contact.GetAllContacts();
-        //var modelData=new Array();
-        //databaseData.forEach(function (row) {
-        //    var curr = GetContactObject(row);
-        //    modelData.push(curr);
-        //});
+        //return GMach.DAL.Contact.GetAllContacts();
+        var databaseData = GMach.DAL.Contact.GetAllContacts();
+        var modelData = new Array();
+        databaseData.forEach(function (row) {
+            var curr = GetContactObject(row);
+            modelData.push(curr);
+        });
 
-        //localStorage.setItem('Gmach1Contacts', JSON.stringify(modelData));
-       
-        //return modelData;
+        localStorage.setItem('Gmach1Contacts', JSON.stringify(modelData));
+
+        return modelData;
     }
 
 }
-GMach.Model.Contact.GetDatataContact = function (id) {
-    var con = JSON.parse(localStorage.getItem('Gmach1Contacts'));
+GMach.Model.Contact.GetDataContact = function (id) {
+
+    var con = GMach.Model.Contact.GetAllContacts();// JSON.parse(localStorage.getItem('Gmach1Contacts'));
     var result = $.grep(con, function (e) { return e.id == id; });
+
     if (result.length == 0) {
-        // not found
-        return new GMach.Model.Contact();
-    } else if (result.length == 1) {
+        return new GMach.Model.Contact();// Contact Not Found
+    }
+    else if (result.length == 1) {
         return result[0];
     }
-    return null
-   // return GMach.DAL.Contact.GetDatataContact(id);
-
+    else
+    {
+        throw "Error During GetDataContact"
+    }
 }
 GMach.Model.Contact.SetDatataContact = function (contact, idcon) {
 
