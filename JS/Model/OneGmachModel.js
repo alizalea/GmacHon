@@ -17,11 +17,11 @@ GMach.Model.OneGmach.prototype.Transactions = function () {
     return new GMach.Model.Transaction.GetAllTransactions();
 };
 
-var oneGmach = new GMach.Model.OneGmach();
-localStorage.setItem("oneGmachObject", oneGmach)
-GMach.Model.OneGmachObject = function () {
-    return localStorage.getItem("oneGmachObject");
-}
+//var oneGmach = new GMach.Model.OneGmach();
+//localStorage.setItem("oneGmachObject", oneGmach)
+//GMach.Model.OneGmachObject = function () {
+//    return localStorage.getItem("oneGmachObject");
+//}
 
 ////יצירת מופע של גמח ושמירתו בlacalstorage
 //var oneGmach = new GMach.Model.OneGmach();
