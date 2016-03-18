@@ -7,7 +7,7 @@ GMach.Model.OneGmach = function () {
     this.inputMoney = GetInputMoney();
     this.outputMoney = GetOuputMoney();
     this.diffMoney = this.inputMoney - this.outputMoney;
-    
+    this.nextID = getMax(GMach.Model.Contact.GetAllContacts(), "id") + 1;
 }
 GMach.Model.OneGmach.prototype.Contacts = function () {
     return new GMach.Model.Contact.GetAllContacts();
@@ -50,4 +50,13 @@ function GetOuputMoney() {
     });
     return Math.abs(total);
 
+}
+
+function getMax(arr, column) {
+    var max;
+    for (var i = 0 ; i < arr.length ; i++) {
+        if (!max || parseInt(arr[i][column]) > max)
+            max = arr[i][column];
+    }
+    return max;
 }

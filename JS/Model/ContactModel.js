@@ -5,6 +5,8 @@ GMach.Model.Contact = GMach.Model.Contact || {};
 
 
 GMach.Model.Contact = function (firstName, lastName, IdNumber, phoneNumber, mobileNumber, address, remarks) {
+    //this.id = id;
+
     if (GMach.Model.Contact.indexid == undefined) {
         GMach.Model.Contact.indexid = 1;
     }
