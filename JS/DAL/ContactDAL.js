@@ -3,9 +3,6 @@ var GMach = GMach || {};
 GMach.DAL = GMach.DAL || {};
 GMach.DAL.Contact = GMach.DAL.Contact || {};
 
-   
-
-
 GMach.DAL.Contact.GetAllContacts = function () {
 
    //var conddal = [new GMach.Model.Contact("משה", "כהן", "111111111", "02-1111111", "054-8402125", "", "תורם חבל על הזמן"),
@@ -14,9 +11,26 @@ GMach.DAL.Contact.GetAllContacts = function () {
    //                             new GMach.Model.Contact("יוסי", "לוי", "44444444", "024444444", "085-5555555", "", "חיחחייח"),
    //                             new GMach.Model.Contact("חיים", "טויו", "222222222", "024444444", "085-9999999", "", "חיחחייח"),
    //                             new GMach.Model.Contact("אריאל", "פכטר", "222222222", "024444444", "085-9999999", "", "חיחחייח")];
-   //return conddal;
-   return contactData;
+    //return conddal;
 
+    var con = JSON.parse(localStorage.getItem('Gmach1Contacts'));
+    if (con != null && con != undefined) {
+        return con;
+    }
+    else {
+        //return GMach.DAL.Contact.GetAllContacts();
+        var databaseData = contactData;
+        var modelData = new Array();
+        databaseData.forEach(function (row) {
+            var curr = GetContactObject(row);
+            modelData.push(curr);
+        });
+
+        localStorage.setItem('Gmach1Contacts', JSON.stringify(modelData));
+
+        return modelData;
+    }
+ 
 }
 
 

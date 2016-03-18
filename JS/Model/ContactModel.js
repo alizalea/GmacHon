@@ -22,24 +22,7 @@ GMach.Model.Contact = function (firstName, lastName, IdNumber, phoneNumber, mobi
 },
 
 GMach.Model.Contact.GetAllContacts = function () {
-    var con = JSON.parse(localStorage.getItem('Gmach1Contacts'));
-    if (con != null && con != undefined) {
-        return con;
-    }
-    else {
-        //return GMach.DAL.Contact.GetAllContacts();
-        var databaseData = GMach.DAL.Contact.GetAllContacts();
-        var modelData = new Array();
-        databaseData.forEach(function (row) {
-            var curr = GetContactObject(row);
-            modelData.push(curr);
-        });
-
-        localStorage.setItem('Gmach1Contacts', JSON.stringify(modelData));
-
-        return modelData;
-    }
-
+    return GMach.DAL.Contact.GetAllContacts();
 }
 GMach.Model.Contact.GetDataContact = function (id) {
 
