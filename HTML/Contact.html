@@ -6,7 +6,8 @@
     <link type="text/css" href="../CSS/GmacHon.css" rel="stylesheet" />
 
     <script type="text/javascript" src="../Third Party Code/jquery.min.js"></script>
-   
+
+    <script type="text/javascript" src="../JS/DAL/ContactData.json"></script>
     <script type="text/javascript" src="../JS/Model/OneGmachModel.js"></script>
     <script type="text/javascript" src="../JS/DAL/TransactionDAL.js"></script>
     <script type="text/javascript" src="../JS/Model/TransactionModel.js"></script>
@@ -30,7 +31,7 @@
         };
         var idfromqs = getUrlParameter('id') ? getUrlParameter('id') : null;
         
-        var contact; 
+        var contact=null; 
         $(document).ready(function () {
        
             if (idfromqs!= null) {
@@ -45,11 +46,11 @@
                 //$('h2').text(f+" " +l);
             } else {
                 contact = new GMach.Model.Contact();
-                //var oneGmach = new GMach.Model.OneGmach();
-                //contact.id = oneGmach.nextContactID;
+                var oneGmach = new GMach.Model.OneGmach();
+                contact.id = oneGmach.nextContactID;
             }
             
-            $("#btn_save").click(function (contact) {
+            $("#btn_save").click(function () {
                // if (isvalid()) {
 
                // }

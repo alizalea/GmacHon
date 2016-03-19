@@ -4,16 +4,16 @@ GMach.Model = GMach.Model || {};
 GMach.Model.Contact = GMach.Model.Contact || {};
 
 
-GMach.Model.Contact = function (firstName, lastName, IdNumber, phoneNumber, mobileNumber, address, remarks) {
-    //this.id = id;
+GMach.Model.Contact = function (id, firstName, lastName, IdNumber, phoneNumber, mobileNumber, address, remarks) {
+    this.id = id;
 
-    if (GMach.Model.Contact.indexid == undefined) {
+   /* if (GMach.Model.Contact.indexid == undefined) {
         GMach.Model.Contact.indexid = 1;
     }
     else {
         GMach.Model.Contact.indexid++;
     }
-    this.id = GMach.Model.Contact.indexid;
+    this.id = GMach.Model.Contact.indexid;*/
     this.firstName = firstName;
     this.lastName = lastName;
     this.IdNumber = IdNumber;
