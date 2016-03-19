@@ -105,7 +105,7 @@ function TransactionOnLoad()
         if (idfromqs != null) {
             transaction = GMach.Model.Transaction.GetDataTransaction(idfromqs);
             
-            //$('#TransactionType').val(transaction.transaction_type);
+            //$('#TransactionType').val(transaction.constructor.name);
             $('#Contact').val(transaction.contact);
             $('#Amount').val(transaction.amount);
            
