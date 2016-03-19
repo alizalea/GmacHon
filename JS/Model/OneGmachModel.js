@@ -7,7 +7,7 @@ GMach.Model.OneGmach = function () {
     this.inputMoney = GetInputMoney();
     this.outputMoney = GetOuputMoney();
     this.diffMoney = this.inputMoney - this.outputMoney;
-    this.nextID = getMax(GMach.Model.Contact.GetAllContacts(), "id") + 1;
+    this.nextContactID = getMax(GMach.Model.Contact.GetAllContacts(), "id") + 1;
 }
 GMach.Model.OneGmach.prototype.Contacts = function () {
     return new GMach.Model.Contact.GetAllContacts();

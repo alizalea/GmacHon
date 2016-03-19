@@ -2,7 +2,8 @@
 GMach.Model = GMach.Model || {};
 GMach.Model.Transaction = GMach.Model.Transaction || {};
 
-GMach.Model.Transaction.TransactionBase = function (contact, amount, transaction_date) {
+GMach.Model.Transaction.TransactionBase = function (id, contact, amount, transaction_date) {
+    this.id = id;
     this.contact = contact;
     this.amount = amount;
     this.transaction_date = transaction_date;

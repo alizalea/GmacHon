@@ -27,11 +27,14 @@ $(document).ready(function () {
 
         columns: [
               { "data": "transaction_type" },
-             { "data": "contact" },
-            { "data": "amount" },
-             { "data": "transaction_date" },
+              { "data": "contact" },
+              { "data": "amount" },
+              { "data": "transaction_date" },
 
         ],
+
+        select: true,
+
         "language": {
 
             "lengthMenu": "מציג _MENU_ שורות לעמוד",
@@ -57,6 +60,14 @@ $(document).ready(function () {
 
             },
         }
+    });
+
+    var table = $('#transactions').DataTable();
+
+    $('#transactions tbody').on('click', 'tr', function () {
+        var id = table.row(this).data().id;
+        window.location = "/HTML/Transaction.html?id=" + id;
+
     });
 
 });
