@@ -3,6 +3,7 @@ function GetAllTransactionsVM(transList) {
     var trans = new Array();
     transList.forEach(function (tran) {
         var t = new Object();
+        t.id = tran.id;
         t.transaction_type = tran.constructor.name;
         t.contact = tran.contact;
         t.amount = tran.amount;
