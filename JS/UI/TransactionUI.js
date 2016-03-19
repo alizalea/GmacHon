@@ -3,6 +3,7 @@ function GetAllTransactionsVM(transList) {
     var trans = new Array();
     transList.forEach(function (tran) {
         var t = new Object();
+        t.id = tran.id;
         t.transaction_type = tran.constructor.name;
         t.contact = tran.contact;
         t.amount = tran.amount;
@@ -20,7 +21,16 @@ var oneGmach = new GMach.Model.OneGmach();
 var allTransactions = GetAllTransactionsVM(oneGmach.Transactions());
 
 $(document).ready(function () {
+    if ($('#transactions').length > 0) {
+        AllTransactionsOnLoad();
+    } else if ($('#Transaction-form').length > 0)
+    {
+        TransactionOnLoad();
+    }
 
+});
+
+function AllTransactionsOnLoad() {
     $('#transactions').DataTable({
 
         data: allTransactions,
@@ -70,4 +80,65 @@ $(document).ready(function () {
 
     });
 
-});
+}
+
+function TransactionOnLoad()
+{
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+    var idfromqs = getUrlParameter('id') ? getUrlParameter('id') : null;
+
+    var transaction;
+
+        if (idfromqs != null) {
+            transaction = GMach.Model.Transaction.GetDataTransaction(idfromqs);
+            
+            //$('#TransactionType').val(transaction.constructor.name);
+            $('#Contact').val(transaction.contact);
+            $('#Amount').val(transaction.amount);
+           
+            //$('h2').text(f+" " +l);
+        } else {
+            contact = new GMach.Model.Transaction();
+            //var oneGmach = new GMach.Model.OneGmach();
+            //contact.id = oneGmach.nextContactID;
+        }
+
+        $("#btn_save").click(function (transaction) {
+            // if (isvalid()) {
+
+            // }
+            transaction.contact = $('#Contact').val();
+            contact.amount = $('#Amount').val();
+            //contact.IdNumber = $('#IdNumber').val();
+            //contact.phoneNumber = $('#PhoneNumber').val();
+            //contact.mobileNumber = $('#MobileNumber').val();
+            //contact.address = $('#Address').val();
+            //contact.remarks = $('#Remarks').val();
+            if (GMach.Model.Transaction.SetDataTransaction(transaction, idfromqs)) {
+                window.location = "/HTML/Transactions.html";
+            }
+
+
+ 
+        $("#btn_cancel").click(function (contact) {
+            window.location = "/HTML/Transactions.html";
+
+        });
+    });
+
+
+
+}
