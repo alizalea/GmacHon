@@ -11,4 +11,41 @@ GMach.DAL.Transaction.GetAllTransactions = function () {
 
     return Transactions;
 
+
 };
+
+GMach.DAL.Transaction.SetDataTransaction = function (contact, editid) {
+    try {
+        var con = GMach.DAL.Transaction.GetAllTransactions();
+
+        if (editid != null) {//צריך לראות איך לעדכן את האובייקט במערך
+
+            for (var i in con) {
+                if (con[i].id == editid) {
+                    con[i].contact = contact.contact;
+                    //con[i].lastName = contact.lastName;
+                    //con[i].IdNumber = contact.IdNumber;
+                    //con[i].phoneNumber = contact.phoneNumber;
+                    //con[i].mobileNumber = contact.mobileNumber;
+                    //con[i].address = contact.address;
+                    //con[i].remarks = contact.remarks;
+                    break; //Stop this loop, we found it!
+                }
+            }
+
+        } else {
+
+            con.push(contact);//צריך להוסיף למשתנה הגלובלי של אנשי קשר לראות איך מוגדר מההתחלה
+
+        }
+
+        var transactionsTostore = JSON.stringify(con);
+        localStorage.setItem('Gmach1Transactions', transactionsTostore);
+        transactionsTostore = null;
+        return true;
+
+    } catch (e) {
+        return false;
+    }
+
+}

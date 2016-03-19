@@ -87,6 +87,31 @@ GMach.Model.Transaction.GetAllTransactions = function () {
 
 };
 
+GMach.Model.Transaction.GetDataTransaction = function (id) {
+
+    var con = GMach.Model.Transaction.GetAllTransactions();// JSON.parse(localStorage.getItem('Gmach1Contacts'));
+    var result = $.grep(con, function (e) { return e.id == id; });
+
+    if (result.length == 0) {
+        return new GMach.Model.Transaction();// Contact Not Found
+    }
+    else if (result.length == 1) {
+        return result[0];
+    }
+    else {
+        throw "Error During GetDataTransaction"
+    }
+}
+GMach.Model.Contact.SetDataTransaction = function (transaction, idcon) {
+
+    return GMach.DAL.Contact.SetDataTransaction(transaction, idcon);
+
+}
+
+
+
+
+
 GMach.Model.Transaction.GetTransactionObject = function (dataBaseRow) {
     var curr = new GMach.Model.Transaction.TransactionBase();
     //curr.contact
