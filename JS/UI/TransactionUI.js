@@ -125,9 +125,11 @@ function TransactionOnLoad() {
     if (idfromqs != null) {
         transaction = GMach.Model.Transaction.GetDataTransaction(idfromqs);
 
-        //$('#TransactionType').val(transaction.transaction_type);
+        $('#TransactionType').val(GetTransactionDisplayType(transaction.constructor.name));
         $('#Contact').val(transaction.contact);
         $('#Amount').val(transaction.amount);
+        //$('#TransactionDate').val(new Date(transaction.transaction_date));
+
 
         //$('h2').text(f+" " +l);
     } else {

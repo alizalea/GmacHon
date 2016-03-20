@@ -4,9 +4,7 @@
     <meta charset="utf-8" />
     <title>תנועה</title>
     <link type="text/css" href="../CSS/GmacHon.css" rel="stylesheet" />
-
     <script type="text/javascript" src="../Third Party Code/jquery.min.js"></script>
-
 
     <script type="text/javascript" src="../JS/DAL/ContactData.json"></script>
     <script type="text/javascript" src="../JS/DAL/ContactDAL.js"></script>
@@ -16,7 +14,6 @@
     <script type="text/javascript" src="../JS/Model/TransactionModel.js"></script>
     <script type="text/javascript" src="../JS/UI/TransactionUI.js"></script>
     <script type="text/javascript" src="../JS/UI/HeaderUI.js"></script>
-
 
 </head>
 <body>
@@ -29,109 +26,85 @@
                 <h1>תנועה</h1>
                 <h2>#הלוואה #משה #כהן</h2>
                 <section>
-
                     <div>
                         <label for="TransactionType">סוג תנועה:</label>
                         <select id="TransactionType" name="TransactionType">
-                            <option value="1">הלוואה</option>
-                            <option value="2">החזרת הלוואה</option>
-                            <option value="3">הפקדה</option>
-                            <option value="4">משיכת הפקדה</option>
-                            <option value="5">תרומה</option>
+                            <option>הלוואה</option>
+                            <option>החזרת הלוואה</option>
+                            <option>הפקדה</option>
+                            <option>משיכת הפקדה</option>
+                            <option>תרומה</option>
                         </select>
-
                         <div>
                             <label for="Contact">איש קשר:</label>
                             <input id="Contact" name="Contact" type="text">
                         </div>
-
                         <div>
                             <label for="Amount">סכום בשקלים:</label>
                             <input id="Amount" name="Amount" type="number">
                         </div>
-
                         <div>
                             <label for="TransactionDate">תאריך:</label>
                             <input id="TransactionDate" name="TransactionDate" type="date">
                         </div>
-
                         <div>
                             <div>
                                 <label for="ReturnDate">תאריך החזרה מתוכנן:</label>
                                 <input id="ReturnDate" name="ReturnDate" type="date">
                             </div>
-
                             <div>
                                 <input id="Returned" name="Returned" type="checkbox" />הוחזר
                             </div>
-
                             <div>
                                 <label for="ReturnAmount">סכום בשקלים:</label>
                                 <input id="ReturnAmount" name="ReturnAmount" type="number">
                             </div>
                         </div>
-
                         <div>
                             <div id="FirstFreind">
-
                                 <div>
                                     <label for="FirstNameFirstFreind">שם פרטי:</label>
                                     <input id="FirstNameFirstFreind" name="FirstNameFirstFreind" type="text">
                                 </div>
-
                                 <div>
                                     <label for="LastNameFirstFreind">שם משפחה:</label>
                                     <input id="LastNameFirstFreind" name="LastNameFirstFreind" type="text">
                                 </div>
-
                                 <div>
                                     <label for="PhoneNumberFirstFreind">טלפון:</label>
                                     <input id="PhoneNumberFirstFreind" name="PhoneNumberFirstFreind" type="text">
                                 </div>
-
                                 <div>
                                     <label for="RemarkFirstFreind">הערות:</label>
                                     <input id="RemarkFirstFreind" name="RemarkFirstFreind" type="text">
                                 </div>
-
                             </div>
-
-                             <div>
-                            <div id="SecondFreind">
-
-                                <div>
-                                    <label for="FirstNameSecondFreind">שם פרטי:</label>
-                                    <input id="FirstNameSecondFreind" name="FirstNameSecondFreind" type="text">
-                                </div>
-
-                                <div>
-                                    <label for="LastNameSecondFreind">שם משפחה:</label>
-                                    <input id="LastNameSecondFreind" name="LastNameSecondFreind" type="text">
-                                </div>
-
-                                <div>
-                                    <label for="PhoneNumberSecondFreind">טלפון:</label>
-                                    <input id="PhoneNumberSecondFreind" name="PhoneNumberSecondFreind" type="text">
-                                </div>
-
-                                <div>
-                                    <label for="RemarkSecondFreind">הערות:</label>
-                                    <input id="RemarkSecondFreind" name="RemarkSecondFreind" type="text">
+                            <div>
+                                <div id="SecondFreind">
+                                    <div>
+                                        <label for="FirstNameSecondFreind">שם פרטי:</label>
+                                        <input id="FirstNameSecondFreind" name="FirstNameSecondFreind" type="text">
+                                    </div>
+                                    <div>
+                                        <label for="LastNameSecondFreind">שם משפחה:</label>
+                                        <input id="LastNameSecondFreind" name="LastNameSecondFreind" type="text">
+                                    </div>
+                                    <div>
+                                        <label for="PhoneNumberSecondFreind">טלפון:</label>
+                                        <input id="PhoneNumberSecondFreind" name="PhoneNumberSecondFreind" type="text">
+                                    </div>
+                                    <div>
+                                        <label for="RemarkSecondFreind">הערות:</label>
+                                        <input id="RemarkSecondFreind" name="RemarkSecondFreind" type="text">
+                                    </div>
                                 </div>
 
                             </div>
-
-
                         </div>
-
-                    </div>
-
 
                 </section>
             </div>
         </form>
-
-
 
     </main>
 </body>
