@@ -7,7 +7,7 @@
     */
 body {
     font-size: 25px;
-    font-stretch:narrower;
+    font-stretch: narrower;
     color: #375D3B;
     font-family: Arial;
     font-weight: bold;
@@ -19,7 +19,7 @@ body {
 }
 
 .HideDiv {
-  display: none;
+    display: none;
 }
 
 
@@ -84,9 +84,9 @@ main {
     padding-top: 20%;
 }
 
-.paneldata span {
-    font-size: 35px;
-}
+    .paneldata span {
+        font-size: 35px;
+    }
 
 .contacts, transactions {
     width: 80%;
@@ -102,6 +102,15 @@ input, select {
     color: #375D3B;
     font-family: Arial;
     font-weight: bold;
+}
+
+.fixedWidth {
+    width: 20%;
+    display: inline-block;
+}
+
+h1,h2 {
+    margin: 10px;
 }
 
 button {
