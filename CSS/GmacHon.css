@@ -93,6 +93,13 @@ main {
 #Contact-form {
 }
 
+input, select {
+    font-size: 18px;
+    color: #375D3B;
+    font-family: Arial;
+    font-weight: bold;
+}
+
 button {
     background: #375D3B;
     color: #E1E6B9;
