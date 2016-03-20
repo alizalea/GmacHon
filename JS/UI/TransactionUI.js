@@ -4,7 +4,7 @@ function GetAllTransactionsVM(transList) {
     transList.forEach(function (tran) {
         var t = new Object();
         t.id = tran.id;
-        t.transaction_type = tran.constructor.name;
+        t.transaction_type = GetTransactionDisplayType(tran.constructor.name);
         t.contact = tran.contact;
         t.amount = tran.amount;
         t.transaction_date = tran.transaction_date;
@@ -17,14 +17,35 @@ function GetAllTransactionsVM(transList) {
 
 };
 
+function GetTransactionDisplayType(transactionType) {
+    var name = "";
+    switch (transactionType) {
+        case "Loan":
+            name = "הלוואה"
+            break;
+        case "ReturnLoan":
+            name = "החזרת הלוואה";
+            break;
+        case "Deposit":
+            name = "הפקדה"
+            break;
+        case "ReturnDeposit":
+            name = "משיכת הפקדה"
+            break;
+        case "Donation":
+            name = "תרומה"
+            break;
+    }
+    return name;
+}
+
 var oneGmach = new GMach.Model.OneGmach();
 var allTransactions = GetAllTransactionsVM(oneGmach.Transactions());
 
 $(document).ready(function () {
     if ($('#transactions').length > 0) {
         AllTransactionsOnLoad();
-    } else if ($('#Transaction-form').length > 0)
-    {
+    } else if ($('#Transaction-form').length > 0) {
         TransactionOnLoad();
     }
 
@@ -82,8 +103,7 @@ function AllTransactionsOnLoad() {
 
 }
 
-function TransactionOnLoad()
-{
+function TransactionOnLoad() {
     var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
             sURLVariables = sPageURL.split('&'),
@@ -102,37 +122,37 @@ function TransactionOnLoad()
 
     var transaction;
 
-        if (idfromqs != null) {
-            transaction = GMach.Model.Transaction.GetDataTransaction(idfromqs);
-            
-            //$('#TransactionType').val(transaction.constructor.name);
-            $('#Contact').val(transaction.contact);
-            $('#Amount').val(transaction.amount);
-           
-            //$('h2').text(f+" " +l);
-        } else {
-            contact = new GMach.Model.Transaction();
-            //var oneGmach = new GMach.Model.OneGmach();
-            //contact.id = oneGmach.nextContactID;
+    if (idfromqs != null) {
+        transaction = GMach.Model.Transaction.GetDataTransaction(idfromqs);
+
+        //$('#TransactionType').val(transaction.transaction_type);
+        $('#Contact').val(transaction.contact);
+        $('#Amount').val(transaction.amount);
+
+        //$('h2').text(f+" " +l);
+    } else {
+        contact = new GMach.Model.Transaction();
+        //var oneGmach = new GMach.Model.OneGmach();
+        //contact.id = oneGmach.nextContactID;
+    }
+
+    $("#btn_save").click(function (transaction) {
+        // if (isvalid()) {
+
+        // }
+        transaction.contact = $('#Contact').val();
+        contact.amount = $('#Amount').val();
+        //contact.IdNumber = $('#IdNumber').val();
+        //contact.phoneNumber = $('#PhoneNumber').val();
+        //contact.mobileNumber = $('#MobileNumber').val();
+        //contact.address = $('#Address').val();
+        //contact.remarks = $('#Remarks').val();
+        if (GMach.Model.Transaction.SetDataTransaction(transaction, idfromqs)) {
+            window.location = "/HTML/Transactions.html";
         }
 
-        $("#btn_save").click(function (transaction) {
-            // if (isvalid()) {
-
-            // }
-            transaction.contact = $('#Contact').val();
-            contact.amount = $('#Amount').val();
-            //contact.IdNumber = $('#IdNumber').val();
-            //contact.phoneNumber = $('#PhoneNumber').val();
-            //contact.mobileNumber = $('#MobileNumber').val();
-            //contact.address = $('#Address').val();
-            //contact.remarks = $('#Remarks').val();
-            if (GMach.Model.Transaction.SetDataTransaction(transaction, idfromqs)) {
-                window.location = "/HTML/Transactions.html";
-            }
 
 
- 
         $("#btn_cancel").click(function (contact) {
             window.location = "/HTML/Transactions.html";
 
