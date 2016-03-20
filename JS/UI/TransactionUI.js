@@ -148,6 +148,15 @@ function TransactionOnLoad() {
         }
 
         //$('h2').text(f+" " +l);
+
+        showOrHideControls();
+
+        $("#TransactionType").change(function () {
+            showOrHideControls();
+
+        });
+
+
     } else {
         contact = new GMach.Model.Transaction();
         //var oneGmach = new GMach.Model.OneGmach();
@@ -177,6 +186,20 @@ function TransactionOnLoad() {
         });
     });
 
+    function showOrHideControls() {
+        if ($("#TransactionType").val() != "הלוואה" && $("#TransactionType").val() != "הפקדה") {
+            $('#ReturnDetails').addClass("HideDiv");
+        }
+        else {
+            $('#ReturnDetails').removeClass("HideDiv");
+        }
 
+        if ($("#TransactionType").val() != "הלוואה") {
+            $('#Freinds').addClass("HideDiv");
+        }
+        else {
+            $('#Freinds').removeClass("HideDiv");
+        }
+    };
 
 }

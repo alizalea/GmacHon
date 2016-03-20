@@ -18,6 +18,10 @@ body {
     background-size: cover;
 }
 
+.HideDiv {
+  display: none;
+}
+
 
 .logo {
     margin-right: 400px;
