@@ -10,9 +10,9 @@ GMach.Model.Transaction.TransactionBase = function (id, contact, amount, transac
 
 };
 
-GMach.Model.Transaction.TransactionWithReturn = function (id, contact, amount, transaction_date, return_date, returned, return_amount) {
+GMach.Model.Transaction.TransactionWithReturn = function (id, contact, amount, transaction_date, plan_return_date, returned, return_amount) {
     GMach.Model.Transaction.TransactionBase.call(this, id, contact, amount, transaction_date);
-    this.return_date = return_date;
+    this.plan_return_date = plan_return_date;
     this.returned = returned;
     this.return_amount = return_amount;
 

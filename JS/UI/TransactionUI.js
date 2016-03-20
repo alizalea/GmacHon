@@ -128,8 +128,24 @@ function TransactionOnLoad() {
         $('#TransactionType').val(GetTransactionDisplayType(transaction.constructor.name));
         $('#Contact').val(transaction.contact);
         $('#Amount').val(transaction.amount);
-        //$('#TransactionDate').val(new Date(transaction.transaction_date));
+        $('#TransactionDate').val(transaction.transaction_date);
+        $('#ReturnDate').val(transaction.plan_return_date);
+        $('#Returned')[0].checked = transaction.returned;
+        $('#ReturnAmount').val(transaction.return_amount);
 
+        if (transaction.freind1 != undefined) {
+            $('#FirstNameFirstFreind').val(transaction.freind1.first_name);
+            $('#LastNameFirstFreind').val(transaction.freind1.last_name);
+            $('#PhoneNumberFirstFreind').val(transaction.freind1.phone_number);
+            $('#RemarkFirstFreind').val(transaction.freind1.remark);
+        }
+
+        if (transaction.freind2 != undefined) {
+            $('#FirstNameSecondFreind').val(transaction.freind2.first_name);
+            $('#LastNameSecondFreind').val(transaction.freind2.last_name);
+            $('#PhoneNumberSecondFreind').val(transaction.freind2.phone_number);
+            $('#RemarkSecondFreind').val(transaction.freind2.remark);
+        }
 
         //$('h2').text(f+" " +l);
     } else {

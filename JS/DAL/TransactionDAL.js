@@ -3,9 +3,9 @@ GMach.DAL = GMach.DAL || {}; // global namespace, all good
 GMach.DAL.Transaction = GMach.DAL.Transaction || {}; // global namespace, all good
 
 GMach.DAL.Transaction.GetAllTransactions = function () {
-    var Transactions = [new GMach.Model.Transaction.Loan(1, 1, -5, "21 / 2 / 2012", new GMach.Model.Transaction.Freind("aliza", "twito", "0548402125", "test"), new GMach.Model.Transaction.Freind("fff", "hhhh", "0548402888", "test2"), null, false, 100),
-                        new GMach.Model.Transaction.ReturnLoan(2, 2, 20, "21 / 2 / 2012"),
-                        new GMach.Model.Transaction.Deposit(3, 3, 60, "22 / 2 / 2012", null, true, 20)
+    var Transactions = [new GMach.Model.Transaction.Loan(1, 1, -5, "2012-02-01", new GMach.Model.Transaction.Freind("aliza", "twito", "0548402125", "test"), new GMach.Model.Transaction.Freind("fff", "hhhh", "0548402888", "test2"), null, false, 100),
+                        new GMach.Model.Transaction.ReturnLoan(2, 2, 20, "2012-03-04"),
+                        new GMach.Model.Transaction.Deposit(3, 3, 60, "2012-02-22", "2012-02-25", true, 20)
 
     ];
 
