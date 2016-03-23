@@ -14,7 +14,7 @@ GMach.DAL.Transaction.GetAllTransactions = function () {
 
 };
 
-GMach.DAL.Transaction.SetDataTransaction = function (contact, editid) {
+GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
     try {
         var con = GMach.DAL.Transaction.GetAllTransactions();
 
@@ -22,7 +22,7 @@ GMach.DAL.Transaction.SetDataTransaction = function (contact, editid) {
 
             for (var i in con) {
                 if (con[i].id == editid) {
-                    con[i].contact = contact.contact;
+                    con[i].contact = transaction.contact;
                     //con[i].lastName = contact.lastName;
                     //con[i].IdNumber = contact.IdNumber;
                     //con[i].phoneNumber = contact.phoneNumber;
@@ -35,7 +35,7 @@ GMach.DAL.Transaction.SetDataTransaction = function (contact, editid) {
 
         } else {
 
-            con.push(contact);//צריך להוסיף למשתנה הגלובלי של אנשי קשר לראות איך מוגדר מההתחלה
+            con.push(transaction);//צריך להוסיף למשתנה הגלובלי של אנשי קשר לראות איך מוגדר מההתחלה
 
         }
 

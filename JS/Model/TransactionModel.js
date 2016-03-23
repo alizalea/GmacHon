@@ -102,9 +102,9 @@ GMach.Model.Transaction.GetDataTransaction = function (id) {
         throw "Error During GetDataTransaction"
     }
 }
-GMach.Model.Contact.SetDataTransaction = function (transaction, idcon) {
+GMach.Model.Transaction.SetDataTransaction = function (transaction, idcon) {
 
-    return GMach.DAL.Contact.SetDataTransaction(transaction, idcon);
+    return GMach.DAL.Transaction.SetDataTransaction(transaction, idcon);
 
 }
 

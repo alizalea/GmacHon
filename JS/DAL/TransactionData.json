@@ -1,16 +1,18 @@
 ﻿var transactionData = [
   {
     "id": 1,
-    "contact":,
-    "amount":,
+	"transaction_type":,
+    "contact":1,
+    "amount":80,
     "transaction_date":,
     "return_date":,
     "returned":,
     "return_amount":,
   },
   {
-    "id": 1,
-    "contact":1,
+    "id": 2,
+	"transaction_type":,
+    "contact":2,
     "amount":-5,
     "transaction_date":21 / 2 / 2012,
     "return_date":,
@@ -19,6 +21,7 @@
   },
    {
     "id": 1,
+	"transaction_type":,
     "contact":,
     "amount":,
     "transaction_date":,
