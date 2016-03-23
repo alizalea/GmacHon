@@ -39,6 +39,28 @@ function GetTransactionDisplayType(transactionType) {
     return name;
 }
 
+function GetTransactionObject(TransactionDisplayType) {
+    var object;
+    switch (TransactionDisplayType) {
+        case "הלוואה":
+            object = new GMach.Model.Transaction.Loan();
+            break;
+        case "החזרת הלוואה":
+            object = new GMach.Model.Transaction.ReturnLoan();
+            break;
+        case "הפקדה":
+            object = new GMach.Model.Transaction.Deposit();
+            break;
+        case "משיכת הפקדה":
+            object = new GMach.Model.Transaction.ReturnDeposit();
+            break;
+        case "תרומה":
+            object = new GMach.Model.Transaction.Donation();
+            break;
+    }
+    return object;
+}
+
 var oneGmach = new GMach.Model.OneGmach();
 var allTransactions = GetAllTransactionsVM(oneGmach.Transactions());
 
@@ -104,6 +126,11 @@ function AllTransactionsOnLoad() {
 }
 
 function TransactionOnLoad() {
+
+    $("#TransactionType").change(function () {
+        showOrHideControls();
+    });
+
     var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
             sURLVariables = sPageURL.split('&'),
@@ -151,24 +178,21 @@ function TransactionOnLoad() {
 
         showOrHideControls();
 
-        $("#TransactionType").change(function () {
-            showOrHideControls();
-
-        });
-
-
     } else {
-        contact = new GMach.Model.Transaction();
+        //contact = new GMach.Model.Transaction();
         //var oneGmach = new GMach.Model.OneGmach();
         //contact.id = oneGmach.nextContactID;
     }
 
-    $("#btn_save").click(function (transaction) {
+    $("#btn_save").click(function () {
         // if (isvalid()) {
 
         // }
+        if (transaction == undefined)
+        { transaction = GetTransactionObject($('#TransactionType').val()); }
+
         transaction.contact = $('#Contact').val();
-        contact.amount = $('#Amount').val();
+        transaction.amount = $('#Amount').val();
         //contact.IdNumber = $('#IdNumber').val();
         //contact.phoneNumber = $('#PhoneNumber').val();
         //contact.mobileNumber = $('#MobileNumber').val();
@@ -180,7 +204,7 @@ function TransactionOnLoad() {
 
 
 
-        $("#btn_cancel").click(function (contact) {
+        $("#btn_cancel").click(function (transaction) {
             window.location = "/HTML/Transactions.html";
 
         });
