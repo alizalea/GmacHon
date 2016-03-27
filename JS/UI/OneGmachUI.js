@@ -1,10 +1,8 @@
 ﻿$(document).ready(function () {
  
-    var oneGmach = new GMach.Model.OneGmach();
-
-    $("#inputMoney").text(numberWithCommas(oneGmach.inputMoney));
-    $("#outputMoney").text(numberWithCommas(oneGmach.outputMoney));
-    $("#diffMoney").text(numberWithCommas(oneGmach.diffMoney));
+    $("#inputMoney").text(numberWithCommas(GMach.Model.OneGmach.inputMoney()));
+    $("#outputMoney").text(numberWithCommas(GMach.Model.OneGmach.outputMoney()));
+    $("#diffMoney").text(numberWithCommas(GMach.Model.OneGmach.diffMoney()));
 });
 
 function numberWithCommas(x) {
