@@ -10,48 +10,6 @@ GMach.DAL.Transaction.GetAllTransactions = function () {
     //];
 
     //return Transactions;
-    var transactionData = [
-  {
-      "id": 1,
-      "transaction_type": "Loan",
-      "contact": 1,
-      "amount": -90,
-      "transaction_date": "2012-02-01",
-
-      "return_date": "",
-      "returned": false,
-      "return_amount": 10,
-
-      "freind1First_name": "freind1First_name",
-      "freind1Last_name": "freind1Last_name",
-      "freind1Phone_number": "freind1Phone_number",
-      "freind1Remark": "freind1Remark",
-
-      "freind2First_name": "freind2First_name",
-      "freind2Last_name": "freind2Last_name",
-      "freind2Phone_number": "freind2Phone_number",
-      "freind2Remark": "freind2Remark",
-
-  },
-  {
-      "id": 2,
-      "transaction_type": "ReturnLoan",
-      "contact": 1,
-      "amount": 80,
-      "transaction_date": "2014-02-01",
-  },
-  {
-      "id": 3,
-      "transaction_type": "Deposit",
-      "contact": 2,
-      "amount": 60,
-      "transaction_date": "2012-02-25",
-
-      "return_date": "2012-02-26",
-      "returned": true,
-      "return_amount": 20,
-  }
-    ]
 
     var databaseData;
     var con = localStorage.getItem('Gmach1Transactions');
@@ -63,22 +21,15 @@ GMach.DAL.Transaction.GetAllTransactions = function () {
         localStorage.setItem('Gmach1Transactions', JSON.stringify(transactionData));
     }
 
-    var modelData = new Array();
-    databaseData.forEach(function (row) {
-        var curr = GMach.Model.Transaction.GetTransactionObject(row);
-        modelData.push(curr);
-    });
-
-
-    return modelData;
+    return databaseData;
 
 };
 
 GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
     try {
-        var con = GMach.DAL.Transaction.GetAllTransactions();
+        var con = GMach.Model.Transaction.GetAllTransactions();
 
-        if (editid != null) {//צריך לראות איך לעדכן את האובייקט במערך
+        if (editid != null) {
 
             for (var i in con) {
                 con[i].transaction_type = con[i].constructor.name;
@@ -91,16 +42,16 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
                     con[i].returned = transaction.returned;
                     con[i].return_amount = transaction.return_amount;
 
-                    con[i].freind1.first_name = transaction.freind1.first_name;
-                    con[i].freind1.last_name = transaction.freind1.last_name;
-                    con[i].freind1.phone_number = transaction.freind1.phone_number;
-                    con[i].freind1.remark = transaction.freind1.remark;
+                    con[i].freind1First_name = transaction.freind1.first_name;
+                    con[i].freind1Last_name = transaction.freind1.last_name;
+                    con[i].freind1Phone_number = transaction.freind1.phone_number;
+                    con[i].freind1Remark = transaction.freind1.remark;
 
 
-                    con[i].freind2.first_name = transaction.freind2.first_name;
-                    con[i].freind2.last_name = transaction.freind2.last_name;
-                    con[i].freind2.phone_number = transaction.freind2.phone_number;
-                    con[i].freind2.remark = transaction.freind2.remark;
+                    con[i].freind2First_name = transaction.freind2.first_name;
+                    con[i].freind2Last_name = transaction.freind2.last_name;
+                    con[i].freind2Phone_number = transaction.freind2.phone_number;
+                    con[i].freind2Remark = transaction.freind2.remark;
 
                     //break; //Stop this loop, we found it!
                 }

@@ -39,7 +39,7 @@ function GetTransactionDisplayType(transactionType) {
     return name;
 }
 
-function GetTransactionObject(TransactionDisplayType) {
+function GetTransactionObjectUI(TransactionDisplayType) {
     var object;
     switch (TransactionDisplayType) {
         case "הלוואה":
@@ -59,6 +59,8 @@ function GetTransactionObject(TransactionDisplayType) {
         case "תרומה":
             object = new GMach.Model.Transaction.Donation();
             break;
+        default:
+            throw "UnKnown TransactionDisplayType: " + TransactionDisplayType;
     }
     return object;
 }
@@ -191,7 +193,7 @@ function TransactionOnLoad() {
 
         // }
         if (transaction == undefined)
-        { transaction = GetTransactionObject($('#TransactionType').val()); }
+        { transaction = GetTransactionObjectUI($('#TransactionType').val()); }
 
         transaction.contact = $('#Contact').val();
         transaction.amount = $('#Amount').val();
