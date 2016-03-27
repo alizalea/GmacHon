@@ -30,21 +30,6 @@ GMach.Model.OneGmach.diffMoney = function () {
     return GMach.Model.OneGmach.inputMoney() - GMach.Model.OneGmach.outputMoney();
 };
 
-//var oneGmach = new GMach.Model.OneGmach();
-//localStorage.setItem("oneGmachObject", oneGmach)
-//GMach.Model.OneGmachObject = function () {
-//    return localStorage.getItem("oneGmachObject");
-//}
-
-////יצירת מופע של גמח ושמירתו בlacalstorage
-//var oneGmach = new GMach.Model.OneGmach();
-
-
-//var contactsTostore = JSON.stringify(oneGmach.Contacts());
-//localStorage.setItem('Gmach1Contacts', contactsTostore);
-//contactsTostore = null;
-//צריך לשמור ככה כל דבר - שומרת בנפרד כדי שלא נצטרך לשלוף הכל כל פעם
-
 
 function GetInputMoney() {
     var total = 0;
