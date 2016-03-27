@@ -114,7 +114,7 @@ GMach.Model.Transaction.GetTransactionObject = function (dataBaseRow) {
     var curr = GetTransactionObjectByType(dataBaseRow.transaction_type);
     curr.id = dataBaseRow.id;
     curr.contact = dataBaseRow.contact;
-    curr.amount = dataBaseRow.amount;
+    curr.amount = parseInt(dataBaseRow.amount);
     curr.transaction_date = dataBaseRow.transaction_date;
 
     curr.return_date = dataBaseRow.return_date;
