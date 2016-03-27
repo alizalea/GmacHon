@@ -3,7 +3,7 @@
     "id": 1,
     "transaction_type": "Loan",
     "contact": 1,
-    "amount": "-90,"
+    "amount": "-90",
     "transaction_date": "2012-02-01",
 
     "return_date": "",

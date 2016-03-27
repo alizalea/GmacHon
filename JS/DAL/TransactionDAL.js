@@ -42,17 +42,19 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
                     con[i].returned = transaction.returned;
                     con[i].return_amount = transaction.return_amount;
 
-                    con[i].freind1First_name = transaction.freind1.first_name;
-                    con[i].freind1Last_name = transaction.freind1.last_name;
-                    con[i].freind1Phone_number = transaction.freind1.phone_number;
-                    con[i].freind1Remark = transaction.freind1.remark;
+                    if (transaction.freind1 != undefined) {
+                        con[i].freind1First_name = transaction.freind1.first_name;
+                        con[i].freind1Last_name = transaction.freind1.last_name;
+                        con[i].freind1Phone_number = transaction.freind1.phone_number;
+                        con[i].freind1Remark = transaction.freind1.remark;
+                    }
 
-
-                    con[i].freind2First_name = transaction.freind2.first_name;
-                    con[i].freind2Last_name = transaction.freind2.last_name;
-                    con[i].freind2Phone_number = transaction.freind2.phone_number;
-                    con[i].freind2Remark = transaction.freind2.remark;
-
+                    if (transaction.freind1 != undefined) {
+                        con[i].freind2First_name = transaction.freind2.first_name;
+                        con[i].freind2Last_name = transaction.freind2.last_name;
+                        con[i].freind2Phone_number = transaction.freind2.phone_number;
+                        con[i].freind2Remark = transaction.freind2.remark;
+                    }
                     //break; //Stop this loop, we found it!
                 }
             }
