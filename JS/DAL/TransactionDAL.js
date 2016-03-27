@@ -10,23 +10,68 @@ GMach.DAL.Transaction.GetAllTransactions = function () {
     //];
 
     //return Transactions;
+    var transactionData = [
+  {
+      "id": 1,
+      "transaction_type": "Loan",
+      "contact": 1,
+      "amount": -90,
+      "transaction_date": "2012-02-01",
 
-    var con = JSON.parse(localStorage.getItem('Gmach1Transactions'));
+      "return_date": "",
+      "returned": false,
+      "return_amount": 10,
+
+      "freind1First_name": "freind1First_name",
+      "freind1Last_name": "freind1Last_name",
+      "freind1Phone_number": "freind1Phone_number",
+      "freind1Remark": "freind1Remark",
+
+      "freind2First_name": "freind2First_name",
+      "freind2Last_name": "freind2Last_name",
+      "freind2Phone_number": "freind2Phone_number",
+      "freind2Remark": "freind2Remark",
+
+  },
+  {
+      "id": 2,
+      "transaction_type": "ReturnLoan",
+      "contact": 1,
+      "amount": 80,
+      "transaction_date": "2014-02-01",
+  },
+  {
+      "id": 3,
+      "transaction_type": "Deposit",
+      "contact": 2,
+      "amount": 60,
+      "transaction_date": "2012-02-25",
+
+      "return_date": "2012-02-26",
+      "returned": true,
+      "return_amount": 20,
+  }
+    ]
+
+    var databaseData;
+    var con = localStorage.getItem('Gmach1Transactions');
     if (con != null && con != undefined) {
-        return con;
+        databaseData = JSON.parse(con);
     }
     else {
-        var databaseData = transactionData;
-        var modelData = new Array();
-        databaseData.forEach(function (row) {
-            var curr = GMach.Model.Transaction.GetTransactionObject(row);
-            modelData.push(curr);
-        });
-
-        //localStorage.setItem('Gmach1Transactions', JSON.stringify(modelData));
-
-        return modelData;
+        databaseData = transactionData;
+        localStorage.setItem('Gmach1Transactions', JSON.stringify(transactionData));
     }
+
+    var modelData = new Array();
+    databaseData.forEach(function (row) {
+        var curr = GMach.Model.Transaction.GetTransactionObject(row);
+        modelData.push(curr);
+    });
+
+
+    return modelData;
+
 };
 
 GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
@@ -36,6 +81,7 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
         if (editid != null) {//צריך לראות איך לעדכן את האובייקט במערך
 
             for (var i in con) {
+                con[i].transaction_type = con[i].constructor.name;
                 if (con[i].id == editid) {
                     con[i].contact = transaction.contact;
                     //con[i].lastName = contact.lastName;
@@ -44,7 +90,7 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
                     //con[i].mobileNumber = contact.mobileNumber;
                     //con[i].address = contact.address;
                     //con[i].remarks = contact.remarks;
-                    break; //Stop this loop, we found it!
+                           //break; //Stop this loop, we found it!
                 }
             }
 
@@ -64,3 +110,4 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
     }
 
 }
+
