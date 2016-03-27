@@ -27,13 +27,13 @@ GMach.DAL.Transaction.GetAllTransactions = function () {
 
 GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
     try {
-        var con = GMach.Model.Transaction.GetAllTransactions();
+        var con = GMach.DAL.Transaction.GetAllTransactions();
 
         if (editid != null) {
 
             for (var i in con) {
-                con[i].transaction_type = con[i].constructor.name;
                 if (con[i].id == editid) {
+                    con[i].transaction_type = transaction.constructor.name;
                     con[i].contact = transaction.contact;
                     con[i].amount = transaction.amount;
                     con[i].transaction_date = transaction.transaction_date;
@@ -49,7 +49,7 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
                         con[i].freind1Remark = transaction.freind1.remark;
                     }
 
-                    if (transaction.freind1 != undefined) {
+                    if (transaction.freind2 != undefined) {
                         con[i].freind2First_name = transaction.freind2.first_name;
                         con[i].freind2Last_name = transaction.freind2.last_name;
                         con[i].freind2Phone_number = transaction.freind2.phone_number;
