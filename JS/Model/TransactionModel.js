@@ -95,13 +95,13 @@ GMach.Model.Transaction.GetDataTransaction = function (id) {
     var result = $.grep(con, function (e) { return e.id == id; });
 
     if (result.length == 0) {
-        return new GMach.Model.Transaction();// Contact Not Found
+         console.error("Transaction Not Found,id:" + id);
     }
     else if (result.length == 1) {
         return result[0];
     }
     else {
-        throw "Error During GetDataTransaction"
+        console.error("Error During GetDataTransaction");
     }
 }
 GMach.Model.Transaction.SetDataTransaction = function (transaction, idcon) {
@@ -165,7 +165,7 @@ function GetTransactionObjectByType(TransactionType) {
             object = new GMach.Model.Transaction.Donation();
             break;
         default:
-            console.log( "UnKnown TransactionType: " + TransactionType);
+            console.error("UnKnown TransactionType: " + TransactionType);
     }
     return object;
 }

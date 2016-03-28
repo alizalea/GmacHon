@@ -102,7 +102,8 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
             }
 
         } else {
-
+            var oneGmach = new GMach.Model.OneGmach();
+            transaction.id = getMax(GMach.DAL.Transaction.GetAllTransactions(), "id") + 1;// oneGmach.nextTransactionID();
             transaction.transaction_type = transaction.constructor.name;
             con.push(transaction);
 
@@ -117,5 +118,14 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
         return false;
     }
 
+}
+
+function getMax(arr, column) {
+    var max;
+    for (var i = 0 ; i < arr.length ; i++) {
+        if (!max || parseInt(arr[i][column]) > max)
+            max = arr[i][column];
+    }
+    return max;
 }
 
