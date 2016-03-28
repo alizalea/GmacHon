@@ -1,75 +1,4 @@
-﻿
-function GetAllTransactionsVM(transList) {
-    var trans = new Array();
-    transList.forEach(function (tran) {
-        var t = new Object();
-        t.id = tran.id;
-        t.transaction_type = GetTransactionDisplayType(tran.constructor.name);
-        var contact = GMach.Model.Contact.GetDataContact(tran.contact);
-        t.contact = contact.firstName + " " + contact.lastName;
-        t.amount = tran.amount;
-        t.transaction_date = tran.transaction_date;
-
-        trans.push(t);
-    }
-     );
-
-    return trans;
-
-};
-
-function GetTransactionDisplayType(transactionType) {
-    var name = "";
-    switch (transactionType) {
-        case "Loan":
-            name = "הלוואה"
-            break;
-        case "ReturnLoan":
-            name = "החזרת הלוואה";
-            break;
-        case "Deposit":
-            name = "הפקדה"
-            break;
-        case "ReturnDeposit":
-            name = "משיכת הפקדה"
-            break;
-        case "Donation":
-            name = "תרומה"
-            break;
-    }
-    return name;
-}
-
-function GetTransactionObjectUI(TransactionDisplayType) {
-    var object;
-    switch (TransactionDisplayType) {
-        case "הלוואה":
-            object = new GMach.Model.Transaction.Loan();
-            object.freind1 = new GMach.Model.Transaction.Freind();
-            object.freind2 = new GMach.Model.Transaction.Freind();
-            break;
-        case "החזרת הלוואה":
-            object = new GMach.Model.Transaction.ReturnLoan();
-            break;
-        case "הפקדה":
-            object = new GMach.Model.Transaction.Deposit();
-            break;
-        case "משיכת הפקדה":
-            object = new GMach.Model.Transaction.ReturnDeposit();
-            break;
-        case "תרומה":
-            object = new GMach.Model.Transaction.Donation();
-            break;
-        default:
-            throw "UnKnown TransactionDisplayType: " + TransactionDisplayType;
-    }
-    return object;
-}
-
-
-var allTransactions = GetAllTransactionsVM(GMach.Model.OneGmach.Transactions());
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
     if ($('#transactions').length > 0) {
         AllTransactionsOnLoad();
     } else if ($('#Transaction-form').length > 0) {
@@ -79,6 +8,9 @@ $(document).ready(function () {
 });
 
 function AllTransactionsOnLoad() {
+
+    var allTransactions = GetAllTransactionsVM(GMach.Model.OneGmach.Transactions());
+
     $('#transactions').DataTable({
 
         data: allTransactions,
@@ -132,6 +64,46 @@ function AllTransactionsOnLoad() {
     });
 
 }
+function GetAllTransactionsVM(transList) {
+    var trans = new Array();
+    transList.forEach(function (tran) {
+        var t = new Object();
+        t.id = tran.id;
+        t.transaction_type = GetTransactionDisplayType(tran.constructor.name);
+        var contact = GMach.Model.Contact.GetDataContact(tran.contact);
+        t.contact = contact.firstName + " " + contact.lastName;
+        t.amount = tran.amount;
+        t.transaction_date = tran.transaction_date;
+
+        trans.push(t);
+    }
+     );
+
+    return trans;
+
+};
+function GetTransactionDisplayType(transactionType) {
+    var name = "";
+    switch(transactionType) {
+        case "Loan":
+            name = "הלוואה"
+            break;
+        case "ReturnLoan":
+            name = "החזרת הלוואה";
+            break;
+        case "Deposit":
+            name = "הפקדה"
+            break;
+        case "ReturnDeposit":
+            name = "משיכת הפקדה"
+            break;
+        case "Donation":
+            name = "תרומה"
+            break;
+            }
+    return name;
+            }
+
 
 function TransactionOnLoad() {
 
@@ -271,4 +243,29 @@ function TransactionOnLoad() {
         }
     };
 
+}
+function GetTransactionObjectUI(TransactionDisplayType) {
+    var object;
+    switch (TransactionDisplayType) {
+        case "הלוואה":
+            object = new GMach.Model.Transaction.Loan();
+            object.freind1 = new GMach.Model.Transaction.Freind();
+            object.freind2 = new GMach.Model.Transaction.Freind();
+            break;
+        case "החזרת הלוואה":
+            object = new GMach.Model.Transaction.ReturnLoan();
+            break;
+        case "הפקדה":
+            object = new GMach.Model.Transaction.Deposit();
+            break;
+        case "משיכת הפקדה":
+            object = new GMach.Model.Transaction.ReturnDeposit();
+            break;
+        case "תרומה":
+            object = new GMach.Model.Transaction.Donation();
+            break;
+        default:
+            throw "UnKnown TransactionDisplayType: " + TransactionDisplayType;
+    }
+    return object;
 }
