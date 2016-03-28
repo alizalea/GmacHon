@@ -93,7 +93,10 @@ function AllTransactionsOnLoad() {
 
         select: true,
 
+        order: [3, 'asc'],
+
         "language": {
+
 
             "lengthMenu": "מציג _MENU_ שורות לעמוד",
 
@@ -195,7 +198,7 @@ function TransactionOnLoad() {
         // }
         //if (transaction == undefined)
         //{
-            transaction = GetTransactionObjectUI($('#TransactionType').val());
+        transaction = GetTransactionObjectUI($('#TransactionType').val());
         //}
 
         transaction.contact = $('#Contact').val();
