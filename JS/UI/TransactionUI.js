@@ -201,9 +201,9 @@ function TransactionOnLoad() {
 
     var options = {
 
-        getValue: "id",
+        //getValue: "id",
 
-        data: JSON.stringify(GMach.DAL.Contact.GetAllContacts()),
+        data: choices,
         list: {
             match: {
                 enabled: true
