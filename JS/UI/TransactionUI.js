@@ -84,7 +84,7 @@ function GetAllTransactionsVM(transList) {
 };
 function GetTransactionDisplayType(transactionType) {
     var name = "";
-    switch(transactionType) {
+    switch (transactionType) {
         case "Loan":
             name = "הלוואה"
             break;
@@ -100,9 +100,9 @@ function GetTransactionDisplayType(transactionType) {
         case "Donation":
             name = "תרומה"
             break;
-            }
+    }
     return name;
-            }
+}
 
 
 function TransactionOnLoad() {
@@ -111,25 +111,13 @@ function TransactionOnLoad() {
         showOrHideControls();
     });
 
-    var getUrlParameter = function getUrlParameter(sParam) {
-        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-            sURLVariables = sPageURL.split('&'),
-            sParameterName,
-            i;
-
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('=');
-
-            if (sParameterName[0] === sParam) {
-                return sParameterName[1] === undefined ? true : sParameterName[1];
-            }
-        }
-    };
-    var idfromqs = getUrlParameter('id') ? getUrlParameter('id') : null;
+    var getUrlParameter = GMach.Model.OneGmach.getUrlParameter('id');
+    var idfromqs = getUrlParameter ? getUrlParameter : null;
 
     var transaction;
 
     if (idfromqs != null) {
+
         transaction = GMach.Model.Transaction.GetDataTransaction(idfromqs);
 
         $('#TransactionType').val(GetTransactionDisplayType(transaction.constructor.name));
@@ -158,7 +146,7 @@ function TransactionOnLoad() {
 
         showOrHideControls();
 
-    } 
+    }
 
 
     var contacts = GMach.DAL.Contact.GetAllContacts();
