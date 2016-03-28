@@ -79,6 +79,7 @@ GMach.DAL.Contact.SetDataContact = function (contact, editid) {
 
         } else {
 
+            contact.id = getMax(GMach.DAL.Contact.GetAllContacts(), "id") + 1;
             con.push(contact);//צריך להוסיף למשתנה הגלובלי של אנשי קשר לראות איך מוגדר מההתחלה
 
         }
@@ -92,4 +93,13 @@ GMach.DAL.Contact.SetDataContact = function (contact, editid) {
         return false;
     }
 
+}
+
+function getMax(arr, column) {
+    var max;
+    for (var i = 0 ; i < arr.length ; i++) {
+        if (!max || parseInt(arr[i][column]) > max)
+            max = arr[i][column];
+    }
+    return max;
 }
