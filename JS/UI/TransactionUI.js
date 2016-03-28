@@ -104,7 +104,6 @@ function GetTransactionDisplayType(transactionType) {
     return name;
 }
 
-
 function TransactionOnLoad() {
 
     $("#TransactionType").change(function () {
