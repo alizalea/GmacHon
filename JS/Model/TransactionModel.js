@@ -72,8 +72,6 @@ GMach.Model.Transaction.Donation = function Donation(id, contact, amount, transa
 GMach.Model.Transaction.Donation.prototype = Object.create(GMach.Model.Transaction.TransactionBase.prototype);
 GMach.Model.Transaction.Donation.prototype.constructor = GMach.Model.Transaction.Donation;
 
-
-
 GMach.Model.Transaction.GetAllTransactions = function () {
 
     var databaseData = GMach.DAL.Transaction.GetAllTransactions();
@@ -142,7 +140,6 @@ GMach.Model.Transaction.GetTransactionObject = function (dataBaseRow) {
     return curr;
 
 };
-
 function GetTransactionObjectByType(TransactionType) {
     var object;
     switch (TransactionType) {
