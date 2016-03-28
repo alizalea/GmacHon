@@ -13,6 +13,30 @@ GMach.DAL.Contact.GetAllContacts = function () {
     //                             new GMach.Model.Contact("אריאל", "פכטר", "222222222", "024444444", "085-9999999", "", "חיחחייח")];
     //return conddal;
 
+    var contactData = [
+  {
+      "id": 1,
+      "firstName": "אלון",
+      "lastName": "כהן",
+      "IdNumber": "",
+      "phoneNumber": "02-5648885",
+      "mobileNumber": "050-41446367",
+      "address": "רמות, ירושלים",
+      "remarks": "נדיב ביותר."
+  },
+  {
+      "id": 2,
+      "firstName": "חיים",
+      "lastName": "כהן",
+      "IdNumber": "",
+      "phoneNumber": "02-5648885",
+      "mobileNumber": "050-41446367",
+      "address": "",
+      "remarks": "בקש להזכיר לו שבוע קודם."
+  }
+    ]
+
+
     var con = JSON.parse(localStorage.getItem('Gmach1Contacts'));
     if (con != null && con != undefined) {
         return con;

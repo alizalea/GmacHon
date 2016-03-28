@@ -165,7 +165,7 @@ function GetTransactionObjectByType(TransactionType) {
             object = new GMach.Model.Transaction.Donation();
             break;
         default:
-            throw "UnKnown TransactionType: " + TransactionType;
+            console.log( "UnKnown TransactionType: " + TransactionType);
     }
     return object;
 }
