@@ -93,7 +93,7 @@ GMach.Model.Transaction.GetDataTransaction = function (id) {
     var result = $.grep(con, function (e) { return e.id == id; });
 
     if (result.length == 0) {
-         console.error("Transaction Not Found,id:" + id);
+        console.error("Transaction Not Found,id:" + id);
     }
     else if (result.length == 1) {
         return result[0];
@@ -115,7 +115,7 @@ GMach.Model.Transaction.GetTransactionObject = function (dataBaseRow) {
     curr.amount = parseInt(dataBaseRow.amount);
     curr.transaction_date = dataBaseRow.transaction_date;
 
-    curr.return_date = dataBaseRow.return_date;
+    curr.plan_return_date = dataBaseRow.return_date;
     curr.returned = dataBaseRow.returned;
     curr.return_amount = dataBaseRow.return_amount;
 
@@ -143,7 +143,7 @@ GMach.Model.Transaction.GetTransactionObject = function (dataBaseRow) {
 function GetTransactionObjectByType(TransactionType) {
     var object;
     switch (TransactionType) {
-       
+
         case "Loan":// "הלוואה":
             object = new GMach.Model.Transaction.Loan();
             object.freind1 = new GMach.Model.Transaction.Freind();
@@ -167,3 +167,28 @@ function GetTransactionObjectByType(TransactionType) {
     return object;
 }
 
+GMach.Model.Transaction.GetReturnLoanTransactions = function (scope) {
+
+    var allTransactions = GMach.Model.Transaction.GetAllTransactions();
+    var currentTime = new Date().toJSON().slice(0, 10);
+
+    //var currentDate = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
+    //var day = currentDate.getDate()
+    //var month = currentDate.getMonth()
+    //var year = currentDate.getFullYear()
+
+
+    //alert(day + "/" + month + "/" + year);
+
+    var trans = new Array();
+    allTransactions.forEach(function (tran) {
+        if (tran.constructor.name == "Loan" && tran.returned == false
+            && tran.plan_return_date >= currentTime /*&& tran.plan_return_date <= '2016-04-28'*/) {
+            trans.push(tran);
+        }
+    }
+     );
+
+    return trans;
+
+}

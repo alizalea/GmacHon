@@ -74,7 +74,7 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
                     con[i].amount = transaction.amount;
                     con[i].transaction_date = transaction.transaction_date;
 
-                    con[i].plan_return_date = transaction.plan_return_date;
+                    con[i].return_date = transaction.plan_return_date;
                     con[i].returned = transaction.returned;
                     con[i].return_amount = transaction.return_amount;
 
