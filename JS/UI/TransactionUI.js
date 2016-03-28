@@ -5,7 +5,8 @@ function GetAllTransactionsVM(transList) {
         var t = new Object();
         t.id = tran.id;
         t.transaction_type = GetTransactionDisplayType(tran.constructor.name);
-        t.contact = tran.contact;
+        var contact = GMach.Model.Contact.GetDataContact(tran.contact);
+        t.contact = contact.firstName + " " + contact.lastName;
         t.amount = tran.amount;
         t.transaction_date = tran.transaction_date;
 
@@ -222,7 +223,7 @@ function TransactionOnLoad() {
             window.location = "/HTML/Transactions.html";
         }
 
-      
+
     });
 
     $("#btn_cancel").click(function (transaction) {
