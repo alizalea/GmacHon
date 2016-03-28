@@ -148,7 +148,6 @@ function TransactionOnLoad() {
 
     }
 
-
     var contacts = GMach.DAL.Contact.GetAllContacts();
     var choices = [];
     contacts.forEach(function (c) {
@@ -173,13 +172,8 @@ function TransactionOnLoad() {
     $("#basics").easyAutocomplete(options);
 
     $("#btn_save").click(function () {
-        // if (isvalid()) {
 
-        // }
-        //if (transaction == undefined)
-        //{
         transaction = GetTransactionObjectUI($('#TransactionType').val());
-        //}
 
         transaction.contact = $('#Contact').val();//$('#basics').val().split("#")[1]
         transaction.amount = $('#Amount').val();
@@ -253,7 +247,7 @@ function GetTransactionObjectUI(TransactionDisplayType) {
             object = new GMach.Model.Transaction.Donation();
             break;
         default:
-            throw "UnKnown TransactionDisplayType: " + TransactionDisplayType;
+            console.error("UnKnown TransactionDisplayType: " + TransactionDisplayType);
     }
     return object;
 }
