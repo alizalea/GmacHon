@@ -196,7 +196,7 @@ function TransactionOnLoad() {
     var contacts = GMach.DAL.Contact.GetAllContacts();
     var choices = [];
     contacts.forEach(function (c) {
-        choices.push(c.firstName + " " + c.lastName);
+        choices.push(c.firstName + " " + c.lastName + " # " + c.id);
     });
 
     var options = {
@@ -225,11 +225,10 @@ function TransactionOnLoad() {
         transaction = GetTransactionObjectUI($('#TransactionType').val());
         //}
 
-        transaction.contact = $('#Contact').val();
+        transaction.contact = $('#Contact').val();//$('#basics').val().split("#")[1]
         transaction.amount = $('#Amount').val();
-
-
         transaction.transaction_date = $('#TransactionDate').val();
+
         transaction.plan_return_date = $('#ReturnDate').val();
         transaction.returned = $('#Returned')[0].checked;
         transaction.return_amount = $('#ReturnAmount').val();
