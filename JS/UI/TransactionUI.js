@@ -193,8 +193,10 @@ function TransactionOnLoad() {
         // if (isvalid()) {
 
         // }
-        if (transaction == undefined)
-        { transaction = GetTransactionObjectUI($('#TransactionType').val()); }
+        //if (transaction == undefined)
+        //{
+            transaction = GetTransactionObjectUI($('#TransactionType').val());
+        //}
 
         transaction.contact = $('#Contact').val();
         transaction.amount = $('#Amount').val();
