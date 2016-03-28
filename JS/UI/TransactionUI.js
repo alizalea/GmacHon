@@ -192,22 +192,29 @@ function TransactionOnLoad() {
         //contact.id = oneGmach.nextContactID;
     }
 
-    var demo1 = new autoComplete({
-        selector: '#hero-demo',
-        minChars: 1,
-        source: function (term, suggest) {
-            term = term.toLowerCase();
-            var contacts = GMach.DAL.Contact.GetAllContacts();
-            var choices = [];
-            contacts.forEach(function (c) {
-                choices.push(c.firstName + " " + c.lastName);
-            });
-            var suggestions = [];
-            for (i = 0; i < choices.length; i++)
-                if (~choices[i].toLowerCase().indexOf(term)) suggestions.push(choices[i]);
-            suggest(suggestions);
-        }
+
+    var contacts = GMach.DAL.Contact.GetAllContacts();
+    var choices = [];
+    contacts.forEach(function (c) {
+        choices.push(c.firstName + " " + c.lastName);
     });
+
+    var options = {
+
+        getValue: "id",
+
+        data: JSON.stringify(GMach.DAL.Contact.GetAllContacts()),
+        list: {
+            match: {
+                enabled: true
+            }
+        },
+
+
+
+    };
+
+    $("#basics").easyAutocomplete(options);
 
     $("#btn_save").click(function () {
         // if (isvalid()) {
