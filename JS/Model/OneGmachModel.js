@@ -4,18 +4,14 @@ GMach.Model.OneGmach = GMach.Model.OneGmach || {};
 
 
 GMach.Model.OneGmach = function () {
-    //this.inputMoney = GetInputMoney();
-    //this.outputMoney = GetOuputMoney();
-    //this.diffMoney = this.inputMoney - this.outputMoney;
-    this.nextContactID = getMax(GMach.Model.Contact.GetAllContacts(), "id") + 1;
-    this.nextTransactionID = getMax(GMach.Model.Transaction.GetAllTransactions(), "id") + 1;
+   
 }
 GMach.Model.OneGmach.prototype.Contacts = function () {
     return new GMach.Model.Contact.GetAllContacts();
 };
 
-GMach.Model.OneGmach.prototype.Transactions = function () {
-    return new GMach.Model.Transaction.GetAllTransactions();
+GMach.Model.OneGmach.Transactions = function () {
+    return GMach.Model.Transaction.GetAllTransactions();
 };
 
 GMach.Model.OneGmach.inputMoney = function () {

@@ -66,8 +66,8 @@ function GetTransactionObjectUI(TransactionDisplayType) {
     return object;
 }
 
-var oneGmach = new GMach.Model.OneGmach();
-var allTransactions = GetAllTransactionsVM(oneGmach.Transactions());
+
+var allTransactions = GetAllTransactionsVM(GMach.Model.OneGmach.Transactions());
 
 $(document).ready(function () {
     if ($('#transactions').length > 0) {
@@ -186,11 +186,7 @@ function TransactionOnLoad() {
 
         showOrHideControls();
 
-    } else {
-        //contact = new GMach.Model.Transaction();
-        //var oneGmach = new GMach.Model.OneGmach();
-        //contact.id = oneGmach.nextContactID;
-    }
+    } 
 
 
     var contacts = GMach.DAL.Contact.GetAllContacts();
