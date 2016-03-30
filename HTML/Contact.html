@@ -13,68 +13,9 @@
     <script type="text/javascript" src="../JS/Model/TransactionModel.js"></script>
    <script type="text/javascript" src="../JS/DAL/ContactDAL.js"></script>
     <script type="text/javascript" src="../JS/Model/ContactModel.js"></script>
+    <script  type="text/javascript" src="../JS/UI/contactui.js"></script>
     <script src="../JS/UI/HeaderUI.js"></script>
-    <script>
-        var getUrlParameter = function getUrlParameter(sParam) {
-            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-                sURLVariables = sPageURL.split('&'),
-                sParameterName,
-                i;
-
-            for (i = 0; i < sURLVariables.length; i++) {
-                sParameterName = sURLVariables[i].split('=');
-
-                if (sParameterName[0] === sParam) {
-                    return sParameterName[1] === undefined ? true : sParameterName[1];
-                }
-            }
-        };
-        var idfromqs = getUrlParameter('id') ? getUrlParameter('id') : null;
-        
-        var contact=null; 
-        $(document).ready(function () {
-       
-            if (idfromqs!= null) {
-                 contact = GMach.Model.Contact.GetDataContact(idfromqs);
-               $('#FirstName').val(contact.firstName);
-              $('#LastName').val(contact.lastName);
-              $('#IdNumber').val(contact.IdNumber);
-              $('#PhoneNumber').val(contact.phoneNumber);
-              $('#MobileNumber').val(contact.mobileNumber);
-              $('#Address').val(contact.address);
-              $('#Remarks').val(contact.remarks);
-                //$('h2').text(f+" " +l);
-            } else {
-                contact = new GMach.Model.Contact();
-                //var oneGmach = new GMach.Model.OneGmach();
-                //contact.id = oneGmach.nextContactID;
-            }
-            
-            $("#btn_save").click(function () {
-               // if (isvalid()) {
-
-               // }
-                contact.firstName = $('#FirstName').val();
-                contact.lastName=$('#LastName').val();
-                contact.IdNumber= $('#IdNumber').val();
-                contact.phoneNumber = $('#PhoneNumber').val();
-                contact.mobileNumber = $('#MobileNumber').val();
-                contact.address = $('#Address').val();
-                contact.remarks = $('#Remarks').val();
-                debugger;
-                if ( GMach.Model.Contact.SetDataContact(contact, idfromqs)) {
-                    window.location = "/HTML/Contacts.html";
-                }
-               
-
-            });
-            $("#btn_cancel").click(function (contact) {
-                window.location = "/HTML/Contacts.html";
-
-            });
-        });
-    </script>
-
+   
 </head>
 <body>
     <header id="header">
@@ -144,8 +85,8 @@
                             <table></table>
                         </div>
 
-                        <button type="button" id="btn_save" >שמירה</button>
-                        <button type="button" id="btn_cancel">ביטול</button>
+                        <button type="button" class="boldStyle" id="btn_save" >שמירה</button>
+                        <button type="button" class="boldStyle" id="btn_cancel">ביטול</button>
 
                     </section>
                 </div>

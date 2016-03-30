@@ -6,11 +6,10 @@
     #E1E6B9 בהיר
     */
 body {
-    font-size: 25px;
+    font-size: 16px;
     font-stretch: narrower;
     color: #375D3B;
     font-family: Arial;
-    font-weight: bold;
     direction: rtl;
     margin: 10px;
     background-image: url("/Media/background.jpg");
@@ -21,7 +20,10 @@ body {
 .HideDiv {
     display: none;
 }
-
+.boldStyle{
+    font-size:22px; 
+    font-weight: bold;
+}
 
 .logo {
     margin-right: 400px;
@@ -74,15 +76,22 @@ main {
     height: 200px;
     float: right;
     color: #375D3B;
-    margin: 10px;
+    margin: 15px;
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
     background: white;
 }
-
+ .panel:nth-child(4) 
+ {
+     width: 96%;
+ }
 .paneldata {
     padding-top: 20%;
 }
+.panel:nth-child(4) .paneldata {
+    padding-top: 5%;
+}
+
 
     .paneldata span {
         font-size: 35px;
@@ -122,4 +131,7 @@ button {
     border-radius: 10px;
     border: none;
     font-size: inherit;
+}
+#Contact-form section div{
+    margin-bottom:10px;
 }
