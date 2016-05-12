@@ -25,7 +25,7 @@ function AllTransactionsOnLoad() {
 
         select: true,
 
-        order: [3, 'asc'],
+        order: [3, 'desc'],
 
         "language": {
 
