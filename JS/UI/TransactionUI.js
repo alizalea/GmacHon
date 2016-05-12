@@ -145,6 +145,10 @@ function TransactionOnLoad() {
 
         showOrHideControls();
 
+        var contact = GMach.Model.Contact.GetDataContact($('#Contact').val());
+        var fullName = contact.firstName + " " + contact.lastName;
+        $("#ContactSearch").val(fullName);
+
     }
 
     var contacts = GMach.DAL.Contact.GetAllContacts();
@@ -155,20 +159,28 @@ function TransactionOnLoad() {
 
     var options = {
 
-        //getValue: "id",
+        data: contacts,
 
-        data: choices,
+        getValue: function (element) {
+            return element.firstName + " " + element.lastName;
+        },
+
         list: {
+            onSelectItemEvent: function () {
+
+                var selectedItemValue = $("#ContactSearch").getSelectedItemData().id;
+
+                $("#Contact").val(selectedItemValue).trigger("change");
+            },
             match: {
                 enabled: true
             }
-        },
 
-
-
+        }
     };
 
-    $("#basics").easyAutocomplete(options);
+    $("#ContactSearch").easyAutocomplete(options);
+
 
     $("#btn_save").click(function () {
 
