@@ -20,8 +20,9 @@ body {
 .HideDiv {
     display: none;
 }
-.boldStyle{
-    font-size:22px; 
+
+.boldStyle {
+    font-size: 22px;
     font-weight: bold;
 }
 
@@ -81,21 +82,23 @@ main {
     box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
     background: white;
 }
- .panel:nth-child(4) 
- {
-     width: 96%;
- }
+
+    .panel:nth-child(4) {
+        width: 96%;
+    }
+
 .paneldata {
     padding-top: 20%;
 }
+
 .panel:nth-child(4) .paneldata {
     padding-top: 5%;
 }
 
 
-    .paneldata span {
-        font-size: 35px;
-    }
+.paneldata span {
+    font-size: 35px;
+}
 
 .contacts, transactions {
     width: 80%;
@@ -118,7 +121,7 @@ input, select {
     display: inline-block;
 }
 
-h1,h2 {
+h1, h2 {
     margin: 10px;
 }
 
@@ -132,6 +135,11 @@ button {
     border: none;
     font-size: inherit;
 }
-#Contact-form section div{
-    margin-bottom:10px;
+
+#Contact-form section div {
+    margin-bottom: 10px;
+}
+
+.easy-autocomplete {
+    display: inline;
 }
