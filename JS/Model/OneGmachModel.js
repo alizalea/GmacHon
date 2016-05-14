@@ -45,7 +45,8 @@ GMach.Model.OneGmach.getUrlParameter = function (sParam) {
 function GetInputMoney() {
     var total = 0;
     GMach.Model.Transaction.GetAllTransactions().forEach(function (tran) {
-        if (tran.amount > 0)
+        var type = tran.constructor.name;
+        if (type=='ReturnLoan' || type=='Deposit' || type=='Donation')
             total += tran.amount;
     });
     return total;
@@ -54,7 +55,8 @@ function GetInputMoney() {
 function GetOuputMoney() {
     var total = 0;
     GMach.Model.Transaction.GetAllTransactions().forEach(function (tran) {
-        if (tran.amount < 0)
+        var type = tran.constructor.name;
+        if (type == 'Loan' || type == 'ReturnDeposit')
             total += tran.amount;
     });
     return Math.abs(total);
