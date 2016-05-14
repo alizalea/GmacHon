@@ -16,7 +16,7 @@ function TransactionsNextMounthOnLoad() {
         columns: [
               { "data": "contact" },
               { "data": "amount" },
-              { "data": "plan_transaction_date" },
+              { "data": "plan_return_date" },
 
         ],
 
@@ -62,7 +62,7 @@ function GetAllTransactionsVM(transList) {
         var contact = GMach.Model.Contact.GetDataContact(tran.contact);
         t.contact = contact.firstName + " " + contact.lastName;
         t.amount = tran.amount;
-        t.plan_transaction_date = tran.transaction_date;
+        t.plan_return_date = tran.plan_return_date;
 
         trans.push(t);
     }
