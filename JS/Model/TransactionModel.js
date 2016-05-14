@@ -172,18 +172,15 @@ GMach.Model.Transaction.GetReturnLoanTransactions = function (scope) {
     var allTransactions = GMach.Model.Transaction.GetAllTransactions();
     var currentTime = new Date().toJSON().slice(0, 10);
 
-    //var currentDate = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
-    //var day = currentDate.getDate()
-    //var month = currentDate.getMonth()
-    //var year = currentDate.getFullYear()
-
-
-    //alert(day + "/" + month + "/" + year);
+    var nextMonthYear;
+    if (scope == 'Month') { nextMonthYear = Date.today().add(1).months(); }
+    else { nextMonthYear = Date.today().add(1).weeks(); }
+    nextMonthYear = nextMonthYear.toJSON().slice(0, 10);
 
     var trans = new Array();
     allTransactions.forEach(function (tran) {
         if (tran.constructor.name == "Loan" && tran.returned == false
-            && tran.plan_return_date >= currentTime /*&& tran.plan_return_date <= '2016-04-28'*/) {
+            && tran.plan_return_date >= currentTime && tran.plan_return_date <= nextMonthYear) {
             trans.push(tran);
         }
     }

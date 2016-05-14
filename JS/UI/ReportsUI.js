@@ -7,7 +7,11 @@
 
 function TransactionsNextMounthOnLoad() {
 
-    var allTransactions = GetAllTransactionsVM(GMach.Model.Transaction.GetReturnLoanTransactions());
+    var weekOrMonth = 'Week';
+    var m = 'חודש';
+    if (document.title.indexOf(m) > -1) { weekOrMonth = 'Month'; }
+
+    var allTransactions = GetAllTransactionsVM(GMach.Model.Transaction.GetReturnLoanTransactions(weekOrMonth));
 
     $('#transactionsNextMounth').DataTable({
 
