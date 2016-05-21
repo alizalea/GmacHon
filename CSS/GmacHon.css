@@ -99,6 +99,10 @@ main {
 .paneldata span {
     font-size: 35px;
 }
+.wrapText {
+    white-space: pre-wrap;
+}
+
 
 .contacts, transactions {
     width: 80%;

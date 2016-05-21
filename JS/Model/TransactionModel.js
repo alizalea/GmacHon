@@ -189,3 +189,24 @@ GMach.Model.Transaction.GetReturnLoanTransactions = function (scope) {
     return trans;
 
 }
+
+GMach.Model.Transaction.GetReturnDepositTransactions = function () {
+
+    var allTransactions = GMach.Model.Transaction.GetAllTransactions();
+    var currentTime = new Date().toJSON().slice(0, 10);
+
+    var nextMonth;
+    nextMonth = Date.today().add(1).months().toJSON().slice(0, 10);
+   
+    var trans = new Array();
+    allTransactions.forEach(function (tran) {
+        if (tran.constructor.name == "Deposit" && tran.returned == false
+            && tran.plan_return_date >= currentTime && tran.plan_return_date <= nextMonth) {
+            trans.push(tran);
+        }
+    }
+     );
+
+    return trans;
+
+}
