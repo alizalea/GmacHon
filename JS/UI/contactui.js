@@ -33,6 +33,7 @@ $(document).ready(function () {
             $('#Address').val(contact.address);
             $('#Remarks').val(contact.remarks);
             //$('h2').text(f+" " +l);
+            //LoadLoanContact(idfromqs);
         } else {
             contact = new GMach.Model.Contact();
             //var oneGmach = new GMach.Model.OneGmach();
@@ -127,3 +128,26 @@ $(document).ready(function () {
     }
 
 });
+
+function LoadLoanContact(id) {
+    var loanTransactions = GMach.Model.Contact.GetLoanTransactions(id);
+
+    $('#LoanContact').DataTable({
+
+        data: loanTransactions,
+
+        columns: [
+              { "data": "transaction_type" },
+              { "data": "amount" },
+              { "data": "transaction_date" },
+
+        ],
+
+        order: [2, 'desc'],
+        paging: false,
+        ordering: false,
+        info: false,
+        filter: false,
+    });
+}
+

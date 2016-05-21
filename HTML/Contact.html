@@ -4,8 +4,10 @@
     <meta charset="utf-8" />
     <title>גמחהון - איש קשר</title>
     <link type="text/css" href="../CSS/GmacHon.css" rel="stylesheet" />
+    <link type="text/css" href="../Third Party Code/jquery.dataTables.min.css" rel="stylesheet" />
 
     <script type="text/javascript" src="../Third Party Code/jquery.min.js"></script>
+    <script type="text/javascript" src="../Third Party Code/jquery.dataTables.min.js"></script>
 
     <script type="text/javascript" src="../JS/DAL/ContactData.json"></script>
     <script type="text/javascript" src="../JS/Model/OneGmachModel.js"></script>
@@ -68,9 +70,24 @@
 
                         <div>
                             <span>הלוואות</span>
-                            <table></table>
+                            <table width="100%" class="display" id="LoanContact">
+                                <thead>
+
+                                    <tr>
+
+                                        <th>סוג התנועה</th>
+
+                                        <th>סכום</th>
+
+                                        <th>תאריך</th>
+
+                                    </tr>
+
+                                </thead>
+                            </table>
+
                             <label>סה"כ הלוואות פתוחות:</label>
-                            <label id="SumDebit">25</label><span>ש"ח</span>
+                            <label id="SumLoanContact">25</label><span>ש"ח</span>
                         </div>
 
                         <div>

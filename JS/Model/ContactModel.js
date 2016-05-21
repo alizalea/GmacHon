@@ -64,5 +64,19 @@ function GetContactObject(dataBaseRow) {
 
 };
 
+GMach.Model.Contact.GetLoanTransactions = function (idContact) {
 
+    var allTransactions = GMach.Model.Transaction.GetAllTransactions();
+
+    var trans = new Array();
+    allTransactions.forEach(function (tran) {
+        if ((tran.constructor.name == "Loan" ||tran.constructor.name == "ReturnLoan") && tran.contact==idContact) {
+            trans.push(tran);
+        }
+    }
+     );
+
+    return trans;
+
+}
 
