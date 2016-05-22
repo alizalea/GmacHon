@@ -148,6 +148,9 @@ function LoadLoanContact(id) {
         ordering: false,
         info: false,
         filter: false,
+        "language": {
+            "zeroRecords": "לא נמצאו הלוואות",
+        },
     });
     $('#SumLoanContact').text(contactTransactions[1]);
 
@@ -167,7 +170,30 @@ function LoadLoanContact(id) {
         ordering: false,
         info: false,
         filter: false,
+        "language": {
+            "zeroRecords": "לא נמצאו הפקדות",
+        },
     });
     $('#SumDeposit').text(contactTransactions[3]);
+
+    $('#DonationContact').DataTable({
+
+        data:contactTransactions[4],
+
+        columns: [
+              { "data": "amount" },
+              { "data": "transaction_date" },
+
+        ],
+
+        order: [1, 'desc'],
+        paging: false,
+        ordering: false,
+        info: false,
+        filter: false,
+        "language": {
+            "zeroRecords": "לא נמצאו תרומות",
+        },
+    });
 }
 

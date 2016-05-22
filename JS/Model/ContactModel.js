@@ -73,6 +73,8 @@ GMach.Model.Contact.GetContactTransactions = function (idContact) {
     var depositTrans = new Array();
     var depositAmount = 0;
 
+    var donationTrans = new Array();
+
     allTransactions.forEach(function (tran) {
         var tranType = tran.constructor.name;
         if (tran.contact == idContact) {
@@ -84,11 +86,13 @@ GMach.Model.Contact.GetContactTransactions = function (idContact) {
                 depositTrans.push(tran);
                 (tranType == "Deposit" ? depositAmount += tran.amount : depositAmount -= tran.amount);
             }
+            if (tranType == "Donation")
+            { donationTrans.push(tran); }
         }
     }
      );
 
-    return [loanTrans, loanAmount, depositTrans, depositAmount];
+    return [loanTrans, loanAmount, depositTrans, depositAmount, donationTrans];
 
 }
 
