@@ -1,26 +1,4 @@
-﻿//var allContacts = GMach.Model.Contact.GetAllContacts();
-var oneGmach = new GMach.Model.OneGmach();
-var allContacts = oneGmach.Contacts();
-var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
-
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
-        }
-    }
-};
-var idfromqs = getUrlParameter('id') ? getUrlParameter('id') : null;
-
-var contact = null;
-
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
     if ($("#contacts").length) {
         AllContactsOnLoad();
     }
@@ -31,6 +9,9 @@ $(document).ready(function () {
 
 function AllContactsOnLoad()
 {
+    var oneGmach = new GMach.Model.OneGmach();
+    var allContacts = oneGmach.Contacts();
+
     $('#contacts').DataTable({
         //  dom: "Bfrtip",
 
@@ -94,6 +75,11 @@ function AllContactsOnLoad()
 
 function ContactOnLoad()
 {
+    var getUrlParameter = GMach.Model.OneGmach.getUrlParameter('id');
+    var idfromqs = getUrlParameter ? getUrlParameter : null;
+
+    var contact = null;
+
     if (idfromqs != null) {
         contact = GMach.Model.Contact.GetDataContact(idfromqs);
         $('#FirstName').val(contact.firstName);
