@@ -130,11 +130,11 @@ $(document).ready(function () {
 });
 
 function LoadLoanContact(id) {
-    var loanTransactions = GMach.Model.Contact.GetLoanTransactions(id);
+    var contactTransactions = GMach.Model.Contact.GetContactTransactions(id);
 
     $('#LoanContact').DataTable({
 
-        data: GMach.UI.Transaction.GetAllTransactionsVM(loanTransactions[0]),
+        data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[0]),
 
         columns: [
               { "data": "transaction_type" },
@@ -149,6 +149,25 @@ function LoadLoanContact(id) {
         info: false,
         filter: false,
     });
-    $('#SumLoanContact').text(loanTransactions[1]);
+    $('#SumLoanContact').text(contactTransactions[1]);
+
+    $('#DepositContact').DataTable({
+
+        data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[2]),
+
+        columns: [
+              { "data": "transaction_type" },
+              { "data": "amount" },
+              { "data": "transaction_date" },
+
+        ],
+
+        order: [2, 'desc'],
+        paging: false,
+        ordering: false,
+        info: false,
+        filter: false,
+    });
+    $('#SumDeposit').text(contactTransactions[3]);
 }
 

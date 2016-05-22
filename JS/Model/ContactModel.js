@@ -63,22 +63,32 @@ function GetContactObject(dataBaseRow) {
 
 };
 
-GMach.Model.Contact.GetLoanTransactions = function (idContact) {
+GMach.Model.Contact.GetContactTransactions = function (idContact) {
 
     var allTransactions = GMach.Model.Transaction.GetAllTransactions();
 
     var loanTrans = new Array();
     var loanAmount = 0;
+
+    var depositTrans = new Array();
+    var depositAmount = 0;
+
     allTransactions.forEach(function (tran) {
         var tranType = tran.constructor.name;
-        if ((tranType == "Loan" || tranType == "ReturnLoan") && tran.contact == idContact) {
-            loanTrans.push(tran);
-            (tranType == "Loan" ? loanAmount += tran.amount : loanAmount -= tran.amount);
+        if (tran.contact == idContact) {
+            if ((tranType == "Loan" || tranType == "ReturnLoan")) {
+                loanTrans.push(tran);
+                (tranType == "Loan" ? loanAmount += tran.amount : loanAmount -= tran.amount);
+            }
+            if ((tranType == "Deposit" || tranType == "ReturnDeposit")) {
+                depositTrans.push(tran);
+                (tranType == "Deposit" ? depositAmount += tran.amount : depositAmount -= tran.amount);
+            }
         }
     }
      );
 
-    return [loanTrans, loanAmount];
+    return [loanTrans, loanAmount, depositTrans, depositAmount];
 
 }
 
