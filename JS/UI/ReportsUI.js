@@ -11,7 +11,7 @@ function TransactionsNextMounthOnLoad() {
     var m = 'חודש';
     if (document.title.indexOf(m) > -1) { weekOrMonth = 'Month'; }
 
-    var allTransactions = GetAllTransactionsVM(GMach.Model.Transaction.GetReturnLoanTransactions(weekOrMonth));
+    var allTransactions = GMach.UI.Transaction.GetAllTransactionsVM(GMach.Model.Transaction.GetReturnLoanTransactions(weekOrMonth));
 
     $('#transactionsNextMounth').DataTable({
 
@@ -59,19 +59,3 @@ function TransactionsNextMounthOnLoad() {
    
 
 }
-function GetAllTransactionsVM(transList) {
-    var trans = new Array();
-    transList.forEach(function (tran) {
-        var t = new Object();
-        var contact = GMach.Model.Contact.GetDataContact(tran.contact);
-        t.contact = contact.firstName + " " + contact.lastName;
-        t.amount = tran.amount;
-        t.plan_return_date = tran.plan_return_date;
-
-        trans.push(t);
-    }
-     );
-
-    return trans;
-
-};

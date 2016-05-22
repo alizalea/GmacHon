@@ -259,6 +259,8 @@ GMach.UI.Transaction.GetAllTransactionsVM = function(transList) {
         t.contact = contact.firstName + " " + contact.lastName;
         t.amount = tran.amount;
         t.transaction_date = tran.transaction_date;
+        t.plan_return_date = tran.plan_return_date;
+
 
         trans.push(t);
     }
