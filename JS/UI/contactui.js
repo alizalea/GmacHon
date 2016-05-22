@@ -33,7 +33,7 @@ $(document).ready(function () {
             $('#Address').val(contact.address);
             $('#Remarks').val(contact.remarks);
             //$('h2').text(f+" " +l);
-            //LoadLoanContact(idfromqs);
+            LoadLoanContact(idfromqs);
         } else {
             contact = new GMach.Model.Contact();
             //var oneGmach = new GMach.Model.OneGmach();
@@ -130,7 +130,7 @@ $(document).ready(function () {
 });
 
 function LoadLoanContact(id) {
-    var loanTransactions = GMach.Model.Contact.GetLoanTransactions(id);
+    var loanTransactions =GMach.UI.Transaction.GetAllTransactionsVM( GMach.Model.Contact.GetLoanTransactions(id));
 
     $('#LoanContact').DataTable({
 

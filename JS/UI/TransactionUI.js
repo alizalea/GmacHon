@@ -1,4 +1,8 @@
-﻿$(document).ready(function () {
+﻿var GMach = GMach || {};
+GMach.UI = GMach.UI || {};
+GMach.UI.Transaction = GMach.UI.Transaction || {};
+
+$(document).ready(function () {
     if ($('#transactions').length > 0) {
         AllTransactionsOnLoad();
     } else if ($('#Transaction-form').length > 0) {
@@ -9,7 +13,7 @@
 
 function AllTransactionsOnLoad() {
 
-    var allTransactions = GetAllTransactionsVM(GMach.Model.OneGmach.Transactions());
+    var allTransactions = GMach.UI.Transaction.GetAllTransactionsVM(GMach.Model.OneGmach.Transactions());
 
     $('#transactions').DataTable({
 
@@ -64,24 +68,6 @@ function AllTransactionsOnLoad() {
     });
 
 }
-function GetAllTransactionsVM(transList) {
-    var trans = new Array();
-    transList.forEach(function (tran) {
-        var t = new Object();
-        t.id = tran.id;
-        t.transaction_type = GetTransactionDisplayType(tran.constructor.name);
-        var contact = GMach.Model.Contact.GetDataContact(tran.contact);
-        t.contact = contact.firstName + " " + contact.lastName;
-        t.amount = tran.amount;
-        t.transaction_date = tran.transaction_date;
-
-        trans.push(t);
-    }
-     );
-
-    return trans;
-
-};
 function GetTransactionDisplayType(transactionType) {
     var name = "";
     switch (transactionType) {
@@ -262,3 +248,22 @@ function GetTransactionObjectUI(TransactionDisplayType) {
     }
     return object;
 }
+
+GMach.UI.Transaction.GetAllTransactionsVM = function(transList) {
+    var trans = new Array();
+    transList.forEach(function (tran) {
+        var t = new Object();
+        t.id = tran.id;
+        t.transaction_type = GetTransactionDisplayType(tran.constructor.name);
+        var contact = GMach.Model.Contact.GetDataContact(tran.contact);
+        t.contact = contact.firstName + " " + contact.lastName;
+        t.amount = tran.amount;
+        t.transaction_date = tran.transaction_date;
+
+        trans.push(t);
+    }
+     );
+
+    return trans;
+
+};
