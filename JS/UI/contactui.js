@@ -35,6 +35,7 @@ $(document).ready(function () {
             //$('h2').text(f+" " +l);
             LoadLoanContact(idfromqs);
         } else {
+            $('#TransactionContact').hide();
             contact = new GMach.Model.Contact();
             //var oneGmach = new GMach.Model.OneGmach();
             //contact.id = oneGmach.nextContactID;
