@@ -130,11 +130,11 @@ $(document).ready(function () {
 });
 
 function LoadLoanContact(id) {
-    var loanTransactions =GMach.UI.Transaction.GetAllTransactionsVM( GMach.Model.Contact.GetLoanTransactions(id));
+    var loanTransactions = GMach.Model.Contact.GetLoanTransactions(id);
 
     $('#LoanContact').DataTable({
 
-        data: loanTransactions,
+        data: GMach.UI.Transaction.GetAllTransactionsVM(loanTransactions[0]),
 
         columns: [
               { "data": "transaction_type" },

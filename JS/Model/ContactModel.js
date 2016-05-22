@@ -76,7 +76,7 @@ GMach.Model.Contact.GetLoanTransactions = function (idContact) {
     }
      );
 
-    return trans;
+    return [trans,20];
 
 }
 
