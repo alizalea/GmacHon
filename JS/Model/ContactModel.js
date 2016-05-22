@@ -7,13 +7,13 @@ GMach.Model.Contact = GMach.Model.Contact || {};
 GMach.Model.Contact = function (id, firstName, lastName, IdNumber, phoneNumber, mobileNumber, address, remarks) {
     this.id = id;
 
-   /* if (GMach.Model.Contact.indexid == undefined) {
-        GMach.Model.Contact.indexid = 1;
-    }
-    else {
-        GMach.Model.Contact.indexid++;
-    }
-    this.id = GMach.Model.Contact.indexid;*/
+    /* if (GMach.Model.Contact.indexid == undefined) {
+         GMach.Model.Contact.indexid = 1;
+     }
+     else {
+         GMach.Model.Contact.indexid++;
+     }
+     this.id = GMach.Model.Contact.indexid;*/
     this.firstName = firstName;
     this.lastName = lastName;
     this.IdNumber = IdNumber;
@@ -37,8 +37,7 @@ GMach.Model.Contact.GetDataContact = function (id) {
     else if (result.length == 1) {
         return result[0];
     }
-    else
-    {
+    else {
         throw "Error During GetDataContact"
     }
 }
@@ -68,15 +67,18 @@ GMach.Model.Contact.GetLoanTransactions = function (idContact) {
 
     var allTransactions = GMach.Model.Transaction.GetAllTransactions();
 
-    var trans = new Array();
+    var loanTrans = new Array();
+    var loanAmount = 0;
     allTransactions.forEach(function (tran) {
-        if ((tran.constructor.name == "Loan" ||tran.constructor.name == "ReturnLoan") && tran.contact==idContact) {
-            trans.push(tran);
+        var tranType = tran.constructor.name;
+        if ((tranType == "Loan" || tranType == "ReturnLoan") && tran.contact == idContact) {
+            loanTrans.push(tran);
+            (tranType == "Loan" ? loanAmount += tran.amount : loanAmount -= tran.amount);
         }
     }
      );
 
-    return [trans,20];
+    return [loanTrans, loanAmount];
 
 }
 

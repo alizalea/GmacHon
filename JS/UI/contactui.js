@@ -149,5 +149,6 @@ function LoadLoanContact(id) {
         info: false,
         filter: false,
     });
+    $('#SumLoanContact').text(loanTransactions[1]);
 }
 
