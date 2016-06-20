@@ -4,7 +4,7 @@ GMach.Model = GMach.Model || {};
 GMach.Model.Contact = GMach.Model.Contact || {};
 
 
-GMach.Model.Contact = function (id, firstName, lastName, IdNumber, phoneNumber, mobileNumber, address, remarks) {
+GMach.Model.Contact = function (id, firstName, lastName, idNumber, phoneNumber, mobileNumber, address, remarks) {
     this.id = id;
 
     /* if (GMach.Model.Contact.indexid == undefined) {
@@ -16,7 +16,7 @@ GMach.Model.Contact = function (id, firstName, lastName, IdNumber, phoneNumber, 
      this.id = GMach.Model.Contact.indexid;*/
     this.firstName = firstName;
     this.lastName = lastName;
-    this.IdNumber = IdNumber;
+    this.idNumber = idNumber;
     this.phoneNumber = phoneNumber;
     this.mobileNumber = mobileNumber;
     this.address = address;
@@ -26,7 +26,7 @@ GMach.Model.Contact = function (id, firstName, lastName, IdNumber, phoneNumber, 
 GMach.Model.Contact.GetAllContacts = function () {
     return GMach.DAL.Contact.GetAllContacts();
 }
-GMach.Model.Contact.GetDataContact = function (id) {
+GMach.Model.Contact.GetDataContactOffline = function (id) {
 
     var con = GMach.Model.Contact.GetAllContacts();// JSON.parse(localStorage.getItem('Gmach1Contacts'));
     var result = $.grep(con, function (e) { return e.id == id; });
@@ -41,6 +41,19 @@ GMach.Model.Contact.GetDataContact = function (id) {
         throw "Error During GetDataContact"
     }
 }
+GMach.Model.Contact.GetDataContact = function (id) {
+
+    var contact = GMach.DAL.Contact.GetDataContact(id);
+    if (contact == null)
+    {
+        throw "Error During GetDataContact";
+    }
+    else {
+        return contact;
+    }
+
+
+}
 GMach.Model.Contact.SetDataContact = function (contact, idcon) {
 
     return GMach.DAL.Contact.SetDataContact(contact, idcon);
@@ -53,7 +66,7 @@ function GetContactObject(dataBaseRow) {
     curr.id = dataBaseRow.id;
     curr.firstName = dataBaseRow.firstName;
     curr.lastName = dataBaseRow.lastName;
-    curr.IdNumber = dataBaseRow.IdNumber;
+    curr.idNumber = dataBaseRow.idNumber;
     curr.phoneNumber = dataBaseRow.phoneNumber;
     curr.mobileNumber = dataBaseRow.mobileNumber;
     curr.address = dataBaseRow.address;

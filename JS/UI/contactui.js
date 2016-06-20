@@ -21,7 +21,7 @@ function AllContactsOnLoad()
         columns: [
              { "data": "lastName" },
              { "data": "firstName" },
-             { "data": "IdNumber" },
+             { "data": "idNumber" },
              { "data": "phoneNumber" },
              { "data": "mobileNumber" },
              { "data": "remarks" }
@@ -67,7 +67,7 @@ function AllContactsOnLoad()
     var table = $('#contacts').DataTable();
 
     $('#contacts tbody').on('click', 'tr', function () {
-        var id = table.row(this).data().id;
+        var id = table.row(this).data().contactId;
         window.location = "/HTML/Contact.html?id=" + id;
 
     });
@@ -84,7 +84,7 @@ function ContactOnLoad()
         contact = GMach.Model.Contact.GetDataContact(idfromqs);
         $('#FirstName').val(contact.firstName);
         $('#LastName').val(contact.lastName);
-        $('#IdNumber').val(contact.IdNumber);
+        $('#IdNumber').val(contact.idNumber);
         $('#PhoneNumber').val(contact.phoneNumber);
         $('#MobileNumber').val(contact.mobileNumber);
         $('#Address').val(contact.address);
@@ -104,7 +104,7 @@ function ContactOnLoad()
         // }
         contact.firstName = $('#FirstName').val();
         contact.lastName = $('#LastName').val();
-        contact.IdNumber = $('#IdNumber').val();
+        contact.idNumber = $('#IdNumber').val();
         contact.phoneNumber = $('#PhoneNumber').val();
         contact.mobileNumber = $('#MobileNumber').val();
         contact.address = $('#Address').val();

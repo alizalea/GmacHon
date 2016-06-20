@@ -3,39 +3,7 @@ var GMach = GMach || {};
 GMach.DAL = GMach.DAL || {};
 GMach.DAL.Contact = GMach.DAL.Contact || {};
 
-GMach.DAL.Contact.GetAllContacts = function () {
-
-    //var conddal = [new GMach.Model.Contact("משה", "כהן", "111111111", "02-1111111", "054-8402125", "", "תורם חבל על הזמן"),
-    //                             new GMach.Model.Contact("יוסי", "לוי", "222222222", "024444444", "085-9999999", "", "חיחחייח"),
-    //                             new GMach.Model.Contact("יוסי", "כהן", "33333333", "024444444", "085-4444444", "", "חיחחייח"),
-    //                             new GMach.Model.Contact("יוסי", "לוי", "44444444", "024444444", "085-5555555", "", "חיחחייח"),
-    //                             new GMach.Model.Contact("חיים", "טויו", "222222222", "024444444", "085-9999999", "", "חיחחייח"),
-    //                             new GMach.Model.Contact("אריאל", "פכטר", "222222222", "024444444", "085-9999999", "", "חיחחייח")];
-    //return conddal;
-
-    var contactData = [
-  {
-      "id": 1,
-      "firstName": "אלון",
-      "lastName": "כהן",
-      "IdNumber": "",
-      "phoneNumber": "02-5648885",
-      "mobileNumber": "050-41446367",
-      "address": "רמות, ירושלים",
-      "remarks": "נדיב ביותר."
-  },
-  {
-      "id": 2,
-      "firstName": "חיים",
-      "lastName": "כהן",
-      "IdNumber": "",
-      "phoneNumber": "02-5648885",
-      "mobileNumber": "050-41446367",
-      "address": "",
-      "remarks": "בקש להזכיר לו שבוע קודם."
-  }
-    ]
-
+GMach.DAL.Contact.GetAllContactsOffline = function () {
 
     var con = JSON.parse(localStorage.getItem('Gmach1Contacts'));
     if (con != null && con != undefined) {
@@ -57,8 +25,13 @@ GMach.DAL.Contact.GetAllContacts = function () {
 
 }
 
+GMach.DAL.Contact.GetAllContacts = function () {
+    var contactData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/contact/GetAll', null);
+    return contactData;
 
-GMach.DAL.Contact.SetDataContact = function (contact, editid) {
+}
+
+GMach.DAL.Contact.SetDataContactOffline = function (contact, editid) {
     try {
         var con = GMach.DAL.Contact.GetAllContacts();
 
@@ -68,7 +41,7 @@ GMach.DAL.Contact.SetDataContact = function (contact, editid) {
                 if (con[i].id == editid) {
                     con[i].firstName = contact.firstName;
                     con[i].lastName = contact.lastName;
-                    con[i].IdNumber = contact.IdNumber;
+                    con[i].idNumber = contact.IdNumber;
                     con[i].phoneNumber = contact.phoneNumber;
                     con[i].mobileNumber = contact.mobileNumber;
                     con[i].address = contact.address;
@@ -95,6 +68,22 @@ GMach.DAL.Contact.SetDataContact = function (contact, editid) {
 
 }
 
+GMach.DAL.Contact.SetDataContact = function (contact, editid) {
+
+    var contactData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/contact/Save',  JSON.stringify(contact));
+
+    if (contactData == null)
+    { return false; }
+    else { return true; }
+}
+
+GMach.DAL.Contact.GetDataContact = function (contactID) {
+    var idString = 'Id=' + contactID;
+    var contactData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/contact/GetById', JSON.stringify(idString));
+
+    return contactData;
+}
+
 function getMax(arr, column) {
     var max;
     for (var i = 0 ; i < arr.length ; i++) {
@@ -102,4 +91,27 @@ function getMax(arr, column) {
             max = arr[i][column];
     }
     return max;
+}
+
+function ConnectServer(myUrl, MyData) {
+    var url = myUrl;
+    var Rows;
+    $.ajax({
+        url: url,
+        type: 'POST',
+        crossDomain: false,
+        data:MyData,
+        contentType: 'application/json',
+        dataType: 'json',
+
+        success: function (data) {
+            Rows = data;
+        },
+        async: false,
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert("Error Connect Server " + xhr.status + ' ' + thrownError);
+            console.error();
+        }
+    });
+    return Rows;
 }
