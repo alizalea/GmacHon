@@ -4,7 +4,6 @@ GMach.DAL.Transaction = GMach.DAL.Transaction || {}; // global namespace, all go
 
 GMach.DAL.Transaction.GetAllTransactions = function () {
 
-   
     var databaseData;
     var con = localStorage.getItem('Gmach1Transactions');
     if (con != null && con != undefined) {
@@ -18,6 +17,12 @@ GMach.DAL.Transaction.GetAllTransactions = function () {
     return databaseData;
 
 };
+
+GMach.DAL.Transaction.GetAllTransactionsOffline = function () {
+    var transactionData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/transaction/GetAll', null);
+    return transactionData;
+
+}
 
 GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
     try {
@@ -71,6 +76,22 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
 
 }
 
+GMach.DAL.Transaction.SetDataTransactionOffline = function (transaction, editid) {
+
+    var transactionData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/transaction/Save', JSON.stringify(transaction));
+
+    if (transactionData == null)
+    { return false; }
+    else { return true; }
+}
+
+GMach.DAL.Transaction.GetDataTransaction = function (transactionID) {
+    var idString = '{Id:' + transactionID + "}";
+    var transactionData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/contact/GetById', idString);
+
+    return transactionData;
+}
+
 function getMax(arr, column) {
     var max;
     for (var i = 0 ; i < arr.length ; i++) {
@@ -78,5 +99,28 @@ function getMax(arr, column) {
             max = arr[i][column];
     }
     return max;
+}
+
+function ConnectServer(myUrl, MyData) {
+    var url = myUrl;
+    var Rows;
+    $.ajax({
+        url: url,
+        type: 'POST',
+        crossDomain: false,
+        data: MyData,
+        contentType: 'application/json',
+        dataType: 'json',
+
+        success: function (data) {
+            Rows = data;
+        },
+        async: false,
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert("Error Connect Server " + xhr.status + ' ' + thrownError);
+            console.error();
+        }
+    });
+    return Rows;
 }
 

@@ -102,6 +102,18 @@ GMach.Model.Transaction.GetDataTransaction = function (id) {
         console.error("Error During GetDataTransaction");
     }
 }
+GMach.Model.Transaction.GetDataTransactionO = function (id) {
+
+    var transaction = GMach.DAL.Transaction.GetDataTransaction(id);
+    if (transaction == null) {
+        throw "Error During GetDataTransaction";
+        }
+        else {
+            return transaction;
+        }
+
+
+        }
 GMach.Model.Transaction.SetDataTransaction = function (transaction, idcon) {
 
     return GMach.DAL.Transaction.SetDataTransaction(transaction, idcon);
