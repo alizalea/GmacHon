@@ -2,7 +2,7 @@
   {
     "id": 1,
     "transaction_type": "Loan",
-    "contact": 1,
+    "contact": 11,
     "amount": "90",
     "transaction_date": "2012-02-01",
 
@@ -24,14 +24,14 @@
   {
     "id": 2,
     "transaction_type": "ReturnLoan",
-    "contact": 1,
+    "contact": 11,
     "amount": "80",
     "transaction_date": "2014-02-01",
   },
   {
     "id": 3,
     "transaction_type": "Deposit",
-    "contact": 2,
+    "contact": 13,
     "amount": "60",
     "transaction_date": "2012-02-25",
 

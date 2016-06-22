@@ -154,7 +154,7 @@ function TransactionOnLoad() {
         list: {
             onSelectItemEvent: function () {
 
-                var selectedItemValue = $("#ContactSearch").getSelectedItemData().id;
+                var selectedItemValue = $("#ContactSearch").getSelectedItemData().contactId;
 
                 $("#Contact").val(selectedItemValue).trigger("change");
             },
