@@ -78,8 +78,8 @@ GMach.DAL.Contact.SetDataContact = function (contact, editid) {
 }
 
 GMach.DAL.Contact.GetDataContact = function (contactID) {
-    var idString = 'Id=' + contactID;
-    var contactData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/contact/GetById', JSON.stringify(idString));
+    var idString = '{Id:' + contactID + "}";
+    var contactData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/contact/GetById', idString);
 
     return contactData;
 }
