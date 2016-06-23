@@ -2,19 +2,19 @@
 GMach.Model = GMach.Model || {};
 GMach.Model.Transaction = GMach.Model.Transaction || {};
 
-GMach.Model.Transaction.TransactionBase = function (transactionId, contact, amount, transaction_date) {
+GMach.Model.Transaction.TransactionBase = function (transactionId, contact, amount, transactionDate) {
     this.transactionId = transactionId;
     this.contact = contact;
     this.amount = amount;
-    this.transaction_date = transaction_date;
+    this.transactionDate = transactionDate;
 
 };
 
-GMach.Model.Transaction.TransactionWithReturn = function (transactionId, contact, amount, transaction_date, plan_return_date, returned, return_amount) {
-    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contact, amount, transaction_date);
-    this.plan_return_date = plan_return_date;
+GMach.Model.Transaction.TransactionWithReturn = function (transactionId, contact, amount, transactionDate, plan_returnDate, returned, returnAmount) {
+    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contact, amount, transactionDate);
+    this.plan_returnDate = plan_returnDate;
     this.returned = returned;
-    this.return_amount = return_amount;
+    this.returnAmount = returnAmount;
 
 };
 GMach.Model.Transaction.TransactionWithReturn.prototype = Object.create(GMach.Model.Transaction.TransactionBase.prototype);
@@ -29,8 +29,8 @@ GMach.Model.Transaction.Freind = function (first_name, last_name, phone_number, 
 };
 
 // LOAN: הלוואה
-GMach.Model.Transaction.Loan = function Loan(transactionId, contact, amount, transaction_date, freind1, freind2, return_date, returned, return_amount) {
-    GMach.Model.Transaction.TransactionWithReturn.call(this, transactionId, contact, amount, transaction_date, return_date, returned, return_amount);
+GMach.Model.Transaction.Loan = function Loan(transactionId, contact, amount, transactionDate, freind1, freind2, returnDate, returned, returnAmount) {
+    GMach.Model.Transaction.TransactionWithReturn.call(this, transactionId, contact, amount, transactionDate, returnDate, returned, returnAmount);
     this.freind1 = freind1;
     this.freind2 = freind2;
 };
@@ -38,8 +38,8 @@ GMach.Model.Transaction.Loan.prototype = Object.create(GMach.Model.Transaction.T
 GMach.Model.Transaction.Loan.prototype.constructor = GMach.Model.Transaction.Loan;
 
 // RETURN_LOAN: "return_loan",//החזרת הלוואה
-GMach.Model.Transaction.ReturnLoan = function ReturnLoan(transactionId, contact, amount, transaction_date) {
-    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contact, amount, transaction_date);
+GMach.Model.Transaction.ReturnLoan = function ReturnLoan(transactionId, contact, amount, transactionDate) {
+    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contact, amount, transactionDate);
 
 };
 
@@ -47,16 +47,16 @@ GMach.Model.Transaction.ReturnLoan.prototype = Object.create(GMach.Model.Transac
 GMach.Model.Transaction.ReturnLoan.prototype.constructor = GMach.Model.Transaction.ReturnLoan;
 
 // DEPOSIT: "deposit": הפקדה
-GMach.Model.Transaction.Deposit = function Deposit(transactionId, contact, amount, transaction_date, return_date, returned, return_amount) {
-    GMach.Model.Transaction.TransactionWithReturn.call(this, transactionId, contact, amount, transaction_date, return_date, returned, return_amount);
+GMach.Model.Transaction.Deposit = function Deposit(transactionId, contact, amount, transactionDate, returnDate, returned, returnAmount) {
+    GMach.Model.Transaction.TransactionWithReturn.call(this, transactionId, contact, amount, transactionDate, returnDate, returned, returnAmount);
 
 };
 GMach.Model.Transaction.Deposit.prototype = Object.create(GMach.Model.Transaction.TransactionWithReturn.prototype);
 GMach.Model.Transaction.Deposit.prototype.constructor = GMach.Model.Transaction.Deposit;
 
 //RETURN_DEPOSIT: משיכת הפקדה
-GMach.Model.Transaction.ReturnDeposit = function ReturnDeposit(transactionId, contact, amount, transaction_date) {
-    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contact, amount, transaction_date);
+GMach.Model.Transaction.ReturnDeposit = function ReturnDeposit(transactionId, contact, amount, transactionDate) {
+    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contact, amount, transactionDate);
 
 };
 
@@ -64,8 +64,8 @@ GMach.Model.Transaction.ReturnDeposit.prototype = Object.create(GMach.Model.Tran
 GMach.Model.Transaction.ReturnDeposit.prototype.constructor = GMach.Model.Transaction.ReturnDeposit;
 
 // DONATION: תרומה
-GMach.Model.Transaction.Donation = function Donation(transactionId, contact, amount, transaction_date) {
-    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contact, amount, transaction_date);
+GMach.Model.Transaction.Donation = function Donation(transactionId, contact, amount, transactionDate) {
+    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contact, amount, transactionDate);
 
 };
 
@@ -121,30 +121,30 @@ GMach.Model.Transaction.SetDataTransaction = function (transaction, idcon) {
 }
 
 GMach.Model.Transaction.GetTransactionObject = function (dataBaseRow) {
-    var curr = GetTransactionObjectByType(dataBaseRow.transaction_type);
+    var curr = GetTransactionObjectByType(dataBaseRow.transactionType);
     curr.transactionId = dataBaseRow.transactionId;
     curr.contact = dataBaseRow.contact;
     curr.amount = parseInt(dataBaseRow.amount);
-    curr.transaction_date = dataBaseRow.transaction_date;
+    curr.transactionDate = dataBaseRow.transactionDate;
 
-    curr.plan_return_date = dataBaseRow.return_date;
+    curr.plan_returnDate = dataBaseRow.returnDate;
     curr.returned = dataBaseRow.returned;
-    curr.return_amount = dataBaseRow.return_amount;
+    curr.returnAmount = dataBaseRow.returnAmount;
 
-    if (dataBaseRow.transaction_type == "Loan") {
+    if (dataBaseRow.transactionType == "Loan") {
 
         var freind1 = new GMach.Model.Transaction.Freind();
-        freind1.first_name = dataBaseRow.freind1First_name;
-        freind1.last_name = dataBaseRow.freind1Last_name;
-        freind1.phone_number = dataBaseRow.freind1Phone_number;
+        freind1.first_name = dataBaseRow.freind1FirstName;
+        freind1.last_name = dataBaseRow.freind1LastName;
+        freind1.phone_number = dataBaseRow.freind1PhoneNumber;
         freind1.remark = dataBaseRow.freind1Remark;
         curr.freind1 = freind1;
 
 
         var freind2 = new GMach.Model.Transaction.Freind();
-        freind2.first_name = dataBaseRow.freind2First_name;
-        freind2.last_name = dataBaseRow.freind2Last_name;
-        freind2.phone_number = dataBaseRow.freind2Phone_number;
+        freind2.first_name = dataBaseRow.freind2FirstName;
+        freind2.last_name = dataBaseRow.freind2LastName;
+        freind2.phone_number = dataBaseRow.freind2PhoneNumber;
         freind2.remark = dataBaseRow.freind2Remark;
         curr.freind2 = freind2;
     }
@@ -192,7 +192,7 @@ GMach.Model.Transaction.GetReturnLoanTransactions = function (scope) {
     var trans = new Array();
     allTransactions.forEach(function (tran) {
         if (tran.constructor.name == "Loan" && tran.returned == false
-            && tran.plan_return_date >= currentTime && tran.plan_return_date <= nextMonthYear) {
+            && tran.plan_returnDate >= currentTime && tran.plan_returnDate <= nextMonthYear) {
             trans.push(tran);
         }
     }
@@ -213,7 +213,7 @@ GMach.Model.Transaction.GetReturnDepositTransactions = function () {
     var trans = new Array();
     allTransactions.forEach(function (tran) {
         if (tran.constructor.name == "Deposit" && tran.returned == false
-            && tran.plan_return_date >= currentTime && tran.plan_return_date <= nextMonth) {
+            && tran.plan_returnDate >= currentTime && tran.plan_returnDate <= nextMonth) {
             trans.push(tran);
         }
     }

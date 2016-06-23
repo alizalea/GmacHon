@@ -1,42 +1,42 @@
 ﻿var transactionData = [
   {
     "transactionId": 1,
-    "transaction_type": "Loan",
+    "transactionType": "Loan",
     "contact": 11,
     "amount": "90",
-    "transaction_date": "2012-02-01",
+    "transactionDate": "2012-02-01",
 
-    "return_date": "",
+    "returnDate": "",
     "returned": false,
-    "return_amount": 10,
+    "returnAmount": 10,
 
-    "freind1First_name": "freind1First_name",
-    "freind1Last_name": "freind1Last_name",
-    "freind1Phone_number": "freind1Phone_number",
+    "freind1FirstName": "freind1FirstName",
+    "freind1LastName": "freind1LastName",
+    "freind1PhoneNumber": "freind1PhoneNumber",
     "freind1Remark": "freind1Remark",
 
-    "freind2First_name": "freind2First_name",
-    "freind2Last_name": "freind2Last_name",
-    "freind2Phone_number": "freind2Phone_number",
+    "freind2FirstName": "freind2FirstName",
+    "freind2LastName": "freind2LastName",
+    "freind2PhoneNumber": "freind2PhoneNumber",
     "freind2Remark": "freind2Remark",
 
   },
   {
     "transactionId": 2,
-    "transaction_type": "ReturnLoan",
+    "transactionType": "ReturnLoan",
     "contact": 11,
     "amount": "80",
-    "transaction_date": "2014-02-01",
+    "transactionDate": "2014-02-01",
   },
   {
     "transactionId": 3,
-    "transaction_type": "Deposit",
+    "transactionType": "Deposit",
     "contact": 13,
     "amount": "60",
-    "transaction_date": "2012-02-25",
+    "transactionDate": "2012-02-25",
 
-    "return_date": "2012-02-26",
+    "returnDate": "2012-02-26",
     "returned":true,
-    "return_amount":20,
+    "returnAmount":20,
   }
 ]

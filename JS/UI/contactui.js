@@ -130,9 +130,9 @@ function LoadLoanContact(id) {
         data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[0]),
 
         columns: [
-              { "data": "transaction_type" },
+              { "data": "transactionType" },
               { "data": "amount" },
-              { "data": "transaction_date" },
+              { "data": "transactionDate" },
 
         ],
 
@@ -152,9 +152,9 @@ function LoadLoanContact(id) {
         data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[2]),
 
         columns: [
-              { "data": "transaction_type" },
+              { "data": "transactionType" },
               { "data": "amount" },
-              { "data": "transaction_date" },
+              { "data": "transactionDate" },
 
         ],
 
@@ -175,7 +175,7 @@ function LoadLoanContact(id) {
 
         columns: [
               { "data": "amount" },
-              { "data": "transaction_date" },
+              { "data": "transactionDate" },
 
         ],
 

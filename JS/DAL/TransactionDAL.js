@@ -32,26 +32,26 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
 
             for (var i in con) {
                 if (con[i].transactionId == editid) {
-                    con[i].transaction_type = transaction.constructor.name;
+                    con[i].transactionType = transaction.constructor.name;
                     con[i].contact = transaction.contact;
                     con[i].amount = transaction.amount;
-                    con[i].transaction_date = transaction.transaction_date;
+                    con[i].transactionDate = transaction.transactionDate;
 
-                    con[i].return_date = transaction.plan_return_date;
+                    con[i].returnDate = transaction.plan_returnDate;
                     con[i].returned = transaction.returned;
-                    con[i].return_amount = transaction.return_amount;
+                    con[i].returnAmount = transaction.returnAmount;
 
                     if (transaction.freind1 != undefined) {
-                        con[i].freind1First_name = transaction.freind1.first_name;
-                        con[i].freind1Last_name = transaction.freind1.last_name;
-                        con[i].freind1Phone_number = transaction.freind1.phone_number;
+                        con[i].freind1FirstName = transaction.freind1.first_name;
+                        con[i].freind1LastName = transaction.freind1.last_name;
+                        con[i].freind1PhoneNumber = transaction.freind1.phone_number;
                         con[i].freind1Remark = transaction.freind1.remark;
                     }
 
                     if (transaction.freind2 != undefined) {
-                        con[i].freind2First_name = transaction.freind2.first_name;
-                        con[i].freind2Last_name = transaction.freind2.last_name;
-                        con[i].freind2Phone_number = transaction.freind2.phone_number;
+                        con[i].freind2FirstName = transaction.freind2.first_name;
+                        con[i].freind2LastName = transaction.freind2.last_name;
+                        con[i].freind2PhoneNumber = transaction.freind2.phone_number;
                         con[i].freind2Remark = transaction.freind2.remark;
                     }
                     //break; //Stop this loop, we found it!
@@ -60,7 +60,7 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
 
         } else {
             transaction.transactionId = getMax(GMach.DAL.Transaction.GetAllTransactions(), "transactionId") + 1;
-            transaction.transaction_type = transaction.constructor.name;
+            transaction.transactionType = transaction.constructor.name;
             con.push(transaction);
 
         }

@@ -20,10 +20,10 @@ function AllTransactionsOnLoad() {
         data: allTransactions,
 
         columns: [
-              { "data": "transaction_type" },
+              { "data": "transactionType" },
               { "data": "contact" },
               { "data": "amount" },
-              { "data": "transaction_date" },
+              { "data": "transactionDate" },
 
         ],
 
@@ -108,10 +108,10 @@ function TransactionOnLoad() {
         $('#TransactionType').val(GetTransactionDisplayType(transaction.constructor.name));
         $('#Contact').val(transaction.contact);
         $('#Amount').val(transaction.amount);
-        $('#TransactionDate').val(transaction.transaction_date);
-        $('#ReturnDate').val(transaction.plan_return_date);
+        $('#TransactionDate').val(transaction.transactionDate);
+        $('#ReturnDate').val(transaction.plan_returnDate);
         $('#Returned')[0].checked = transaction.returned;
-        $('#ReturnAmount').val(transaction.return_amount);
+        $('#ReturnAmount').val(transaction.returnAmount);
 
         if (transaction.freind1 != undefined) {
             $('#FirstNameFirstFreind').val(transaction.freind1.first_name);
@@ -174,11 +174,11 @@ function TransactionOnLoad() {
 
         transaction.contact = $('#Contact').val();//$('#basics').val().split("#")[1]
         transaction.amount = $('#Amount').val();
-        transaction.transaction_date = $('#TransactionDate').val();
+        transaction.transactionDate = $('#TransactionDate').val();
 
-        transaction.plan_return_date = $('#ReturnDate').val();
+        transaction.plan_returnDate = $('#ReturnDate').val();
         transaction.returned = $('#Returned')[0].checked;
-        transaction.return_amount = $('#ReturnAmount').val();
+        transaction.returnAmount = $('#ReturnAmount').val();
 
         if (transaction.freind1 != undefined) {
             transaction.freind1.first_name = $('#FirstNameFirstFreind').val();
@@ -254,12 +254,12 @@ GMach.UI.Transaction.GetAllTransactionsVM = function(transList) {
     transList.forEach(function (tran) {
         var t = new Object();
         t.transactionId = tran.transactionId;
-        t.transaction_type = GetTransactionDisplayType(tran.constructor.name);
+        t.transactionType = GetTransactionDisplayType(tran.constructor.name);
         var contact = GMach.Model.Contact.GetDataContact(tran.contact);
         t.contact = contact.firstName + " " + contact.lastName;
         t.amount = tran.amount;
-        t.transaction_date = tran.transaction_date;
-        t.plan_return_date = tran.plan_return_date;
+        t.transactionDate = tran.transactionDate;
+        t.plan_returnDate = tran.plan_returnDate;
 
 
         trans.push(t);
