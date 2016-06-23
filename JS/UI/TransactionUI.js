@@ -62,7 +62,7 @@ function AllTransactionsOnLoad() {
     var table = $('#transactions').DataTable();
 
     $('#transactions tbody').on('click', 'tr', function () {
-        var id = table.row(this).data().id;
+        var id = table.row(this).data().transactionId;
         window.location = "/HTML/Transaction.html?id=" + id;
 
     });
@@ -253,7 +253,7 @@ GMach.UI.Transaction.GetAllTransactionsVM = function(transList) {
     var trans = new Array();
     transList.forEach(function (tran) {
         var t = new Object();
-        t.id = tran.id;
+        t.transactionId = tran.transactionId;
         t.transaction_type = GetTransactionDisplayType(tran.constructor.name);
         var contact = GMach.Model.Contact.GetDataContact(tran.contact);
         t.contact = contact.firstName + " " + contact.lastName;

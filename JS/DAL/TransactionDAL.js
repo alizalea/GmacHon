@@ -31,7 +31,7 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
         if (editid != null) {
 
             for (var i in con) {
-                if (con[i].id == editid) {
+                if (con[i].transactionId == editid) {
                     con[i].transaction_type = transaction.constructor.name;
                     con[i].contact = transaction.contact;
                     con[i].amount = transaction.amount;
@@ -59,7 +59,7 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
             }
 
         } else {
-            transaction.id = getMax(GMach.DAL.Transaction.GetAllTransactions(), "id") + 1;
+            transaction.transactionId = getMax(GMach.DAL.Transaction.GetAllTransactions(), "transactionId") + 1;
             transaction.transaction_type = transaction.constructor.name;
             con.push(transaction);
 

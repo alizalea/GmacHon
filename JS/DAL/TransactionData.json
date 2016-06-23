@@ -1,6 +1,6 @@
 ﻿var transactionData = [
   {
-    "id": 1,
+    "transactionId": 1,
     "transaction_type": "Loan",
     "contact": 11,
     "amount": "90",
@@ -22,14 +22,14 @@
 
   },
   {
-    "id": 2,
+    "transactionId": 2,
     "transaction_type": "ReturnLoan",
     "contact": 11,
     "amount": "80",
     "transaction_date": "2014-02-01",
   },
   {
-    "id": 3,
+    "transactionId": 3,
     "transaction_type": "Deposit",
     "contact": 13,
     "amount": "60",
