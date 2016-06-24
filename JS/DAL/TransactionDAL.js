@@ -77,6 +77,7 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
 }
 
 GMach.DAL.Transaction.SetDataTransactionOffline = function (transaction, editid) {
+    transaction.transactionType = transaction.constructor.name;
 
     var transactionData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/transaction/Save', JSON.stringify(transaction));
 
@@ -87,7 +88,7 @@ GMach.DAL.Transaction.SetDataTransactionOffline = function (transaction, editid)
 
 GMach.DAL.Transaction.GetDataTransaction = function (transactionID) {
     var idString = '{Id:' + transactionID + "}";
-    var transactionData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/contact/GetById', idString);
+    var transactionData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/transaction/GetById', idString);
 
     return transactionData;
 }

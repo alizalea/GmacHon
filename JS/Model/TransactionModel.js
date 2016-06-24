@@ -102,18 +102,19 @@ GMach.Model.Transaction.GetDataTransaction = function (id) {
         console.error("Error During GetDataTransaction");
     }
 }
-GMach.Model.Transaction.GetDataTransactionO = function (id) {
+GMach.Model.Transaction.GetDataTransactionOffline = function (id) {
 
     var transaction = GMach.DAL.Transaction.GetDataTransaction(id);
     if (transaction == null) {
         throw "Error During GetDataTransaction";
-        }
-        else {
-            return transaction;
-        }
+    }
+    else {
+        var curr = GMach.Model.Transaction.GetTransactionObject(transaction);
+        return curr;
+    }
 
 
-        }
+}
 GMach.Model.Transaction.SetDataTransaction = function (transaction, idcon) {
 
     return GMach.DAL.Transaction.SetDataTransaction(transaction, idcon);
@@ -209,7 +210,7 @@ GMach.Model.Transaction.GetReturnDepositTransactions = function () {
 
     var nextMonth;
     nextMonth = Date.today().add(1).months().toJSON().slice(0, 10);
-   
+
     var trans = new Array();
     allTransactions.forEach(function (tran) {
         if (tran.constructor.name == "Deposit" && tran.returned == false
