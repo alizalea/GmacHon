@@ -223,3 +223,9 @@ GMach.Model.Transaction.GetReturnDepositTransactions = function () {
     return trans;
 
 }
+
+GMach.Model.Transaction.GetFreeBalancePerDate = function (chechDate) {
+
+    return 2;
+}
+

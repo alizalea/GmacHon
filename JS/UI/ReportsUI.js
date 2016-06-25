@@ -1,7 +1,8 @@
 ﻿$(document).ready(function () {
     if ($('#transactionsNextMounth').length > 0) {
         TransactionsNextMounthOnLoad();
-    } 
+    }
+    else { FreeBalancePerDateOnLoad(); }
 
 });
 
@@ -56,6 +57,21 @@ function TransactionsNextMounthOnLoad() {
         }
     });
 
-   
 
+
+}
+
+function FreeBalancePerDateOnLoad() {
+    $("#btn_checkFreeBalance").click(function () {
+        var checkDate = $('#CheckDate').val();
+        if (checkDate != '') {
+            if (checkDate > new Date().toJSON().slice(0, 10)) {
+                var amount = GMach.Model.Transaction.GetFreeBalancePerDate(checkDate);
+                $('#Amount').text(amount);
+            }
+
+            else { alert("הכנס תאריך עתידי"); }
+        }
+        else { alert("הכנס תאריך לבדיקה"); }
+    })
 }
