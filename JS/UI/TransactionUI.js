@@ -106,7 +106,7 @@ function TransactionOnLoad() {
         transaction = GMach.Model.Transaction.GetDataTransaction(idfromqs);
 
         $('#TransactionType').val(GetTransactionDisplayType(transaction.constructor.name));
-        $('#Contact').val(transaction.contact);
+        $('#Contact').val(transaction.contactId);
         $('#Amount').val(transaction.amount);
         $('#TransactionDate').val(transaction.transactionDate);
         $('#ReturnDate').val(transaction.plan_returnDate);
@@ -172,7 +172,7 @@ function TransactionOnLoad() {
 
         transaction = GetTransactionObjectUI($('#TransactionType').val());
 
-        transaction.contact = $('#Contact').val();//$('#basics').val().split("#")[1]
+        transaction.contactId = $('#Contact').val();//$('#basics').val().split("#")[1]
         transaction.amount = $('#Amount').val();
         transaction.transactionDate = $('#TransactionDate').val();
 
@@ -255,7 +255,7 @@ GMach.UI.Transaction.GetAllTransactionsVM = function(transList) {
         var t = new Object();
         t.transactionId = tran.transactionId;
         t.transactionType = GetTransactionDisplayType(tran.constructor.name);
-        var contact = GMach.Model.Contact.GetDataContact(tran.contact);
+        var contact = GMach.Model.Contact.GetDataContact(tran.contactId);
         t.contact = contact.firstName + " " + contact.lastName;
         t.amount = tran.amount;
         t.transactionDate = tran.transactionDate;
