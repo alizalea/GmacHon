@@ -9,6 +9,8 @@
     <script type="text/javascript" src="../Third Party Code/jquery.min.js"></script>
     <script type="text/javascript" src="../Third Party Code/jquery.dataTables.min.js"></script>
 
+    <script type="text/javascript" src="../Third Party Code/jquery.validate.min.js"></script>   
+    <script type="text/javascript" src="../Third Party Code/validExtend.js"></script>
     <script type="text/javascript" src="../JS/DAL/ContactData.json"></script>
     <script type="text/javascript" src="../JS/Model/OneGmachModel.js"></script>
     <script type="text/javascript" src="../JS/UI/TransactionUI.js"></script>
@@ -26,8 +28,8 @@
         <!-- Content will be inserted by jQuery from header.html -->
     </header>
     <main>
-        <div id="Contact-form"  > 
-            <form novalidate>
+        <div id="Contact-form" class="validationGroup" > 
+            <form >
 
                 <div>
                     <h1>איש קשר</h1>
@@ -37,7 +39,7 @@
 
                         <div>
                             <label for="FirstName">שם פרטי:</label>
-                            <input id="FirstName" name="FirstName" type="text" >
+                            <input id="FirstName" name="FirstName" type="text">
                         </div>
 
                         <div>
@@ -115,7 +117,7 @@
                             </div>
                         </div>
 
-                        <button type="button" class="boldStyle" id="btn_save" >שמירה</button>
+                        <button type="button" class="boldStyle causesValidation" id="btn_save" >שמירה</button>
                         <button type="button" class="boldStyle" id="btn_cancel">ביטול</button>
 
                     </section>

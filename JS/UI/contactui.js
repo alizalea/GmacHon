@@ -75,6 +75,8 @@ function AllContactsOnLoad()
 
 function ContactOnLoad()
 {
+    debugger;
+    $("#Contact-form form").validate();
     var getUrlParameter = GMach.Model.OneGmach.getUrlParameter('id');
     var idfromqs = getUrlParameter ? getUrlParameter : null;
 
@@ -98,20 +100,20 @@ function ContactOnLoad()
         //contact.id = oneGmach.nextContactID;
     }
 
+   
     $("#btn_save").click(function () {
-        // if (isvalid()) {
-
-        // }
-        contact.firstName = $('#FirstName').val();
-        contact.lastName = $('#LastName').val();
-        contact.idNumber = $('#IdNumber').val();
-        contact.phoneNumber = $('#PhoneNumber').val();
-        contact.mobileNumber = $('#MobileNumber').val();
-        contact.address = $('#Address').val();
-        contact.remarks = $('#Remarks').val();
-        debugger;
-        if (GMach.Model.Contact.SetDataContact(contact, idfromqs)) {
-            window.location = "/HTML/Contacts.html";
+        if ($("#Contact-form form").valid()) {
+            contact.firstName = $('#FirstName').val();
+            contact.lastName = $('#LastName').val();
+            contact.idNumber = $('#IdNumber').val();
+            contact.phoneNumber = $('#PhoneNumber').val();
+            contact.mobileNumber = $('#MobileNumber').val();
+            contact.address = $('#Address').val();
+            contact.remarks = $('#Remarks').val();
+            debugger;
+            if (GMach.Model.Contact.SetDataContact(contact, idfromqs)) {
+                window.location = "/HTML/Contacts.html";
+            }
         }
 
 
@@ -120,6 +122,51 @@ function ContactOnLoad()
         window.location = "/HTML/Contacts.html";
 
     });
+
+    //for validation
+    $.validator.addMethod(
+                   "regex",
+                   function (value, element, regexp) {
+                       var re = new RegExp(regexp);
+                       return this.optional(element) || re.test(value);
+                   },
+                   //error message text
+                   "הזנת תווים לא חוקיים"
+                );
+    debugger;
+    $('#FirstName').rules('add', {
+        regex: "^[a-zA-Z0-9א-ת]*$",
+        required: true,
+        maxlength: 25
+    });
+    $('#LastName').rules('add', {
+        regex: "^[a-zA-Z0-9א-ת]*$",
+        required: true,
+        maxlength: 25
+    });
+    $('#IdNumber').rules('add', {
+        regex: "^[0-9]*$",
+        required: true,
+        maxlength: 9
+    });
+    $('#PhoneNumber').rules('add', {
+        regex: "^[0-9-]*$",
+        required: true,
+        maxlength: 11
+    });
+    $('#MobileNumber').rules('add', {
+        regex: "^[0-9-]*$",
+        required: true,
+        maxlength: 11
+    });
+    $('#Address').rules('add', {
+        regex: "^[a-zA-Z0-9א-ת]*$",
+        required: false,
+        maxlength: 50
+    });
+
+
+   
 }
 
 function LoadLoanContact(id) {
