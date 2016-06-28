@@ -2,16 +2,16 @@
 GMach.Model = GMach.Model || {};
 GMach.Model.Transaction = GMach.Model.Transaction || {};
 
-GMach.Model.Transaction.TransactionBase = function (transactionId, contact, amount, transactionDate) {
+GMach.Model.Transaction.TransactionBase = function (transactionId, contactId, amount, transactionDate) {
     this.transactionId = transactionId;
-    this.contact = contact;
+    this.contactId = contactId;
     this.amount = amount;
     this.transactionDate = transactionDate;
 
 };
 
-GMach.Model.Transaction.TransactionWithReturn = function (transactionId, contact, amount, transactionDate, plan_returnDate, returned, returnAmount) {
-    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contact, amount, transactionDate);
+GMach.Model.Transaction.TransactionWithReturn = function (transactionId, contactId, amount, transactionDate, plan_returnDate, returned, returnAmount) {
+    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contactId, amount, transactionDate);
     this.plan_returnDate = plan_returnDate;
     this.returned = returned;
     this.returnAmount = returnAmount;
@@ -29,8 +29,8 @@ GMach.Model.Transaction.Freind = function (first_name, last_name, phone_number, 
 };
 
 // LOAN: הלוואה
-GMach.Model.Transaction.Loan = function Loan(transactionId, contact, amount, transactionDate, freind1, freind2, returnDate, returned, returnAmount) {
-    GMach.Model.Transaction.TransactionWithReturn.call(this, transactionId, contact, amount, transactionDate, returnDate, returned, returnAmount);
+GMach.Model.Transaction.Loan = function Loan(transactionId, contactId, amount, transactionDate, freind1, freind2, returnDate, returned, returnAmount) {
+    GMach.Model.Transaction.TransactionWithReturn.call(this, transactionId, contactId, amount, transactionDate, returnDate, returned, returnAmount);
     this.freind1 = freind1;
     this.freind2 = freind2;
 };
@@ -38,8 +38,8 @@ GMach.Model.Transaction.Loan.prototype = Object.create(GMach.Model.Transaction.T
 GMach.Model.Transaction.Loan.prototype.constructor = GMach.Model.Transaction.Loan;
 
 // RETURN_LOAN: "return_loan",//החזרת הלוואה
-GMach.Model.Transaction.ReturnLoan = function ReturnLoan(transactionId, contact, amount, transactionDate) {
-    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contact, amount, transactionDate);
+GMach.Model.Transaction.ReturnLoan = function ReturnLoan(transactionId, contactId, amount, transactionDate) {
+    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contactId, amount, transactionDate);
 
 };
 
@@ -47,16 +47,16 @@ GMach.Model.Transaction.ReturnLoan.prototype = Object.create(GMach.Model.Transac
 GMach.Model.Transaction.ReturnLoan.prototype.constructor = GMach.Model.Transaction.ReturnLoan;
 
 // DEPOSIT: "deposit": הפקדה
-GMach.Model.Transaction.Deposit = function Deposit(transactionId, contact, amount, transactionDate, returnDate, returned, returnAmount) {
-    GMach.Model.Transaction.TransactionWithReturn.call(this, transactionId, contact, amount, transactionDate, returnDate, returned, returnAmount);
+GMach.Model.Transaction.Deposit = function Deposit(transactionId, contactId, amount, transactionDate, returnDate, returned, returnAmount) {
+    GMach.Model.Transaction.TransactionWithReturn.call(this, transactionId, contactId, amount, transactionDate, returnDate, returned, returnAmount);
 
 };
 GMach.Model.Transaction.Deposit.prototype = Object.create(GMach.Model.Transaction.TransactionWithReturn.prototype);
 GMach.Model.Transaction.Deposit.prototype.constructor = GMach.Model.Transaction.Deposit;
 
 //RETURN_DEPOSIT: משיכת הפקדה
-GMach.Model.Transaction.ReturnDeposit = function ReturnDeposit(transactionId, contact, amount, transactionDate) {
-    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contact, amount, transactionDate);
+GMach.Model.Transaction.ReturnDeposit = function ReturnDeposit(transactionId, contactId, amount, transactionDate) {
+    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contactId, amount, transactionDate);
 
 };
 
@@ -64,8 +64,8 @@ GMach.Model.Transaction.ReturnDeposit.prototype = Object.create(GMach.Model.Tran
 GMach.Model.Transaction.ReturnDeposit.prototype.constructor = GMach.Model.Transaction.ReturnDeposit;
 
 // DONATION: תרומה
-GMach.Model.Transaction.Donation = function Donation(transactionId, contact, amount, transactionDate) {
-    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contact, amount, transactionDate);
+GMach.Model.Transaction.Donation = function Donation(transactionId, contactId, amount, transactionDate) {
+    GMach.Model.Transaction.TransactionBase.call(this, transactionId, contactId, amount, transactionDate);
 
 };
 
@@ -87,7 +87,7 @@ GMach.Model.Transaction.GetAllTransactions = function () {
 
 };
 
-GMach.Model.Transaction.GetDataTransaction = function (id) {
+GMach.Model.Transaction.GetDataTransactionOffline = function (id) {
 
     var con = GMach.Model.Transaction.GetAllTransactions();
     var result = $.grep(con, function (e) { return e.transactionId == id; });
@@ -102,7 +102,7 @@ GMach.Model.Transaction.GetDataTransaction = function (id) {
         console.error("Error During GetDataTransaction");
     }
 }
-GMach.Model.Transaction.GetDataTransactionOffline = function (id) {
+GMach.Model.Transaction.GetDataTransaction = function (id) {
 
     var transaction = GMach.DAL.Transaction.GetDataTransaction(id);
     if (transaction == null) {
@@ -124,7 +124,7 @@ GMach.Model.Transaction.SetDataTransaction = function (transaction, idcon) {
 GMach.Model.Transaction.GetTransactionObject = function (dataBaseRow) {
     var curr = GetTransactionObjectByType(dataBaseRow.transactionType);
     curr.transactionId = dataBaseRow.transactionId;
-    curr.contact = dataBaseRow.contact;
+    curr.contactId = dataBaseRow.contactId;
     curr.amount = parseInt(dataBaseRow.amount);
     curr.transactionDate = dataBaseRow.transactionDate;
 

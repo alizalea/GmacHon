@@ -2,7 +2,7 @@
 GMach.DAL = GMach.DAL || {}; // global namespace, all good
 GMach.DAL.Transaction = GMach.DAL.Transaction || {}; // global namespace, all good
 
-GMach.DAL.Transaction.GetAllTransactions = function () {
+GMach.DAL.Transaction.GetAllTransactionsOffline = function () {
 
     var databaseData;
     var con = localStorage.getItem('Gmach1Transactions');
@@ -18,13 +18,13 @@ GMach.DAL.Transaction.GetAllTransactions = function () {
 
 };
 
-GMach.DAL.Transaction.GetAllTransactionsOffline = function () {
+GMach.DAL.Transaction.GetAllTransactions = function () {
     var transactionData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/transaction/GetAll', null);
     return transactionData;
 
 }
 
-GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
+GMach.DAL.Transaction.SetDataTransactionOffline = function (transaction, editid) {
     try {
         var con = GMach.DAL.Transaction.GetAllTransactions();
 
@@ -76,7 +76,7 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
 
 }
 
-GMach.DAL.Transaction.SetDataTransactionOffline = function (transaction, editid) {
+GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
     transaction.transactionType = transaction.constructor.name;
 
     var transactionData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/transaction/Save', JSON.stringify(transaction));

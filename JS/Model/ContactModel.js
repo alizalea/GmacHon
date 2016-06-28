@@ -90,7 +90,7 @@ GMach.Model.Contact.GetContactTransactions = function (idContact) {
 
     allTransactions.forEach(function (tran) {
         var tranType = tran.constructor.name;
-        if (tran.contact == idContact) {
+        if (tran.contactId == idContact) {
             if ((tranType == "Loan" || tranType == "ReturnLoan")) {
                 loanTrans.push(tran);
                 (tranType == "Loan" ? loanAmount += tran.amount : loanAmount -= tran.amount);
