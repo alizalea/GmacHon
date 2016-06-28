@@ -218,7 +218,7 @@ function LoadLoanContact(id) {
 
     $('#DonationContact').DataTable({
 
-        data:contactTransactions[4],
+        data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[4]),
 
         columns: [
               { "data": "amount" },

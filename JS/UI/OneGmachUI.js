@@ -21,7 +21,7 @@ function getMasseges() {
     returnTransactions.forEach(function (tran) {
         var contact = GMach.Model.Contact.GetDataContact(tran.contact);
         var contactName = contact.firstName + " " + contact.lastName;
-        massages += "בתאריך " + tran.plan_returnDate + " עליך להחזיר סכום של " + tran.amount + " ₪ ל" + contactName;
+        massages += "בתאריך " + tran.returnDate + " עליך להחזיר סכום של " + tran.amount + " ₪ ל" + contactName;
         massages += "\n";
     }
      );

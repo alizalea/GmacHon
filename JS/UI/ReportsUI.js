@@ -21,7 +21,7 @@ function TransactionsNextMounthOnLoad() {
         columns: [
               { "data": "contact" },
               { "data": "amount" },
-              { "data": "plan_returnDate" },
+              { "data": "returnDate" },
 
         ],
 

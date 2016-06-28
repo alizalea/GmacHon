@@ -37,7 +37,7 @@ GMach.DAL.Transaction.SetDataTransactionOffline = function (transaction, editid)
                     con[i].amount = transaction.amount;
                     con[i].transactionDate = transaction.transactionDate;
 
-                    con[i].returnDate = transaction.plan_returnDate;
+                    con[i].returnDate = transaction.returnDate;
                     con[i].returned = transaction.returned;
                     con[i].returnAmount = transaction.returnAmount;
 

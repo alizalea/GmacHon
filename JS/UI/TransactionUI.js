@@ -109,7 +109,7 @@ function TransactionOnLoad() {
         $('#Contact').val(transaction.contactId);
         $('#Amount').val(transaction.amount);
         $('#TransactionDate').val(formatDate(transaction.transactionDate));
-        $('#ReturnDate').val(formatDate(transaction.plan_returnDate));
+        $('#ReturnDate').val(formatDate(transaction.returnDate));
         $('#Returned')[0].checked = transaction.returned;
         $('#ReturnAmount').val(transaction.returnAmount);
 
@@ -177,7 +177,7 @@ function TransactionOnLoad() {
             transaction.amount = $('#Amount').val();
             transaction.transactionDate = $('#TransactionDate').val();
 
-            transaction.plan_returnDate = $('#ReturnDate').val();
+            transaction.returnDate = $('#ReturnDate').val();
             transaction.returned = $('#Returned')[0].checked;
             transaction.returnAmount = $('#ReturnAmount').val();
 
@@ -260,7 +260,7 @@ GMach.UI.Transaction.GetAllTransactionsVM = function (transList) {
         t.contact = contact.firstName + " " + contact.lastName;
         t.amount = tran.amount;
         t.transactionDate = formatDate(tran.transactionDate);
-        t.plan_returnDate = formatDate(tran.plan_returnDate);
+        t.returnDate = formatDate(tran.returnDate);
 
 
         trans.push(t);
