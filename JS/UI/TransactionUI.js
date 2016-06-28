@@ -95,7 +95,7 @@ function TransactionOnLoad() {
     $("#TransactionType").change(function () {
         showOrHideControls();
     });
-
+    $("#Transaction-form").validate();
     var getUrlParameter = GMach.Model.OneGmach.getUrlParameter('id');
     var idfromqs = getUrlParameter ? getUrlParameter : null;
 
@@ -169,37 +169,37 @@ function TransactionOnLoad() {
 
 
     $("#btn_save").click(function () {
+        if ($("#Transaction-form").valid()) {
+            transaction = GetTransactionObjectUI($('#TransactionType').val());
+            transaction.transactionId = idfromqs;
 
-        transaction = GetTransactionObjectUI($('#TransactionType').val());
-        transaction.transactionId = idfromqs;
+            transaction.contactId = $('#Contact').val();//$('#basics').val().split("#")[1]
+            transaction.amount = $('#Amount').val();
+            transaction.transactionDate = $('#TransactionDate').val();
 
-        transaction.contactId = $('#Contact').val();//$('#basics').val().split("#")[1]
-        transaction.amount = $('#Amount').val();
-        transaction.transactionDate = $('#TransactionDate').val();
+            transaction.plan_returnDate = $('#ReturnDate').val();
+            transaction.returned = $('#Returned')[0].checked;
+            transaction.returnAmount = $('#ReturnAmount').val();
 
-        transaction.plan_returnDate = $('#ReturnDate').val();
-        transaction.returned = $('#Returned')[0].checked;
-        transaction.returnAmount = $('#ReturnAmount').val();
+            if (transaction.freind1 != undefined) {
+                transaction.freind1.first_name = $('#FirstNameFirstFreind').val();
+                transaction.freind1.last_name = $('#LastNameFirstFreind').val();
+                transaction.freind1.phone_number = $('#PhoneNumberFirstFreind').val();
+                transaction.freind1.remark = $('#RemarkFirstFreind').val();
+            }
 
-        if (transaction.freind1 != undefined) {
-            transaction.freind1.first_name = $('#FirstNameFirstFreind').val();
-            transaction.freind1.last_name = $('#LastNameFirstFreind').val();
-            transaction.freind1.phone_number = $('#PhoneNumberFirstFreind').val();
-            transaction.freind1.remark = $('#RemarkFirstFreind').val();
+            if (transaction.freind2 != undefined) {
+                transaction.freind2.first_name = $('#FirstNameSecondFreind').val();
+                transaction.freind2.last_name = $('#LastNameSecondFreind').val();
+                transaction.freind2.phone_number = $('#PhoneNumberSecondFreind').val();
+                transaction.freind2.remark = $('#RemarkSecondFreind').val();
+            }
+
+            if (GMach.Model.Transaction.SetDataTransaction(transaction, idfromqs)) {
+                window.location = "/HTML/Transactions.html";
+            }
+
         }
-
-        if (transaction.freind2 != undefined) {
-            transaction.freind2.first_name = $('#FirstNameSecondFreind').val();
-            transaction.freind2.last_name = $('#LastNameSecondFreind').val();
-            transaction.freind2.phone_number = $('#PhoneNumberSecondFreind').val();
-            transaction.freind2.remark = $('#RemarkSecondFreind').val();
-        }
-
-        if (GMach.Model.Transaction.SetDataTransaction(transaction, idfromqs)) {
-            window.location = "/HTML/Transactions.html";
-        }
-
-
     });
 
     $("#btn_cancel").click(function (transaction) {
