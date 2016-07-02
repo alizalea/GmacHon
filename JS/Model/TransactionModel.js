@@ -4,15 +4,15 @@ GMach.Model.Transaction = GMach.Model.Transaction || {};
 
 GMach.Model.Transaction.TransactionBase = function (transactionId, contactId, amount, transactionDate) {
     this.transactionId = transactionId;
-    this.contact = contactId;
+    this.contactId = contactId;
     this.amount = amount;
     this.transactionDate = transactionDate;
 
 };
 
-GMach.Model.Transaction.TransactionWithReturn = function (transactionId, contactId, amount, transactionDate, plan_returnDate, returned, returnAmount) {
+GMach.Model.Transaction.TransactionWithReturn = function (transactionId, contactId, amount, transactionDate, returnDate, returned, returnAmount) {
     GMach.Model.Transaction.TransactionBase.call(this, transactionId, contactId, amount, transactionDate);
-    this.plan_returnDate = plan_returnDate;
+    this.returnDate = returnDate;
     this.returned = returned;
     this.returnAmount = returnAmount;
 
@@ -87,7 +87,7 @@ GMach.Model.Transaction.GetAllTransactions = function () {
 
 };
 
-GMach.Model.Transaction.GetDataTransaction = function (id) {
+GMach.Model.Transaction.GetDataTransactionOffline = function (id) {
 
     var con = GMach.Model.Transaction.GetAllTransactions();
     var result = $.grep(con, function (e) { return e.transactionId == id; });
@@ -102,7 +102,7 @@ GMach.Model.Transaction.GetDataTransaction = function (id) {
         console.error("Error During GetDataTransaction");
     }
 }
-GMach.Model.Transaction.GetDataTransactionOffline = function (id) {
+GMach.Model.Transaction.GetDataTransaction = function (id) {
 
     var transaction = GMach.DAL.Transaction.GetDataTransaction(id);
     if (transaction == null) {
@@ -128,7 +128,7 @@ GMach.Model.Transaction.GetTransactionObject = function (dataBaseRow) {
     curr.amount = parseInt(dataBaseRow.amount);
     curr.transactionDate = dataBaseRow.transactionDate;
 
-    curr.plan_returnDate = dataBaseRow.returnDate;
+    curr.returnDate = dataBaseRow.returnDate;
     curr.returned = dataBaseRow.returned;
     curr.returnAmount = dataBaseRow.returnAmount;
 
@@ -193,7 +193,7 @@ GMach.Model.Transaction.GetReturnLoanTransactions = function (scope) {
     var trans = new Array();
     allTransactions.forEach(function (tran) {
         if (tran.constructor.name == "Loan" && tran.returned == false
-            && tran.plan_returnDate >= currentTime && tran.plan_returnDate <= nextMonthYear) {
+            && tran.returnDate >= currentTime && tran.returnDate <= nextMonthYear) {
             trans.push(tran);
         }
     }
@@ -214,7 +214,7 @@ GMach.Model.Transaction.GetReturnDepositTransactions = function () {
     var trans = new Array();
     allTransactions.forEach(function (tran) {
         if (tran.constructor.name == "Deposit" && tran.returned == false
-            && tran.plan_returnDate >= currentTime && tran.plan_returnDate <= nextMonth) {
+            && tran.returnDate >= currentTime && tran.returnDate <= nextMonth) {
             trans.push(tran);
         }
     }

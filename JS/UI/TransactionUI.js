@@ -95,7 +95,7 @@ function TransactionOnLoad() {
     $("#TransactionType").change(function () {
         showOrHideControls();
     });
-
+    $("#Transaction-form").validate();
     var getUrlParameter = GMach.Model.OneGmach.getUrlParameter('id');
     var idfromqs = getUrlParameter ? getUrlParameter : null;
 
@@ -108,8 +108,8 @@ function TransactionOnLoad() {
         $('#TransactionType').val(GetTransactionDisplayType(transaction.constructor.name));
         $('#Contact').val(transaction.contactId);
         $('#Amount').val(transaction.amount);
-        $('#TransactionDate').val(transaction.transactionDate);
-        $('#ReturnDate').val(transaction.plan_returnDate);
+        $('#TransactionDate').val(formatDate(transaction.transactionDate));
+        $('#ReturnDate').val(formatDate(transaction.returnDate));
         $('#Returned')[0].checked = transaction.returned;
         $('#ReturnAmount').val(transaction.returnAmount);
 
@@ -169,36 +169,37 @@ function TransactionOnLoad() {
 
 
     $("#btn_save").click(function () {
+        if ($("#Transaction-form").valid()) {
+            transaction = GetTransactionObjectUI($('#TransactionType').val());
+            transaction.transactionId = idfromqs;
 
-        transaction = GetTransactionObjectUI($('#TransactionType').val());
+            transaction.contactId = $('#Contact').val();//$('#basics').val().split("#")[1]
+            transaction.amount = $('#Amount').val();
+            transaction.transactionDate = $('#TransactionDate').val();
 
-        transaction.contactId = $('#Contact').val();//$('#basics').val().split("#")[1]
-        transaction.amount = $('#Amount').val();
-        transaction.transactionDate = $('#TransactionDate').val();
+            transaction.returnDate = $('#ReturnDate').val();
+            transaction.returned = $('#Returned')[0].checked;
+            transaction.returnAmount = $('#ReturnAmount').val();
 
-        transaction.plan_returnDate = $('#ReturnDate').val();
-        transaction.returned = $('#Returned')[0].checked;
-        transaction.returnAmount = $('#ReturnAmount').val();
+            if (transaction.freind1 != undefined) {
+                transaction.freind1.first_name = $('#FirstNameFirstFreind').val();
+                transaction.freind1.last_name = $('#LastNameFirstFreind').val();
+                transaction.freind1.phone_number = $('#PhoneNumberFirstFreind').val();
+                transaction.freind1.remark = $('#RemarkFirstFreind').val();
+            }
 
-        if (transaction.freind1 != undefined) {
-            transaction.freind1.first_name = $('#FirstNameFirstFreind').val();
-            transaction.freind1.last_name = $('#LastNameFirstFreind').val();
-            transaction.freind1.phone_number = $('#PhoneNumberFirstFreind').val();
-            transaction.freind1.remark = $('#RemarkFirstFreind').val();
+            if (transaction.freind2 != undefined) {
+                transaction.freind2.first_name = $('#FirstNameSecondFreind').val();
+                transaction.freind2.last_name = $('#LastNameSecondFreind').val();
+                transaction.freind2.phone_number = $('#PhoneNumberSecondFreind').val();
+                transaction.freind2.remark = $('#RemarkSecondFreind').val();
+            }
+
+            if (GMach.Model.Transaction.SetDataTransaction(transaction, idfromqs)) {
+                window.location = "/HTML/Transactions.html";
+            }
+
         }
-
-        if (transaction.freind2 != undefined) {
-            transaction.freind2.first_name = $('#FirstNameSecondFreind').val();
-            transaction.freind2.last_name = $('#LastNameSecondFreind').val();
-            transaction.freind2.phone_number = $('#PhoneNumberSecondFreind').val();
-            transaction.freind2.remark = $('#RemarkSecondFreind').val();
-        }
-
-        if (GMach.Model.Transaction.SetDataTransaction(transaction, idfromqs)) {
-            window.location = "/HTML/Transactions.html";
-        }
-
-
     });
 
     $("#btn_cancel").click(function (transaction) {
@@ -249,7 +250,7 @@ function GetTransactionObjectUI(TransactionDisplayType) {
     return object;
 }
 
-GMach.UI.Transaction.GetAllTransactionsVM = function(transList) {
+GMach.UI.Transaction.GetAllTransactionsVM = function (transList) {
     var trans = new Array();
     transList.forEach(function (tran) {
         var t = new Object();
@@ -258,8 +259,8 @@ GMach.UI.Transaction.GetAllTransactionsVM = function(transList) {
         var contact = GMach.Model.Contact.GetDataContact(tran.contactId);
         t.contact = contact.firstName + " " + contact.lastName;
         t.amount = tran.amount;
-        t.transactionDate = tran.transactionDate;
-        t.plan_returnDate = tran.plan_returnDate;
+        t.transactionDate = formatDate(tran.transactionDate);
+        t.returnDate = formatDate(tran.returnDate);
 
 
         trans.push(t);
@@ -269,3 +270,7 @@ GMach.UI.Transaction.GetAllTransactionsVM = function(transList) {
     return trans;
 
 };
+
+function formatDate(longDate) {
+  return  new Date(longDate).toJSON().slice(0, 10);
+}
