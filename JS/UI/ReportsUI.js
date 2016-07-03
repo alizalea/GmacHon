@@ -67,11 +67,18 @@ function FreeBalancePerDateOnLoad() {
         if (checkDate != '') {
             if (checkDate > new Date().toJSON().slice(0, 10)) {
                 var amount = GMach.Model.Transaction.GetFreeBalancePerDate(checkDate);
-                $('#Amount').text(amount);
+                $('#Amount').text(numberWithCommas(amount));
             }
 
             else { alert("הכנס תאריך עתידי"); }
         }
         else { alert("הכנס תאריך לבדיקה"); }
     })
+}
+
+function numberWithCommas(x) {
+    if (x != undefined) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    else throw "Undefined Number"
 }

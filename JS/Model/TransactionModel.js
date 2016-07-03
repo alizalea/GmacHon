@@ -225,7 +225,21 @@ GMach.Model.Transaction.GetReturnDepositTransactions = function () {
 }
 
 GMach.Model.Transaction.GetFreeBalancePerDate = function (chechDate) {
+    var currentTime = new Date().toJSON().slice(0, 10);
+    var total = 0;
+    GMach.Model.Transaction.GetAllTransactions().forEach(function (tran) {
+        var type = tran.constructor.name;
+        if (tran.returned == false && tran.returnDate >= currentTime && tran.returnDate < chechDate)
+        { }
+        else
+        {
+            if (type == 'ReturnLoan' || type == 'Deposit' || type == 'Donation')
+                total += tran.amount;
+            else if (type == 'Loan' || type == 'ReturnDeposit')
+                total -= tran.amount;
+        }
+    });
+    return total;
 
-    return 2;
 }
 
