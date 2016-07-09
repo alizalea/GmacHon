@@ -166,6 +166,10 @@ function TransactionOnLoad() {
     };
 
     $("#ContactSearch").easyAutocomplete(options);
+    //למנוע הקשת תוים בבחירת איש קשר - שיהיה ניתן רק לבחור
+    $("#ContactSearch").keypress(function (evt) {
+        evt.preventDefault();
+    });
 
 
     $("#btn_save").click(function () {
