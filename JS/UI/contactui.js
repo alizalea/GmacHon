@@ -71,6 +71,27 @@ function AllContactsOnLoad()
         window.location = "/HTML/Contact.html?id=" + id;
 
     });
+
+    //מספר פריטים לתצוגה תוך שימוש ב localstorage
+    setDefaultSumRowsView();
+
+    $(".contacts select").change(function () {
+        storeDefaultSumRowsView();
+    });
+
+}
+
+function setDefaultSumRowsView()
+{
+    var defaultSumRowsView = JSON.parse(localStorage.getItem('DefaultSumRowsView'));
+    if (defaultSumRowsView != null && defaultSumRowsView != undefined) {
+        $('.contacts select').val(defaultSumRowsView);
+    }
+}   
+ 
+function storeDefaultSumRowsView() {
+    var defaultSumRowsView = $('.contacts select').val();
+     localStorage.setItem('DefaultSumRowsView', JSON.stringify(defaultSumRowsView));
 }
 
 function ContactOnLoad()
@@ -169,71 +190,71 @@ function ContactOnLoad()
    
 }
 
-function LoadLoanContact(id) {
-    var contactTransactions = GMach.Model.Contact.GetContactTransactions(id);
+    function LoadLoanContact(id) {
+        var contactTransactions = GMach.Model.Contact.GetContactTransactions(id);
 
-    $('#LoanContact').DataTable({
+        $('#LoanContact').DataTable({
 
-        data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[0]),
+            data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[0]),
 
-        columns: [
-              { "data": "transactionType" },
-              { "data": "amount" },
-              { "data": "transactionDate" },
+            columns: [
+                  { "data": "transactionType" },
+                  { "data": "amount" },
+                  { "data": "transactionDate" },
 
-        ],
+            ],
 
-        order: [2, 'desc'],
-        paging: false,
-        ordering: false,
-        info: false,
-        filter: false,
-        "language": {
-            "zeroRecords": "לא נמצאו הלוואות",
-        },
-    });
-    $('#SumLoanContact').text(contactTransactions[1]);
+            order: [2, 'desc'],
+            paging: false,
+            ordering: false,
+            info: false,
+            filter: false,
+            "language": {
+                "zeroRecords": "לא נמצאו הלוואות",
+            },
+        });
+        $('#SumLoanContact').text(contactTransactions[1]);
 
-    $('#DepositContact').DataTable({
+        $('#DepositContact').DataTable({
 
-        data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[2]),
+            data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[2]),
 
-        columns: [
-              { "data": "transactionType" },
-              { "data": "amount" },
-              { "data": "transactionDate" },
+            columns: [
+                  { "data": "transactionType" },
+                  { "data": "amount" },
+                  { "data": "transactionDate" },
 
-        ],
+            ],
 
-        order: [2, 'desc'],
-        paging: false,
-        ordering: false,
-        info: false,
-        filter: false,
-        "language": {
-            "zeroRecords": "לא נמצאו הפקדות",
-        },
-    });
-    $('#SumDeposit').text(contactTransactions[3]);
+            order: [2, 'desc'],
+            paging: false,
+            ordering: false,
+            info: false,
+            filter: false,
+            "language": {
+                "zeroRecords": "לא נמצאו הפקדות",
+            },
+        });
+        $('#SumDeposit').text(contactTransactions[3]);
 
-    $('#DonationContact').DataTable({
+        $('#DonationContact').DataTable({
 
-        data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[4]),
+            data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[4]),
 
-        columns: [
-              { "data": "amount" },
-              { "data": "transactionDate" },
+            columns: [
+                  { "data": "amount" },
+                  { "data": "transactionDate" },
 
-        ],
+            ],
 
-        order: [1, 'desc'],
-        paging: false,
-        ordering: false,
-        info: false,
-        filter: false,
-        "language": {
-            "zeroRecords": "לא נמצאו תרומות",
-        },
-    });
-}
+            order: [1, 'desc'],
+            paging: false,
+            ordering: false,
+            info: false,
+            filter: false,
+            "language": {
+                "zeroRecords": "לא נמצאו תרומות",
+            },
+        });
+    }
 
