@@ -154,7 +154,7 @@ function ContactOnLoad()
                    //error message text
                    "הזנת תווים לא חוקיים"
                 );
-    debugger;
+    
     $('#FirstName').rules('add', {
         regex: "^[a-zA-Z0-9א-ת]*$",
         required: true,

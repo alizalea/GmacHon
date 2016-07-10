@@ -91,11 +91,11 @@ function GetTransactionDisplayType(transactionType) {
 }
 
 function TransactionOnLoad() {
-
+    $("#Transaction-form").validate();
     $("#TransactionType").change(function () {
         showOrHideControls();
     });
-    $("#Transaction-form").validate();
+   
     var getUrlParameter = GMach.Model.OneGmach.getUrlParameter('id');
     var idfromqs = getUrlParameter ? getUrlParameter : null;
 
@@ -166,14 +166,17 @@ function TransactionOnLoad() {
     };
 
     $("#ContactSearch").easyAutocomplete(options);
-    //למנוע הקשת תוים בבחירת איש קשר - שיהיה ניתן רק לבחור
+    //בהקשת תוים ערך שדה מזהה איש קשר נמחק
     $("#ContactSearch").keypress(function (evt) {
-        evt.preventDefault();
+        //  evt.preventDefault();
+        $('#Contact').val('');
     });
-
-
+       
     $("#btn_save").click(function () {
-        if ($("#Transaction-form").valid()) {
+        if ($('#Contact').val() == '') {
+            alert("חובה לבחור איש קשר מתוך הרשימה");
+        }
+        if ($("#Transaction-form").valid() && $('#Contact').val() != '') {
             transaction = GetTransactionObjectUI($('#TransactionType').val());
             transaction.transactionId = idfromqs;
 
@@ -209,6 +212,44 @@ function TransactionOnLoad() {
     $("#btn_cancel").click(function (transaction) {
         window.location = "/HTML/Transactions.html";
 
+    });
+
+    //for validation
+    $.validator.addMethod(
+                   "regex",
+                   function (value, element, regexp) {
+                       var re = new RegExp(regexp);
+                       return this.optional(element) || re.test(value);
+                   },
+                   //error message text
+                   "הזנת תווים לא חוקיים"
+                );
+    
+    $('#ContactSearch').rules('add', {
+        required: {
+            depends: function (element) {
+                debugger;
+                return ($('#Contact').val() == '');
+            }
+        }
+        
+    });
+    $('#ReturnDate').rules('add', {
+        required: {
+            depends: function (element) {
+                return ($('#ReturnDate').length>0);
+            }
+           }
+
+    });
+    $('#TransactionDate').rules('add', {
+        required: true
+    });
+
+    
+    $('#Amount').rules('add', {
+        required: true,
+        regex: "^[0-9]*$"
     });
 
     function showOrHideControls() {

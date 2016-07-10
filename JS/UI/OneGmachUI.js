@@ -8,6 +8,7 @@
     var dragSrcEl = null;
 
     function handleDragStart(e) {
+        this.style.opacity = '0.4';
         // Target (this) element is the source node.
         dragSrcEl = this;
 
@@ -30,13 +31,15 @@
         if (e.stopPropagation) {
             e.stopPropagation(); // Stops some browsers from redirecting.
         }
-
+        this.style.opacity = '1';
+        dragSrcEl.style.opacity = '1';
         // Don't do anything if dropping the same column we're dragging.
         if (dragSrcEl != this) {
             // Set the source column's HTML to the HTML of the column we dropped on.
             dragSrcEl.innerHTML = this.innerHTML;
             this.innerHTML = e.dataTransfer.getData('text/html');
         }
+       
 
         return false;
     }
