@@ -82,7 +82,6 @@ main {
     box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
     background: white;
     cursor: move;
-
 }
 
     .panel:nth-child(4) {
@@ -101,6 +100,7 @@ main {
 .paneldata span {
     font-size: 35px;
 }
+
 .wrapText {
     white-space: pre-wrap;
 }
@@ -140,6 +140,13 @@ button {
     border-radius: 10px;
     border: none;
     font-size: inherit;
+}
+
+.btn {
+    border-color: #375D3B !important;
+    color: #375D3B !important;
+    width: 100px;
+    height: 35px;
 }
 
 #Contact-form section div {
