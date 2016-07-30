@@ -17,7 +17,7 @@ function AllContactsOnLoad()
 
         //ajax: "../php/todo.php",
         data: allContacts,
-
+        pageLength: setDefaultSumRowsView(),
         columns: [
              { "data": "lastName" },
              { "data": "firstName" },
@@ -81,12 +81,14 @@ function AllContactsOnLoad()
 
 }
 
-function setDefaultSumRowsView()
+function  setDefaultSumRowsView()
 {
-    var defaultSumRowsView = JSON.parse(localStorage.getItem('DefaultSumRowsView'));
-    if (defaultSumRowsView != null && defaultSumRowsView != undefined) {
+    var defaultSumRowsView = 10;
+    defaultSumRowsView = JSON.parse(localStorage.getItem('DefaultSumRowsView'));
+   /* if (defaultSumRowsView != null && defaultSumRowsView != undefined) {
         $('.contacts select').val(defaultSumRowsView);
-    }
+    }*/
+    return defaultSumRowsView;
 }   
  
 function storeDefaultSumRowsView() {
