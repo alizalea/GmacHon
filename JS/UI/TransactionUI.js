@@ -9,7 +9,6 @@ $(document).ready(function () {
         TransactionOnLoad();
     }
 
-
 });
 
 function AllTransactionsOnLoad() {
@@ -78,19 +77,19 @@ function AllTransactionsOnLoad() {
 
 }
 
-    function setDefaultSumRowsView() {
-        var defaultSumRowsView = 10;
-        defaultSumRowsView = JSON.parse(localStorage.getItem('DefaultSumRowsViewTran'));
-        if (defaultSumRowsView != null && defaultSumRowsView != undefined) {
-            return defaultSumRowsView;
-        }
-        return 10;
+function setDefaultSumRowsView() {
+    var defaultSumRowsView = 10;
+    defaultSumRowsView = JSON.parse(localStorage.getItem('DefaultSumRowsViewTran'));
+    if (defaultSumRowsView != null && defaultSumRowsView != undefined) {
+        return defaultSumRowsView;
     }
+    return 10;
+}
 
-    function storeDefaultSumRowsView() {
-        var defaultSumRowsView = $('.transactions select').val();
-        localStorage.setItem('DefaultSumRowsViewTran', JSON.stringify(defaultSumRowsView));
-    }
+function storeDefaultSumRowsView() {
+    var defaultSumRowsView = $('.transactions select').val();
+    localStorage.setItem('DefaultSumRowsViewTran', JSON.stringify(defaultSumRowsView));
+}
 function GetTransactionDisplayType(transactionType) {
     var name = "";
     switch (transactionType) {
@@ -118,7 +117,7 @@ function TransactionOnLoad() {
     $("#TransactionType").change(function () {
         showOrHideControls();
     });
-   
+
     var getUrlParameter = GMach.Model.OneGmach.getUrlParameter('id');
     var idfromqs = getUrlParameter ? getUrlParameter : null;
 
@@ -155,23 +154,19 @@ function TransactionOnLoad() {
         showOrHideControls();
 
         var contact = GMach.Model.Contact.GetDataContact($('#Contact').val());
-        var fullName = contact.firstName + " " + contact.lastName;
+        var fullName = contact.idNumber + " " + contact.firstName + " " + contact.lastName;
         $("#ContactSearch").val(fullName);
 
     }
 
     var contacts = GMach.DAL.Contact.GetAllContacts();
-    var choices = [];
-    contacts.forEach(function (c) {
-        choices.push(c.firstName + " " + c.lastName + " # " + c.id);
-    });
 
     var options = {
 
         data: contacts,
 
         getValue: function (element) {
-            return element.firstName + " " + element.lastName;
+            return element.idNumber + " " + element.firstName + " " + element.lastName;
         },
 
         list: {
@@ -194,7 +189,7 @@ function TransactionOnLoad() {
         //  evt.preventDefault();
         $('#Contact').val('');
     });
-       
+
     $("#btn_save").click(function () {
         if ($('#Contact').val() == '') {
             alert("חובה לבחור איש קשר מתוך הרשימה");
@@ -247,7 +242,7 @@ function TransactionOnLoad() {
                    //error message text
                    "הזנת תווים לא חוקיים"
                 );
-    
+
     $('#ContactSearch').rules('add', {
         required: {
             depends: function (element) {
@@ -255,21 +250,21 @@ function TransactionOnLoad() {
                 return ($('#Contact').val() == '');
             }
         }
-        
-    });
-  /*  $('#ReturnDate').rules('add', {
-        required: {
-            depends: function (element) {
-                return ($('#ReturnDate').length>0);
-            }
-           }
 
-    });*/
+    });
+    /*  $('#ReturnDate').rules('add', {
+          required: {
+              depends: function (element) {
+                  return ($('#ReturnDate').length>0);
+              }
+             }
+  
+      });*/
     $('#TransactionDate').rules('add', {
         required: true
     });
 
-    
+
     $('#Amount').rules('add', {
         required: true,
         regex: "^[0-9]*$"
@@ -340,5 +335,5 @@ GMach.UI.Transaction.GetAllTransactionsVM = function (transList) {
 };
 
 function formatDate(longDate) {
-  return  new Date(longDate).toJSON().slice(0, 10);
+    return new Date(longDate).toJSON().slice(0, 10);
 }
