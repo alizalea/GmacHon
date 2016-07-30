@@ -95,7 +95,10 @@ main {
 .panel:nth-child(4) .paneldata {
     padding-top: 5%;
 }
-
+#massages
+{   height:119px;
+    overflow:auto;
+}
 
 .paneldata span {
     font-size: 35px;
