@@ -73,7 +73,7 @@ function AllContactsOnLoad()
     });
 
     //מספר פריטים לתצוגה תוך שימוש ב localstorage
-    setDefaultSumRowsView();
+//    setDefaultSumRowsView();
 
     $(".contacts select").change(function () {
         storeDefaultSumRowsView();
@@ -88,7 +88,10 @@ function  setDefaultSumRowsView()
    /* if (defaultSumRowsView != null && defaultSumRowsView != undefined) {
         $('.contacts select').val(defaultSumRowsView);
     }*/
-    return defaultSumRowsView;
+    if (defaultSumRowsView != null && defaultSumRowsView != undefined) {
+        return defaultSumRowsView;
+    }
+    return 10;
 }   
  
 function storeDefaultSumRowsView() {

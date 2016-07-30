@@ -18,7 +18,7 @@ function AllTransactionsOnLoad() {
     $('#transactions').DataTable({
 
         data: allTransactions,
-
+        pageLength: setDefaultSumRowsView(),
         columns: [
               { "data": "transactionType" },
               { "data": "contact" },
@@ -67,7 +67,25 @@ function AllTransactionsOnLoad() {
 
     });
 
+    $(".transactions select").change(function () {
+        storeDefaultSumRowsView();
+    });
+
 }
+
+    function setDefaultSumRowsView() {
+        var defaultSumRowsView = 10;
+        defaultSumRowsView = JSON.parse(localStorage.getItem('DefaultSumRowsViewTran'));
+        if (defaultSumRowsView != null && defaultSumRowsView != undefined) {
+            return defaultSumRowsView;
+        }
+        return 10;
+    }
+
+    function storeDefaultSumRowsView() {
+        var defaultSumRowsView = $('.transactions select').val();
+        localStorage.setItem('DefaultSumRowsViewTran', JSON.stringify(defaultSumRowsView));
+    }
 function GetTransactionDisplayType(transactionType) {
     var name = "";
     switch (transactionType) {
@@ -234,14 +252,14 @@ function TransactionOnLoad() {
         }
         
     });
-    $('#ReturnDate').rules('add', {
+  /*  $('#ReturnDate').rules('add', {
         required: {
             depends: function (element) {
                 return ($('#ReturnDate').length>0);
             }
            }
 
-    });
+    });*/
     $('#TransactionDate').rules('add', {
         required: true
     });
