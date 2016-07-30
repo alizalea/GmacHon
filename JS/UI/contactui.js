@@ -78,6 +78,10 @@ function AllContactsOnLoad()
     $(".contacts select").change(function () {
         storeDefaultSumRowsView();
     });
+    $(".contacts #addContact").click(function () {
+        window.location = '/HTML/Contact.html';
+    });
+    
 
 }
 
@@ -101,7 +105,7 @@ function storeDefaultSumRowsView() {
 
 function ContactOnLoad()
 {
-    debugger;
+   // debugger;
     $("#Contact-form form").validate();
     var getUrlParameter = GMach.Model.OneGmach.getUrlParameter('id');
     var idfromqs = getUrlParameter ? getUrlParameter : null;

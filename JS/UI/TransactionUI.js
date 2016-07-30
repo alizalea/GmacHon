@@ -71,6 +71,10 @@ function AllTransactionsOnLoad() {
         storeDefaultSumRowsView();
     });
 
+    $(".transactions #addTran").click(function () {
+        window.location = '/HTML/Transaction.html';
+    });
+
 }
 
     function setDefaultSumRowsView() {
