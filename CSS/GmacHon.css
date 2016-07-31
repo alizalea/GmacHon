@@ -16,7 +16,9 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+nav{
+    padding-bottom:15px;
+}
 .HideDiv {
     display: none;
 }
@@ -109,11 +111,6 @@ main {
 }
 
 
-.contacts, transactions {
-    width: 80%;
-    margin: auto;
-}
-
 
 #Contact-form {
 }
@@ -148,7 +145,7 @@ button {
 .btn {
     border-color: #375D3B !important;
     color: #375D3B !important;
-    width: 100px;
+    width:auto;/* 100px;*/
     height: 35px;
 }
 
@@ -159,6 +156,61 @@ button {
 .easy-autocomplete {
     display: inline;
 }
-video{
-    width:90%;
+.tableContact{
+   /* margin-top:25px;*/
 }
+.tableContact{
+    padding:25px;
+    border:1px solid;
+}
+
+.contacts .title{
+   text-align:center;
+   font-size:22px;
+}
+.dataTables_wrapper .dataTables_filter input{margin-right:0.5em}
+tbody tr {
+    cursor: pointer;
+}
+h1{
+    text-align:center;
+}
+.reports div{
+    margin-bottom:25px;
+    text-align:center;
+}
+th{
+    text-align:center;
+}
+table.dataTable thead .sorting{
+    background-image: url('../Media/sort_both.png');
+
+}
+table.dataTable thead .sorting_asc{background-image:url("../Media/sort_asc.png")}
+table.dataTable thead .sorting_desc{background-image:url("../Media/sort_desc.png")}
+.dataTables_filter{
+    margin-bottom:10px;
+}
+table.dataTable.display tbody tr.odd{background-color:#C4D7A4}
+table.dataTable.stripe tbody tr.odd.selected,table.dataTable.display tbody tr.odd.selected{background-color:#acbad4}
+table.dataTable.hover tbody tr:hover,table.dataTable.display tbody tr:hover{background-color:#f6f6f6}
+table.dataTable.hover tbody tr:hover.selected,table.dataTable.display tbody tr:hover.selected{background-color:#aab7d1}
+table.dataTable.order-column tbody tr>.sorting_1,table.dataTable.order-column tbody tr>.sorting_2,table.dataTable.order-column tbody tr>.sorting_3,table.dataTable.display tbody tr>.sorting_1,table.dataTable.display tbody tr>.sorting_2,table.dataTable.display tbody tr>.sorting_3{background-color:#375D3B}
+table.dataTable.order-column tbody tr.selected>.sorting_1,table.dataTable.order-column tbody tr.selected>.sorting_2,table.dataTable.order-column tbody tr.selected>.sorting_3,table.dataTable.display tbody tr.selected>.sorting_1,table.dataTable.display tbody tr.selected>.sorting_2,
+table.dataTable.display tbody tr.selected>.sorting_3{background-color:#E1E6B9}
+table.dataTable.display tbody tr.odd>.sorting_1,table.dataTable.order-column.stripe tbody tr.odd>.sorting_1{background-color:#f1f1f1}
+table.dataTable.display tbody tr.odd>.sorting_2,table.dataTable.order-column.stripe tbody tr.odd>.sorting_2{background-color:#f3f3f3}
+table.dataTable.display tbody tr.odd>.sorting_3,table.dataTable.order-column.stripe tbody tr.odd>.sorting_3{background-color:whitesmoke}
+table.dataTable.display tbody tr.odd.selected>.sorting_1,table.dataTable.order-column.stripe tbody tr.odd.selected>.sorting_1{background-color:#a6b4cd}
+table.dataTable.display tbody tr.odd.selected>.sorting_2,table.dataTable.order-column.stripe tbody tr.odd.selected>.sorting_2{background-color:#a8b5cf}
+table.dataTable.display tbody tr.odd.selected>.sorting_3,table.dataTable.order-column.stripe tbody tr.odd.selected>.sorting_3{background-color:#a9b7d1}
+table.dataTable.display tbody tr.even>.sorting_1,table.dataTable.order-column.stripe tbody tr.even>.sorting_1{background-color:#fafafa}
+table.dataTable.display tbody tr.even>.sorting_2,table.dataTable.order-column.stripe tbody tr.even>.sorting_2{background-color:#fcfcfc}
+table.dataTable.display tbody tr.even>.sorting_3,table.dataTable.order-column.stripe tbody tr.even>.sorting_3{background-color:#fefefe}
+table.dataTable.display tbodytr.even.selected>.sorting_1,table.dataTable.order-column.stripe tbody tr.even.selected>.sorting_1{background-color:#acbad5}
+table.dataTable.display tbody tr.even.selected>.sorting_2,table.dataTable.order-column.stripe tbody tr.even.selected>.sorting_2{background-color:#aebcd6}
+table.dataTable.display tbody tr:hover>.sorting_2,table.dataTable.order-column.hover tbody tr:hover>.sorting_2{background-color:#ececec}
+table.dataTable.display tbody tr:hover>.sorting_3,table.dataTable.order-column.hover tbody tr:hover>.sorting_3{background-color:#efefef}
+table.dataTable.display tbody tr:hover.selected>.sorting_1,table.dataTable.order-column.hover tbody tr:hover.selected>.sorting_1{background-color:#a2aec7}
+table.dataTable.display tbody tr:hover.selected>.sorting_2,table.dataTable.order-column.hover tbody tr:hover.selected>.sorting_2{background-color:#a3b0c9}
+dataTable.display tbody tr:hover.selected>.sorting_3,table.dataTable.order-column.hover tbody tr:hover.selected>.sorting_3{background-color:#a5b2cb}
