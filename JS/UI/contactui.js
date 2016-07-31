@@ -7,8 +7,7 @@
     }
 });
 
-function AllContactsOnLoad()
-{
+function AllContactsOnLoad() {
     var oneGmach = new GMach.Model.OneGmach();
     var allContacts = oneGmach.Contacts();
 
@@ -73,7 +72,7 @@ function AllContactsOnLoad()
     });
 
     //מספר פריטים לתצוגה תוך שימוש ב localstorage
-//    setDefaultSumRowsView();
+    //    setDefaultSumRowsView();
 
     $(".contacts select").change(function () {
         storeDefaultSumRowsView();
@@ -81,31 +80,29 @@ function AllContactsOnLoad()
     $(".contacts #addContact").click(function () {
         window.location = '/HTML/Contact.html';
     });
-    
+
 
 }
 
-function  setDefaultSumRowsView()
-{
+function setDefaultSumRowsView() {
     var defaultSumRowsView = 10;
     defaultSumRowsView = JSON.parse(localStorage.getItem('DefaultSumRowsView'));
-   /* if (defaultSumRowsView != null && defaultSumRowsView != undefined) {
-        $('.contacts select').val(defaultSumRowsView);
-    }*/
+    /* if (defaultSumRowsView != null && defaultSumRowsView != undefined) {
+         $('.contacts select').val(defaultSumRowsView);
+     }*/
     if (defaultSumRowsView != null && defaultSumRowsView != undefined) {
         return defaultSumRowsView;
     }
     return 10;
-}   
- 
-function storeDefaultSumRowsView() {
-    var defaultSumRowsView = $('.contacts select').val();
-     localStorage.setItem('DefaultSumRowsView', JSON.stringify(defaultSumRowsView));
 }
 
-function ContactOnLoad()
-{
-   // debugger;
+function storeDefaultSumRowsView() {
+    var defaultSumRowsView = $('.contacts select').val();
+    localStorage.setItem('DefaultSumRowsView', JSON.stringify(defaultSumRowsView));
+}
+
+function ContactOnLoad() {
+    // debugger;
     $("#Contact-form form").validate();
     var getUrlParameter = GMach.Model.OneGmach.getUrlParameter('id');
     var idfromqs = getUrlParameter ? getUrlParameter : null;
@@ -130,7 +127,7 @@ function ContactOnLoad()
         //contact.id = oneGmach.nextContactID;
     }
 
-   
+
     $("#btn_save").click(function () {
         if ($("#Contact-form form").valid()) {
             contact.firstName = $('#FirstName').val();
@@ -163,7 +160,7 @@ function ContactOnLoad()
                    //error message text
                    "הזנת תווים לא חוקיים"
                 );
-    
+
     $('#FirstName').rules('add', {
         regex: "^[a-zA-Z0-9א-ת]*$",
         required: true,
@@ -196,74 +193,74 @@ function ContactOnLoad()
     });
 
 
-   
+
 }
 
-    function LoadLoanContact(id) {
-        var contactTransactions = GMach.Model.Contact.GetContactTransactions(id);
+function LoadLoanContact(id) {
+    var contactTransactions = GMach.Model.Contact.GetContactTransactions(id);
 
-        $('#LoanContact').DataTable({
+    $('#LoanContact').DataTable({
 
-            data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[0]),
+        data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[0]),
 
-            columns: [
-                  { "data": "transactionType" },
-                  { "data": "amount" },
-                  { "data": "transactionDate" },
+        columns: [
+              { "data": "transactionType" },
+              { "data": "amount" },
+              { "data": "transactionDate" },
 
-            ],
+        ],
 
-            order: [2, 'desc'],
-            paging: false,
-            ordering: false,
-            info: false,
-            filter: false,
-            "language": {
-                "zeroRecords": "לא נמצאו הלוואות",
-            },
-        });
-        $('#SumLoanContact').text(contactTransactions[1]);
+        order: [2, 'desc'],
+        paging: false,
+        ordering: false,
+        info: false,
+        filter: false,
+        "language": {
+            "zeroRecords": "לא נמצאו הלוואות",
+        },
+    });
+    $('#SumLoanContact').text(contactTransactions[1]);
 
-        $('#DepositContact').DataTable({
+    $('#DepositContact').DataTable({
 
-            data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[2]),
+        data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[2]),
 
-            columns: [
-                  { "data": "transactionType" },
-                  { "data": "amount" },
-                  { "data": "transactionDate" },
+        columns: [
+              { "data": "transactionType" },
+              { "data": "amount" },
+              { "data": "transactionDate" },
 
-            ],
+        ],
 
-            order: [2, 'desc'],
-            paging: false,
-            ordering: false,
-            info: false,
-            filter: false,
-            "language": {
-                "zeroRecords": "לא נמצאו הפקדות",
-            },
-        });
-        $('#SumDeposit').text(contactTransactions[3]);
+        order: [2, 'desc'],
+        paging: false,
+        ordering: false,
+        info: false,
+        filter: false,
+        "language": {
+            "zeroRecords": "לא נמצאו הפקדות",
+        },
+    });
+    $('#SumDeposit').text(contactTransactions[3]);
 
-        $('#DonationContact').DataTable({
+    $('#DonationContact').DataTable({
 
-            data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[4]),
+        data: GMach.UI.Transaction.GetAllTransactionsVM(contactTransactions[4]),
 
-            columns: [
-                  { "data": "amount" },
-                  { "data": "transactionDate" },
+        columns: [
+              { "data": "amount" },
+              { "data": "transactionDate" },
 
-            ],
+        ],
 
-            order: [1, 'desc'],
-            paging: false,
-            ordering: false,
-            info: false,
-            filter: false,
-            "language": {
-                "zeroRecords": "לא נמצאו תרומות",
-            },
-        });
-    }
+        order: [1, 'desc'],
+        paging: false,
+        ordering: false,
+        info: false,
+        filter: false,
+        "language": {
+            "zeroRecords": "לא נמצאו תרומות",
+        },
+    });
+}
 

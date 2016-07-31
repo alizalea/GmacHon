@@ -1,10 +1,31 @@
 ﻿$(document).ready(function () {
+
     if ($('#transactionsNextMounth').length > 0) {
         TransactionsNextMounthOnLoad();
     }
+
+    else if ($('.reports').length > 0) {
+        reportsMenue();
+
+    }
+
     else { FreeBalancePerDateOnLoad(); }
 
 });
+
+function reportsMenue() {
+    $(".reports #ReturnForNextWeek").click(function () {
+        window.location = 'ReturnForNextWeek.html';
+    });
+
+    $(".reports #ReturnForNextMounth").click(function () {
+        window.location = 'ReturnForNextMounth.html';
+    });
+
+    $(".reports #FreeBalancePerDate").click(function () {
+        window.location = 'FreeBalancePerDate.html';
+    });
+}
 
 function TransactionsNextMounthOnLoad() {
 
@@ -82,3 +103,4 @@ function numberWithCommas(x) {
     }
     else throw "Undefined Number"
 }
+

@@ -5,11 +5,13 @@
     <title>גמחהון - אנשי קשר</title>
     <link type="text/css" href="../Third Party Code/jquery.dataTables.min.css" rel="stylesheet" />
     <link type="text/css" href="../Third Party Code/bootstrap.min.css" rel="stylesheet" />
+
     <link type="text/css" href="../CSS/GmacHon.css" rel="stylesheet" />
 
     <script type="text/javascript" src="../Third Party Code/jquery.min.js"></script>
     <script type="text/javascript" src="../Third Party Code/jquery.dataTables.min.js"></script>
-  
+    <link type="text/javascript" href="../Third Party Code/dataTables.bootstrap.min.css" rel="stylesheet" />
+
     <script type="text/javascript" src="../JS/Model/OneGmachModel.js"></script>
     <script type="text/javascript" src="../JS/DAL/TransactionDAL.js"></script>
     <script type="text/javascript" src="../JS/Model/TransactionModel.js"></script>
@@ -24,33 +26,38 @@
         <!-- Content will be inserted by jQuery from header.html -->
     </header>
     <main>
-      
-        <div class="contacts">
-            <button type="button" id="addContact" class="btn btn-default">הוספת איש קשר</button>
-            <table width="100%" class="display" id="contacts">
-                <thead>
 
-                    <tr>
+        <div class="contacts content">
+            <button type="button" id="addContact" class="row btn btn-default">הוספת איש קשר</button>
+            <h1>אנשי קשר</h1>
+            <!-- <div class="title">אנשי קשר</div>-->
+            <div class="tableContact row">
+                <table width="100%" class="display table table-striped table-bordered" id="contacts">
+                    <thead>
 
-                        <th>שם משפחה</th>
+                        <tr>
 
-                        <th>שם פרטי</th>
+                            <th>שם משפחה</th>
 
-                        <th>ת. זהות</th>
+                            <th>שם פרטי</th>
 
-                        <th>טלפון</th>
+                            <th>ת. זהות</th>
 
-                        <th>נייד</th>
+                            <th>טלפון</th>
 
-                        <th>הערות</th>
+                            <th>נייד</th>
 
-                    </tr>
+                            <th>הערות</th>
 
-                </thead>
-            </table>
+                        </tr>
+
+                    </thead>
+                </table>
+            </div>
         </div>
 
 
     </main>
 </body>
 </html>
+
