@@ -5,11 +5,12 @@
     <title>גמחהון - איש קשר</title>
     <link type="text/css" href="../CSS/GmacHon.css" rel="stylesheet" />
     <link type="text/css" href="../Third Party Code/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="../Third Party Code/bootstrap.min.css" rel="stylesheet" />
 
     <script type="text/javascript" src="../Third Party Code/jquery.min.js"></script>
     <script type="text/javascript" src="../Third Party Code/jquery.dataTables.min.js"></script>
 
-    <script type="text/javascript" src="../Third Party Code/jquery.validate.min.js"></script>   
+    <script type="text/javascript" src="../Third Party Code/jquery.validate.min.js"></script>
     <script type="text/javascript" src="../Third Party Code/validExtend.js"></script>
     <script type="text/javascript" src="../JS/DAL/ContactData.json"></script>
     <script type="text/javascript" src="../JS/Model/OneGmachModel.js"></script>
@@ -17,59 +18,75 @@
     <script type="text/javascript" src="../JS/DAL/TransactionData.json"></script>
     <script type="text/javascript" src="../JS/DAL/TransactionDAL.js"></script>
     <script type="text/javascript" src="../JS/Model/TransactionModel.js"></script>
-   <script type="text/javascript" src="../JS/DAL/ContactDAL.js"></script>
+    <script type="text/javascript" src="../JS/DAL/ContactDAL.js"></script>
     <script type="text/javascript" src="../JS/Model/ContactModel.js"></script>
-    <script  type="text/javascript" src="../JS/UI/contactui.js"></script>
+    <script type="text/javascript" src="../JS/UI/contactui.js"></script>
     <script src="../JS/UI/HeaderUI.js"></script>
-   
+
 </head>
 <body>
     <header id="header">
         <!-- Content will be inserted by jQuery from header.html -->
     </header>
     <main>
-        <div id="Contact-form" class="validationGroup" > 
-            <form >
+        <div id="Contact-form" class="validationGroup">
+            <form>
 
                 <div>
                     <h1>איש קשר</h1>
                     <h2></h2>
                     <section>
 
-
                         <div>
-                            <label for="FirstName">שם פרטי:</label>
-                            <input id="FirstName" name="FirstName" type="text">
+                            <div class="fixedWidthLabel">
+                                <label for="FirstName">שם פרטי:</label>
+                            </div>
+                            <div class="fixedWidthInput">
+                                <input id="FirstName" name="FirstName" class="form-control" type="text">
+                            </div>
+                            <div class="fixedWidthLabel">
+                                <label for="LastName">שם משפחה:</label>
+                            </div>
+                            <div class="fixedWidthInput">
+                                <input id="LastName" name="LastName" class="form-control" type="text">
+                            </div>
+                            <div class="fixedWidthLabel">
+                                <label for="IdNumber">תעודת זהות:</label>
+                            </div>
+                            <div class="fixedWidthInput">
+                                <input id="IdNumber" name="IdNumber" class="form-control" type="text">
+                            </div>
                         </div>
 
                         <div>
-                            <label for="LastName">שם משפחה:</label>
-                            <input id="LastName" name="LastName" type="text" >
+                            <div class="fixedWidthLabel">
+                                <label for="PhoneNumber">טלפון:</label>
+                            </div>
+                            <div class="fixedWidthInput">
+                                <input id="PhoneNumber" name="PhoneNumber" class="form-control" type="text">
+                            </div>
+                            <div class="fixedWidthLabel">
+                                <label for="MobileNumber">נייד:</label>
+                            </div>
+                            <div class="fixedWidthInput">
+                                <input id="MobileNumber" name="MobileNumber" class="form-control" type="text">
+                            </div>
+                            <div class="fixedWidthLabel">
+                                <label for="Address">כתובת:</label>
+                            </div>
+                            <div class="fixedWidthInput">
+                                <input id="Address" name="Address" class="form-control" type="text">
+                            </div>
+
                         </div>
 
                         <div>
-                            <label for="IdNumber">תעודת זהות:</label>
-                            <input id="IdNumber" name="IdNumber" type="text" >
-                        </div>
-
-                        <div>
-                            <label for="PhoneNumber">טלפון:</label>
-                            <input id="PhoneNumber" name="PhoneNumber" type="text" >
-                        </div>
-
-                        <div>
-                            <label for="MobileNumber">נייד:</label>
-                            <input id="MobileNumber" name="MobileNumber" type="text" >
-                        </div>
-
-                        <div>
-                            <label for="Address">כתובת:</label>
-                            <input id="Address" name="Address" type="text" >
-                        </div>
-
-                        <div>
-                            <label for="Remarks">הערות:</label>
-                            <input id="Remarks" name="Remarks" type="text" >
+                            <div class="fixedWidthLabel">
+                                <label for="Remarks">הערות:</label>
+                            </div>
+                            <div class="fixedWidthRemark">
+                                <input id="Remarks" name="Remarks" class="form-control" type="text">
+                            </div>
                         </div>
 
                         <div id="TransactionContact">
@@ -117,13 +134,14 @@
                             </div>
                         </div>
 
-                        <button type="button" class="boldStyle causesValidation" id="btn_save" >שמירה</button>
-                        <button type="button" class="boldStyle" id="btn_cancel">ביטול</button>
-
+                        <div class="centerAlign">
+                           <button type="button" class="btn btn-default" id="btn_cancel">ביטול</button>
+                            <button type="button" class="btn btn-default causesValidation" id="btn_save">שמירה</button>
+                        </div>
                     </section>
                 </div>
             </form>
-</div>
+        </div>
 
 
 

@@ -4,7 +4,7 @@
 (function ($)
 {
 	$.extend($.validator.messages, {
-	    required: "השדה הזה הינו שדה חובה",
+	    required: "שדה זה הינו שדה חובה",
 	    remote: "נא לתקן שדה זה",
 	    email: "נא למלא כתובת מייל חוקית",
 	    url: "נא למלא כתובת אינטרנט חוקית",

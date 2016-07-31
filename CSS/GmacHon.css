@@ -122,10 +122,25 @@ input, select {
     font-weight: bold;
 }
 
-.fixedWidth {
-    width: 20%;
+.fixedWidthInput {
+    width: 200px;
     display: inline-block;
 }
+.fixedWidthLabel {
+    padding-right:20px;
+    width: 100px;
+    display: inline-block;
+}
+.fixedWidthRemark {
+    width: 815px;
+    display: inline-block;
+}
+
+.centerAlign{  
+    text-align:center;
+    } 
+
+
 
 h1, h2 {
     margin: 10px;
