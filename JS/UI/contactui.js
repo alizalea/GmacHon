@@ -162,12 +162,12 @@ function ContactOnLoad() {
                 );
 
     $('#FirstName').rules('add', {
-        regex: "^[a-zA-Z0-9א-ת]*$",
+        regex: "^[a-zA-Z0-9\\s\\א-ת]*$",
         required: true,
         maxlength: 25
     });
     $('#LastName').rules('add', {
-        regex: "^[a-zA-Z0-9א-ת]*$",
+        regex: "^[a-zA-Z0-9א-ת\\s\\]*$",
         required: true,
         maxlength: 25
     });
