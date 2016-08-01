@@ -187,7 +187,7 @@ function ContactOnLoad() {
         maxlength: 11
     });
     $('#Address').rules('add', {
-        regex: "^[a-zA-Z0-9א-ת]*$",
+        regex: "^[a-zA-Z0-9א-ת\\s\\]*$",
         required: false,
         maxlength: 50
     });
