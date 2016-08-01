@@ -122,20 +122,15 @@ input, select {
     font-weight: bold;
 }
 
-.fixedWidthInput {
-    width: 200px;
-    display: inline-block;
-}
-.fixedWidthLabel {
-    padding-right:20px;
-    width: 100px;
-    display: inline-block;
-}
-.fixedWidthRemark {
-    width: 815px;
-    display: inline-block;
-}
-
+ #Contact-form label
+ {
+     width: 100px;
+ }
+ .error{
+     color:red;
+     width:auto!important;
+     padding-right:10px;
+ }
 .centerAlign{  
     text-align:center;
     } 
