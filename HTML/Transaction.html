@@ -29,115 +29,87 @@
     </header>
     <main>
         <div class="validationGroup">
-            <form id="Transaction-form" action="#">
+            <form id="Transaction-form" action="#" class="form-inline">
                 <div>
                     <h1>תנועה</h1>
                     <section>
                         <div>
-                            <div class="fixedWidth">
-                                <label for="TransactionType">סוג תנועה:</label>
-                            </div>
-                            <select id="TransactionType" name="TransactionType" class="fixedWidth">
-                                <option>הלוואה</option>
-                                <option>החזרת הלוואה</option>
-                                <option>הפקדה</option>
-                                <option>משיכת הפקדה</option>
-                                <option>תרומה</option>
-                            </select>
                             <div>
-                                <div class="fixedWidth">
-                                    <label for="Contact">איש קשר:</label>
-                                </div>
-                                <!--<input id="Contact" name="Contact" type="text" class="fixedWidth">-->
+                                <label for="TransactionType">סוג תנועה:</label>
+                                <select id="TransactionType" name="TransactionType" class="form-control">
+                                    <option>הלוואה</option>
+                                    <option>החזרת הלוואה</option>
+                                    <option>הפקדה</option>
+                                    <option>משיכת הפקדה</option>
+                                    <option>תרומה</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Contact">איש קשר:</label>
                                 <input id="ContactSearch" />
                                 <input id="Contact" name="Contact" class="HideDiv" />
                             </div>
                             <div>
-                                <div class="fixedWidth">
-                                    <label for="Amount">סכום בשקלים:</label>
-                                </div>
-                                <input id="Amount" name="Amount" type="number" class="fixedWidth">
+                                <label for="Amount">סכום בשקלים:</label>
+                                <input id="Amount" name="Amount" type="number" class="form-control">
                             </div>
                             <div>
-                                <div class="fixedWidth">
-                                    <label for="TransactionDate">תאריך:</label>
-                                </div>
-                                <input id="TransactionDate" name="TransactionDate" type="date" class="fixedWidth">
+                                <label for="TransactionDate">תאריך:</label>
+                                <input id="TransactionDate" name="TransactionDate" type="date" class="form-control">
                             </div>
                             <div><a href="Video.html">לסרטון הסבר של בנק ישראל</a></div>
                             <div id="ReturnDetails">
                                 <h2>פרטי החזרה</h2>
                                 <div>
                                     <label for="ReturnDate">תאריך החזרה מתוכנן:</label>
-                                    <input id="ReturnDate" name="ReturnDate" type="date">
+                                    <input id="ReturnDate" name="ReturnDate" type="date" class="form-control">
                                 </div>
                                 <div>
                                     <input id="Returned" name="Returned" type="checkbox" />הוחזר
                                 </div>
                                 <div>
-                                    <div class="fixedWidth">
-                                        <label for="ReturnAmount">סכום בשקלים:</label>
-                                    </div>
-                                    <input id="ReturnAmount" name="ReturnAmount" type="number" class="fixedWidth">
+                                    <label for="ReturnAmount">סכום בשקלים:</label>
+                                    <input id="ReturnAmount" name="ReturnAmount" type="number" class="form-control">
                                 </div>
                             </div>
                             <div id="Freinds">
                                 <div id="FirstFreind">
                                     <h2>ערב 1</h2>
                                     <div>
-                                        <div class="fixedWidth">
-                                            <label for="FirstNameFirstFreind">שם פרטי:</label>
-                                        </div>
-                                        <input id="FirstNameFirstFreind" name="FirstNameFirstFreind" type="text" class="fixedWidth">
+                                        <label for="FirstNameFirstFreind">שם פרטי:</label>
+                                        <input id="FirstNameFirstFreind" name="FirstNameFirstFreind" type="text" class="form-control">
                                     </div>
                                     <div>
-                                        <div class="fixedWidth">
-                                            <label for="LastNameFirstFreind">שם משפחה:</label>
-                                        </div>
-                                        <input id="LastNameFirstFreind" name="LastNameFirstFreind" type="text" class="fixedWidth">
+                                        <label for="LastNameFirstFreind">שם משפחה:</label>
+                                        <input id="LastNameFirstFreind" name="LastNameFirstFreind" type="text" class="form-control">
                                     </div>
                                     <div>
-                                        <div class="fixedWidth">
-                                            <label for="PhoneNumberFirstFreind">טלפון:</label>
-                                        </div>
-                                        <input id="PhoneNumberFirstFreind" name="PhoneNumberFirstFreind" type="text" class="fixedWidth">
+                                        <label for="PhoneNumberFirstFreind">טלפון:</label>
+                                        <input id="PhoneNumberFirstFreind" name="PhoneNumberFirstFreind" type="text" class="form-control">
                                     </div>
                                     <div>
-                                        <div class="fixedWidth">
-                                            <label for="RemarkFirstFreind">הערות:</label>
-                                        </div>
-                                        <input id="RemarkFirstFreind" name="RemarkFirstFreind" type="text" class="fixedWidth">
+                                        <label for="RemarkFirstFreind">הערות:</label>
+                                        <input id="RemarkFirstFreind" name="RemarkFirstFreind" type="text" class="form-control">
                                     </div>
                                 </div>
-                                <div>
-                                    <div id="SecondFreind">
-                                        <h2>ערב 2</h2>
-                                        <div>
-                                            <div class="fixedWidth">
-                                                <label for="FirstNameSecondFreind">שם פרטי:</label>
-                                            </div>
-                                            <input id="FirstNameSecondFreind" name="FirstNameSecondFreind" type="text" class="fixedWidth">
-                                        </div>
-                                        <div>
-                                            <div class="fixedWidth">
-                                                <label for="LastNameSecondFreind">שם משפחה:</label>
-                                            </div>
-                                            <input id="LastNameSecondFreind" name="LastNameSecondFreind" type="text" class="fixedWidth">
-                                        </div>
-                                        <div>
-                                            <div class="fixedWidth">
-                                                <label for="PhoneNumberSecondFreind">טלפון:</label>
-                                            </div>
-                                            <input id="PhoneNumberSecondFreind" name="PhoneNumberSecondFreind" type="text" class="fixedWidth">
-                                        </div>
-                                        <div>
-                                            <div class="fixedWidth">
-                                                <label for="RemarkSecondFreind">הערות:</label>
-                                            </div>
-                                            <input id="RemarkSecondFreind" name="RemarkSecondFreind" type="text" class="fixedWidth">
-                                        </div>
+                                <div id="SecondFreind">
+                                    <h2>ערב 2</h2>
+                                    <div>
+                                        <label for="FirstNameSecondFreind">שם פרטי:</label>
+                                        <input id="FirstNameSecondFreind" name="FirstNameSecondFreind" type="text" class="form-control">
                                     </div>
-
+                                    <div>
+                                        <label for="LastNameSecondFreind">שם משפחה:</label>
+                                        <input id="LastNameSecondFreind" name="LastNameSecondFreind" type="text" class="form-control">
+                                    </div>
+                                    <div>
+                                        <label for="PhoneNumberSecondFreind">טלפון:</label>
+                                        <input id="PhoneNumberSecondFreind" name="PhoneNumberSecondFreind" type="text" class="form-control">
+                                    </div>
+                                    <div>
+                                        <label for="RemarkSecondFreind">הערות:</label>
+                                        <input id="RemarkSecondFreind" name="RemarkSecondFreind" type="text" class="form-control">
+                                    </div>
                                 </div>
                             </div>
                             <button type="button" id="btn_cancel" class="btn btn-default">ביטול</button>

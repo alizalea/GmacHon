@@ -122,9 +122,14 @@ input, select {
     font-weight: bold;
 }
 
- #Contact-form label
+ #Contact-form label,#Transaction-form label
  {
      width: 100px;
+ }
+ #Transaction-form select
+ {
+     width:196px;
+
  }
  .error{
      color:red;
@@ -159,7 +164,8 @@ button {
     height: 35px;
 }
 
-#Contact-form section div {
+#Contact-form section div,
+#Transaction-form section div {
     margin-bottom: 10px;
 }
 
