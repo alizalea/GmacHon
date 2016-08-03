@@ -167,7 +167,7 @@ function ContactOnLoad() {
         maxlength: 25
     });
     $('#LastName').rules('add', {
-        regex: "^[a-zA-Z0-9א-ת\\s\\]*$",
+        regex: "^[a-zA-Z0-9\\s\\א-ת]*$",
         required: true,
         maxlength: 25
     });
@@ -187,7 +187,7 @@ function ContactOnLoad() {
         maxlength: 11
     });
     $('#Address').rules('add', {
-        regex: "^[a-zA-Z0-9א-ת\\s\\]*$",
+        regex: "^[a-zA-Z0-9\\s\\א-ת]*$",
         required: false,
         maxlength: 50
     });
