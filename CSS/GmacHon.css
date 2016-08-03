@@ -181,7 +181,9 @@ button {
 #Contact-form section div, #Transaction-form section div {
     padding-bottom: 10px;
 }
-
+.wrapbtn label.error{
+    display:none;
+}
 .easy-autocomplete {
     display: inline;
 }

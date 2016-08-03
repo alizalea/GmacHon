@@ -244,12 +244,7 @@ function TransactionOnLoad() {
                 );
 
     $('#ContactSearch').rules('add', {
-        required: {
-            depends: function (element) {
-                debugger;
-                return ($('#Contact').val() == '');
-            }
-        }
+        required:true
 
     });
     /*  $('#ReturnDate').rules('add', {
