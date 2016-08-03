@@ -121,15 +121,28 @@ input, select {
     font-family: Arial;
    
 }
-select {
+select, .checkbox label{
     font-weight:bold;
 }
- #Contact-form label, #Transaction-form label
+
+ #Contact-form label
  {
     width: 100px;
 }
- #Transaction-form select{
-     width:196px;
+ #Returned
+ {
+     margin-left:6px;
+ }
+#ReturnDetails, #FirstFreind, #SecondFreind {
+    border-top: 1px solid gainsboro;
+}
+ #Transaction-form label
+ {  width: 147px;}
+ #Transaction-form select,  #Transaction-form .inputDate{
+     width:190px;
+ }
+ #Transaction-form #TransactionDate{
+     width:190px;
  }
  .error{
      color:red;
@@ -166,7 +179,7 @@ button {
 }
 
 #Contact-form section div, #Transaction-form section div {
-    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .easy-autocomplete {
@@ -195,7 +208,9 @@ button {
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover{
     background-color:#375D3B;
 }
-  
+.wrapbtn{
+    margin:0px 0px 10px;
+}  
 tbody tr {
     cursor: pointer;
 }

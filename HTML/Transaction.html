@@ -3,11 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <title>תנועה</title>
-    <link type="text/css" href="../CSS/GmacHon.css" rel="stylesheet" />
+    
     <script type="text/javascript" src="../Third Party Code/jquery.min.js"></script>
     <script src="../Third%20Party%20Code/jquery.easy-autocomplete.min.js"></script>
-    <link href="../Third%20Party%20Code/easy-autocomplete.min.css" rel="stylesheet" />
-    <link href="../Third Party Code/bootstrap.min.css" rel="stylesheet" />
+    <link type="text/css" href="../Third%20Party%20Code/easy-autocomplete.min.css" rel="stylesheet" />
+    <link type="text/css" href="../Third Party Code/bootstrap.min.css" rel="stylesheet" />
+    <link type="text/css" href="../CSS/GmacHon.css" rel="stylesheet" />
     <script type="text/javascript" src="../Third Party Code/date.js"></script>
     <script type="text/javascript" src="../Third Party Code/jquery.validate.min.js"></script>
     <script type="text/javascript" src="../Third Party Code/validExtend.js"></script>
@@ -32,6 +33,10 @@
             <form id="Transaction-form" action="#" class="form-inline">
                 <div>
                     <h1>תנועה</h1>
+                    <div class="wrapbtn">
+                        <button type="button" id="btn_cancel" class="btn btn-default">ביטול</button>
+                        <button type="button" id="btn_save" class="btn btn-default causesValidation">שמירה</button>
+                    </div>
                     <section>
                         <div>
                             <div>
@@ -46,7 +51,7 @@
                             </div>
                             <div>
                                 <label for="Contact">איש קשר:</label>
-                                <input id="ContactSearch" />
+                                <input id="ContactSearch" class="form-control"/>
                                 <input id="Contact" name="Contact" class="HideDiv" />
                             </div>
                             <div>
@@ -55,17 +60,17 @@
                             </div>
                             <div>
                                 <label for="TransactionDate">תאריך:</label>
-                                <input id="TransactionDate" name="TransactionDate" type="date" class="form-control">
+                                <input id="TransactionDate" name="TransactionDate" type="date" class="inputDate form-control">
                             </div>
                             <div><a href="Video.html">לסרטון הסבר של בנק ישראל</a></div>
                             <div id="ReturnDetails">
-                                <h2>פרטי החזרה</h2>
+                                <h3>פרטי החזרה</h3>
                                 <div>
                                     <label for="ReturnDate">תאריך החזרה מתוכנן:</label>
-                                    <input id="ReturnDate" name="ReturnDate" type="date" class="form-control">
+                                    <input id="ReturnDate" name="ReturnDate" type="date" class="inputDate form-control">
                                 </div>
-                                <div>
-                                    <input id="Returned" name="Returned" type="checkbox" />הוחזר
+                                <div  class="checkbox">
+                                    <label><input id="Returned" name="Returned" type="checkbox" />הוחזר</label>
                                 </div>
                                 <div>
                                     <label for="ReturnAmount">סכום בשקלים:</label>
@@ -74,7 +79,7 @@
                             </div>
                             <div id="Freinds">
                                 <div id="FirstFreind">
-                                    <h2>ערב 1</h2>
+                                    <h3>ערב 1</h3>
                                     <div>
                                         <label for="FirstNameFirstFreind">שם פרטי:</label>
                                         <input id="FirstNameFirstFreind" name="FirstNameFirstFreind" type="text" class="form-control">
@@ -93,7 +98,7 @@
                                     </div>
                                 </div>
                                 <div id="SecondFreind">
-                                    <h2>ערב 2</h2>
+                                    <h3>ערב 2</h3>
                                     <div>
                                         <label for="FirstNameSecondFreind">שם פרטי:</label>
                                         <input id="FirstNameSecondFreind" name="FirstNameSecondFreind" type="text" class="form-control">
