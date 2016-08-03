@@ -46,18 +46,21 @@ function GetInputMoney() {
     var total = 0;
     GMach.Model.Transaction.GetAllTransactions().forEach(function (tran) {
         var type = tran.constructor.name;
-        if (type=='ReturnLoan' || type=='Deposit' || type=='Donation')
+        if (  type=='Deposit' || type=='Donation')
             total += tran.amount;
+        if (  type=='ReturnDeposit' )
+            total -= tran.amount;
     });
     return total;
-
 }
 function GetOuputMoney() {
     var total = 0;
     GMach.Model.Transaction.GetAllTransactions().forEach(function (tran) {
         var type = tran.constructor.name;
-        if (type == 'Loan' || type == 'ReturnDeposit')
+        if (type == 'Loan' )
             total += tran.amount;
+        if (type == 'ReturnLoan' )
+            total -= tran.amount;
     });
     return Math.abs(total);
 
