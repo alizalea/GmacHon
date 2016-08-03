@@ -119,9 +119,11 @@ input, select {
     font-size: 18px;
     color: #375D3B;
     font-family: Arial;
-    font-weight: bold;
+   
 }
-
+select {
+    font-weight:bold;
+}
  #Contact-form label, #Transaction-form label
  {
     width: 100px;
@@ -197,8 +199,15 @@ button {
 tbody tr {
     cursor: pointer;
 }
+#Contact-form tbody tr{
+    cursor: default;
+}
 h1{
     text-align:center;
+}
+#TransactionContact h2{
+    margin:0px 15px;
+    font-size:20px;
 }
 .reports div{
     margin-bottom:25px;
