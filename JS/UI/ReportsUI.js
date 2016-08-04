@@ -91,9 +91,11 @@ function FreeBalancePerDateOnLoad() {
                 $('#Amount').text(numberWithCommas(amount));
             }
 
-            else { alert("הכנס תאריך עתידי"); }
+            else {
+                swal("הכנס תאריך עתידי");             
+            }
         }
-        else { alert("הכנס תאריך לבדיקה"); }
+        else { swal("הכנס תאריך לבדיקה"); }
     })
 }
 
