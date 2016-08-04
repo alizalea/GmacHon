@@ -113,7 +113,7 @@ function GetTransactionDisplayType(transactionType) {
 }
 
 function TransactionOnLoad() {
-    $("#Transaction-form").validate();
+    $("#Transaction-form form").validate();
     $("#TransactionType").change(function () {
         showOrHideControls();
     });
@@ -189,12 +189,23 @@ function TransactionOnLoad() {
         //  evt.preventDefault();
         $('#Contact').val('');
     });
-
-    $("#btn_save, #btn_save1").click(function () {
+    $('#ContactSearch-error').hide();
+    $("#ContactSearch").blur(function () {
+        validContactSearch();
+    });
+    function validContactSearch() {
         if ($('#Contact').val() == '') {
-            alert("חובה לבחור איש קשר מתוך הרשימה");
+            if ($("#ContactSearch").val() != '')
+            { $('#ContactSearch-error').text('חובה לבחור איש קשר מתוך הרשימה'); }
+            $('#ContactSearch-error').show();
         }
-        if ($("#Transaction-form").valid() && $('#Contact').val() != '') {
+        else {
+            $('#ContactSearch-error').hide();
+        }
+    }
+    $("#btn_save, #btn_save1").click(function () {
+        validContactSearch();
+        if ($("#Transaction-form form").valid() && $('#Contact').val() != '') {
             transaction = GetTransactionObjectUI($('#TransactionType').val());
             transaction.transactionId = idfromqs;
 
@@ -243,11 +254,11 @@ function TransactionOnLoad() {
                    "הזנת תווים לא חוקיים"
                 );
 
-    $('#ContactSearch').rules('add', {
+    /*  $('#ContactSearch').rules('add', {
         required:true
 
     });
-    /*  $('#ReturnDate').rules('add', {
+     $('#ReturnDate').rules('add', {
           required: {
               depends: function (element) {
                   return ($('#ReturnDate').length>0);

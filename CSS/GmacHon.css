@@ -145,7 +145,7 @@ select, .checkbox label{
  #Transaction-form #TransactionDate{
      width:190px;
  }
- .error{
+ .error, #ContactSearch-error{
      color:red;
      width:auto!important;
      padding-right:10px;

@@ -29,8 +29,8 @@
         <!-- Content will be inserted by jQuery from header.html -->
     </header>
     <main>
-        <div class="validationGroup">
-            <form id="Transaction-form" class="form-inline">
+        <div id="Transaction-form" class="validationGroup">
+            <form  class="form-inline">
                 <div>
                     <h1>תנועה</h1>
                     <div class="wrapbtn">
@@ -52,6 +52,7 @@
                             <div>
                                 <label for="Contact">איש קשר:</label>
                                 <input id="ContactSearch" class="form-control"/>
+                                <label id="ContactSearch-error" class="" for="ContactSearch">שדה זה הינו שדה חובה</label>
                                 <input id="Contact" name="Contact" class="HideDiv" />
                             </div>
                             <div>
