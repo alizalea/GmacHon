@@ -71,10 +71,6 @@ main {
     margin: 0 auto;
 }
 
-
-
-
-
 .panel {
     width: 30%;
     height: 200px;
@@ -230,6 +226,10 @@ h1{
 .reports div{
     margin-bottom:25px;
     text-align:center;
+}
+
+video{
+    width:90%;
 }
 th{
     text-align:center;
