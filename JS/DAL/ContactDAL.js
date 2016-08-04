@@ -70,7 +70,7 @@ GMach.DAL.Contact.SetDataContactOffline = function (contact, editid) {
 
 GMach.DAL.Contact.SetDataContact = function (contact, editid) {
 
-    var contactData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/contact/Save',  JSON.stringify(contact));
+    var contactData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/contact/Save', JSON.stringify(contact));
 
     if (contactData == null)
     { return false; }
@@ -100,7 +100,7 @@ function ConnectServer(myUrl, MyData) {
         url: url,
         type: 'POST',
         crossDomain: false,
-        data:MyData,
+        data: MyData,
         contentType: 'application/json',
         dataType: 'json',
 
@@ -109,8 +109,7 @@ function ConnectServer(myUrl, MyData) {
         },
         async: false,
         error: function (xhr, ajaxOptions, thrownError) {
-            alert("Error Connect Server " + xhr.status + ' ' + thrownError);
-            console.error();
+            console.error("Error Connect Server " + xhr.status + ' ' + thrownError);
         }
     });
     return Rows;

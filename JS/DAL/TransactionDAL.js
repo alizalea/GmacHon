@@ -118,8 +118,7 @@ function ConnectServer(myUrl, MyData) {
         },
         async: false,
         error: function (xhr, ajaxOptions, thrownError) {
-            alert("Error Connect Server " + xhr.status + ' ' + thrownError);
-            console.error();
+            console.error("Error Connect Server " + xhr.status + ' ' + thrownError);
         }
     });
     return Rows;
