@@ -190,7 +190,7 @@ function TransactionOnLoad() {
         $('#Contact').val('');
     });
 
-    $("#btn_save").click(function () {
+    $("#btn_save, #btn_save1").click(function () {
         if ($('#Contact').val() == '') {
             alert("חובה לבחור איש קשר מתוך הרשימה");
         }
@@ -227,7 +227,7 @@ function TransactionOnLoad() {
         }
     });
 
-    $("#btn_cancel").click(function (transaction) {
+    $("#btn_cancel, #btn_cancel1").click(function (transaction) {
         window.location = "/HTML/Transactions.html";
 
     });

@@ -128,7 +128,7 @@ function ContactOnLoad() {
     }
 
 
-    $("#btn_save").click(function () {
+    $("#btn_save, #btn_save1").click(function () {
         if ($("#Contact-form form").valid()) {
             contact.firstName = $('#FirstName').val();
             contact.lastName = $('#LastName').val();
@@ -145,7 +145,7 @@ function ContactOnLoad() {
 
 
     });
-    $("#btn_cancel").click(function (contact) {
+    $("#btn_cancel, #btn_cancel1").click(function (contact) {
         window.location = "/HTML/Contacts.html";
 
     });
