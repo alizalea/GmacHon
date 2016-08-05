@@ -192,8 +192,8 @@ GMach.Model.Transaction.GetReturnLoanTransactions = function (scope) {
     var currentTime = new Date().toJSON().slice(0, 10);
 
     var nextMonthYear;
-    if (scope == 'Month') { nextMonthYear = Date.today().add(1).months(); }
-    else { nextMonthYear = Date.today().add(1).weeks(); }
+    if (scope == 'Month') { nextMonthYear = Date.today().add(1).months().add(1).days(); }
+    else { nextMonthYear = Date.today().add(1).weeks().add(1).days(); }
     nextMonthYear = nextMonthYear.toJSON().slice(0, 10);
 
     var trans = new Array();
@@ -215,7 +215,7 @@ GMach.Model.Transaction.GetReturnDepositTransactions = function () {
     var currentTime = new Date().toJSON().slice(0, 10);
 
     var nextMonth;
-    nextMonth = Date.today().add(1).months().toJSON().slice(0, 10);
+    nextMonth = Date.today().add(1).months().add(1).days().toJSON().slice(0, 10);
 
     var trans = new Array();
     allTransactions.forEach(function (tran) {
