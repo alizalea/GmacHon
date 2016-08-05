@@ -315,6 +315,8 @@ function GetTransactionObjectUI(TransactionDisplayType) {
             break;
         default:
             console.error("UnKnown TransactionDisplayType: " + TransactionDisplayType);
+            swal("שים לב! ארעה שגיאה ");
+
     }
     return object;
 }

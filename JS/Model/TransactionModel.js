@@ -77,10 +77,13 @@ GMach.Model.Transaction.GetAllTransactions = function () {
     var databaseData = GMach.DAL.Transaction.GetAllTransactions();
 
     var modelData = new Array();
-    databaseData.forEach(function (row) {
-        var curr = GMach.Model.Transaction.GetTransactionObject(row);
-        modelData.push(curr);
-    });
+    if (databaseData != undefined) {
+        databaseData.forEach(function (row) {
+            var curr = GMach.Model.Transaction.GetTransactionObject(row);
+            modelData.push(curr);
+        });
+
+    }
 
 
     return modelData;
@@ -94,12 +97,14 @@ GMach.Model.Transaction.GetDataTransactionOffline = function (id) {
 
     if (result.length == 0) {
         console.error("Transaction Not Found,id:" + id);
+        swal("שים לב! ארעה שגיאה ");
     }
     else if (result.length == 1) {
         return result[0];
     }
     else {
         console.error("Error During GetDataTransaction");
+        swal("שים לב! ארעה שגיאה ");
     }
 }
 GMach.Model.Transaction.GetDataTransaction = function (id) {
@@ -176,6 +181,7 @@ function GetTransactionObjectByType(TransactionType) {
             break;
         default:
             console.error("UnKnown TransactionType: " + TransactionType);
+            swal("שים לב! ארעה שגיאה ");
     }
     return object;
 }
