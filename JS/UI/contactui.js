@@ -142,6 +142,7 @@ function ContactOnLoad() {
             if (GMach.Model.Contact.SetDataContact(contact, idfromqs)) {
                 window.location = "/HTML/Contacts.html";
             }
+            else { swal("שים לב! ארעה שגיאה בשמירת איש קשר"); }
         }
 
 
