@@ -10,7 +10,6 @@
 function AllContactsOnLoad() {
     var oneGmach = new GMach.Model.OneGmach();
     var allContacts = oneGmach.Contacts();
-    if (allContacts == null) { swal("שים לב! ארעה שגיאה בטעינת אנשי הקשר"); }
 
     $('#contacts').DataTable({
         //  dom: "Bfrtip",
@@ -142,7 +141,6 @@ function ContactOnLoad() {
             if (GMach.Model.Contact.SetDataContact(contact, idfromqs)) {
                 window.location = "/HTML/Contacts.html";
             }
-            else { swal("שים לב! ארעה שגיאה בשמירת איש קשר"); }
         }
 
 

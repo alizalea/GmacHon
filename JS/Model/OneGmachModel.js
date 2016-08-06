@@ -8,7 +8,7 @@ GMach.Model.OneGmach = function () {
 }
 
 GMach.Model.OneGmach.prototype.Contacts = function () {
-    return GMach.Model.Contact.GetAllContacts();
+    return new GMach.Model.Contact.GetAllContacts();
 };
 
 GMach.Model.OneGmach.Transactions = function () {
