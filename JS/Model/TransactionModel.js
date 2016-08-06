@@ -77,10 +77,13 @@ GMach.Model.Transaction.GetAllTransactions = function () {
     var databaseData = GMach.DAL.Transaction.GetAllTransactions();
 
     var modelData = new Array();
-    databaseData.forEach(function (row) {
-        var curr = GMach.Model.Transaction.GetTransactionObject(row);
-        modelData.push(curr);
-    });
+    if (databaseData != undefined) {
+        databaseData.forEach(function (row) {
+            var curr = GMach.Model.Transaction.GetTransactionObject(row);
+            modelData.push(curr);
+        });
+
+    }
 
 
     return modelData;
@@ -100,6 +103,7 @@ GMach.Model.Transaction.GetDataTransactionOffline = function (id) {
     }
     else {
         console.error("Error During GetDataTransaction");
+        throw "תנועה לא נמצאה";
     }
 }
 GMach.Model.Transaction.GetDataTransaction = function (id) {
@@ -176,6 +180,7 @@ function GetTransactionObjectByType(TransactionType) {
             break;
         default:
             console.error("UnKnown TransactionType: " + TransactionType);
+            throw "UnKnown TransactionType";
     }
     return object;
 }
@@ -186,8 +191,8 @@ GMach.Model.Transaction.GetReturnLoanTransactions = function (scope) {
     var currentTime = new Date().toJSON().slice(0, 10);
 
     var nextMonthYear;
-    if (scope == 'Month') { nextMonthYear = Date.today().add(1).months(); }
-    else { nextMonthYear = Date.today().add(1).weeks(); }
+    if (scope == 'Month') { nextMonthYear = Date.today().add(1).months().add(1).days(); }
+    else { nextMonthYear = Date.today().add(1).weeks().add(1).days(); }
     nextMonthYear = nextMonthYear.toJSON().slice(0, 10);
 
     var trans = new Array();
@@ -209,7 +214,7 @@ GMach.Model.Transaction.GetReturnDepositTransactions = function () {
     var currentTime = new Date().toJSON().slice(0, 10);
 
     var nextMonth;
-    nextMonth = Date.today().add(1).months().toJSON().slice(0, 10);
+    nextMonth = Date.today().add(1).months().add(1).days().toJSON().slice(0, 10);
 
     var trans = new Array();
     allTransactions.forEach(function (tran) {

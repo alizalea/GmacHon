@@ -110,6 +110,8 @@ function ConnectServer(myUrl, MyData) {
         async: false,
         error: function (xhr, ajaxOptions, thrownError) {
             console.error("Error Connect Server " + xhr.status + ' ' + thrownError);
+            //swal("שים לב! ארעה שגיאה בשרת");
+            throw "ארעה שגיאה בשרת";
         }
     });
     return Rows;

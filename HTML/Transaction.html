@@ -3,15 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <title>תנועה</title>
-    
-    <script type="text/javascript" src="../Third Party Code/jquery.min.js"></script>
-    <script src="../Third%20Party%20Code/jquery.easy-autocomplete.min.js"></script>
-    <link type="text/css" href="../Third%20Party%20Code/easy-autocomplete.min.css" rel="stylesheet" />
+    <link type="text/css" href="../Third Party Code/easy-autocomplete.min.css" rel="stylesheet" />
     <link type="text/css" href="../Third Party Code/bootstrap.min.css" rel="stylesheet" />
     <link type="text/css" href="../CSS/GmacHon.css" rel="stylesheet" />
+    <link type="text/css" href="../Third Party Code/sweetalert.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="../Third Party Code/jquery.min.js"></script>
+    <script type="text/javascript" src="../Third Party Code/jquery.easy-autocomplete.min.js"></script>
     <script type="text/javascript" src="../Third Party Code/date.js"></script>
     <script type="text/javascript" src="../Third Party Code/jquery.validate.min.js"></script>
     <script type="text/javascript" src="../Third Party Code/validExtend.js"></script>
+    <script type="text/javascript" src="../Third Party Code/sweetalert.min.js"></script>
 
     <script type="text/javascript" src="../JS/DAL/ContactData.json"></script>
     <script type="text/javascript" src="../JS/DAL/ContactDAL.js"></script>
@@ -30,7 +32,7 @@
     </header>
     <main>
         <div id="Transaction-form" class="validationGroup">
-            <form  class="form-inline">
+            <form class="form-inline">
                 <div>
                     <h1>תנועה</h1>
                     <div class="wrapbtn">
@@ -51,7 +53,7 @@
                             </div>
                             <div>
                                 <label for="Contact">איש קשר:</label>
-                                <input id="ContactSearch" class="form-control"/>
+                                <input id="ContactSearch" class="form-control" />
                                 <label id="ContactSearch-error" class="" for="ContactSearch">שדה זה הינו שדה חובה</label>
                                 <input id="Contact" name="Contact" class="HideDiv" />
                             </div>
@@ -70,7 +72,7 @@
                                     <label for="ReturnDate">תאריך החזרה מתוכנן:</label>
                                     <input id="ReturnDate" name="ReturnDate" type="date" class="inputDate form-control">
                                 </div>
-                                <div  class="checkbox">
+                                <div class="checkbox">
                                     <label><input id="Returned" name="Returned" type="checkbox" />הוחזר</label>
                                 </div>
                                 <div>

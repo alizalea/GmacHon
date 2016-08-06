@@ -1,9 +1,14 @@
 ﻿$(document).ready(function () {
-    if ($("#contacts").length) {
-        AllContactsOnLoad();
+    try {
+        if ($("#contacts").length) {
+            AllContactsOnLoad();
+        }
+        if ($("#Contact-form").length) {
+            ContactOnLoad();
+        }
     }
-    if ($("#Contact-form").length) {
-        ContactOnLoad();
+    catch (ex) {
+        sweetAlert("ארעה שגיאה", "יתכן והנתונים ששמרת לא נשמרו", "warning");
     }
 });
 

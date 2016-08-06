@@ -1,16 +1,20 @@
 ﻿$(document).ready(function () {
+    try {
+        if ($('#transactionsNextMounth').length > 0) {
+            TransactionsNextMounthOnLoad();
+        }
 
-    if ($('#transactionsNextMounth').length > 0) {
-        TransactionsNextMounthOnLoad();
+        else if ($('.reports').length > 0) {
+            reportsMenue();
+
+        }
+
+        else { FreeBalancePerDateOnLoad(); }
+
     }
-
-    else if ($('.reports').length > 0) {
-        reportsMenue();
-
+    catch (ex) {
+        sweetAlert("ארעה שגיאה", "יתכן והנתונים ששמרת לא נשמרו", "warning");
     }
-
-    else { FreeBalancePerDateOnLoad(); }
-
 });
 
 function reportsMenue() {
@@ -92,7 +96,7 @@ function FreeBalancePerDateOnLoad() {
             }
 
             else {
-                swal("הכנס תאריך עתידי");             
+                swal("הכנס תאריך עתידי");
             }
         }
         else { swal("הכנס תאריך לבדיקה"); }
