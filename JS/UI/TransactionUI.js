@@ -160,6 +160,7 @@ function TransactionOnLoad() {
     }
 
     var contacts = GMach.DAL.Contact.GetAllContacts();
+    if (contacts == null) { swal("שים לב! ארעה שגיאה בטעינת אנשי הקשר"); }
 
     var options = {
 

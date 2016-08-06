@@ -10,6 +10,7 @@
 function AllContactsOnLoad() {
     var oneGmach = new GMach.Model.OneGmach();
     var allContacts = oneGmach.Contacts();
+    if (allContacts == null) { swal("שים לב! ארעה שגיאה בטעינת אנשי הקשר"); }
 
     $('#contacts').DataTable({
         //  dom: "Bfrtip",
