@@ -1,56 +1,60 @@
 ﻿$(document).ready(function () {
+    try
+    {
+        $("#inputMoney").text(numberWithCommas(GMach.Model.OneGmach.inputMoney()));
+        $("#outputMoney").text(numberWithCommas(GMach.Model.OneGmach.outputMoney()));
+        $("#diffMoney").text(numberWithCommas(GMach.Model.OneGmach.diffMoney()));
+        $("#massages").text(getMasseges());
 
-    $("#inputMoney").text(numberWithCommas(GMach.Model.OneGmach.inputMoney()));
-    $("#outputMoney").text(numberWithCommas(GMach.Model.OneGmach.outputMoney()));
-    $("#diffMoney").text(numberWithCommas(GMach.Model.OneGmach.diffMoney()));
-    $("#massages").text(getMasseges());
+        var dragSrcEl = null;
 
-    var dragSrcEl = null;
+        function handleDragStart(e) {
+            this.style.opacity = '0.4';
+            // Target (this) element is the source node.
+            dragSrcEl = this;
 
-    function handleDragStart(e) {
-        this.style.opacity = '0.4';
-        // Target (this) element is the source node.
-        dragSrcEl = this;
-
-        e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/html', this.innerHTML);
-    }
-
-    function handleDragOver(e) {
-        if (e.preventDefault) {
-            e.preventDefault(); // Necessary. Allows us to drop.
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/html', this.innerHTML);
         }
 
-        e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
+        function handleDragOver(e) {
+            if (e.preventDefault) {
+                e.preventDefault(); // Necessary. Allows us to drop.
+            }
 
-        return false;
-    }
+            e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
 
-    function handleDrop(e) {
-        // this/e.target is current target element.
-        if (e.stopPropagation) {
-            e.stopPropagation(); // Stops some browsers from redirecting.
+            return false;
         }
-        this.style.opacity = '1';
-        dragSrcEl.style.opacity = '1';
-        // Don't do anything if dropping the same column we're dragging.
-        if (dragSrcEl != this) {
-            // Set the source column's HTML to the HTML of the column we dropped on.
-            dragSrcEl.innerHTML = this.innerHTML;
-            this.innerHTML = e.dataTransfer.getData('text/html');
-        }
+
+        function handleDrop(e) {
+            // this/e.target is current target element.
+            if (e.stopPropagation) {
+                e.stopPropagation(); // Stops some browsers from redirecting.
+            }
+            this.style.opacity = '1';
+            dragSrcEl.style.opacity = '1';
+            // Don't do anything if dropping the same column we're dragging.
+            if (dragSrcEl != this) {
+                // Set the source column's HTML to the HTML of the column we dropped on.
+                dragSrcEl.innerHTML = this.innerHTML;
+                this.innerHTML = e.dataTransfer.getData('text/html');
+            }
        
 
-        return false;
-    }
+            return false;
+        }
    
-    var panels = $('main .panel');
-    [].forEach.call(panels, function (panel) {
-        panel.addEventListener('dragstart', handleDragStart, false);
-        panel.addEventListener('drop', handleDrop, false);
-        panel.addEventListener('dragover', handleDragOver, false);
-    });
-
+        var panels = $('main .panel');
+        [].forEach.call(panels, function (panel) {
+            panel.addEventListener('dragstart', handleDragStart, false);
+            panel.addEventListener('drop', handleDrop, false);
+            panel.addEventListener('dragover', handleDragOver, false);
+        });
+    }
+    catch (ex) {
+        sweetAlert("ארעה שגיאה", "יתכן והנתונים ששמרת לא נשמרו", "warning");
+    }
 });
 
 function numberWithCommas(x) {

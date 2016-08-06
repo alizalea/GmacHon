@@ -3,10 +3,15 @@ GMach.UI = GMach.UI || {};
 GMach.UI.Transaction = GMach.UI.Transaction || {};
 
 $(document).ready(function () {
-    if ($('#transactions').length > 0) {
-        AllTransactionsOnLoad();
-    } else if ($('#Transaction-form').length > 0) {
-        TransactionOnLoad();
+    try {
+        if ($('#transactions').length > 0) {
+            AllTransactionsOnLoad();
+        } else if ($('#Transaction-form').length > 0) {
+            TransactionOnLoad();
+        }
+    }
+    catch (ex) {
+        sweetAlert("ארעה שגיאה", "יתכן והנתונים ששמרת לא נשמרו", "warning");
     }
 
 });
