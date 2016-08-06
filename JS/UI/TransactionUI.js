@@ -341,5 +341,6 @@ GMach.UI.Transaction.GetAllTransactionsVM = function (transList) {
 };
 
 function formatDate(longDate) {
-    return new Date(longDate).toJSON().slice(0, 10);
+       return new Date(longDate).toJSON().slice(0, 10);
+  
 }
