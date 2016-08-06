@@ -111,7 +111,7 @@ function ConnectServer(myUrl, MyData) {
         error: function (xhr, ajaxOptions, thrownError) {
             console.error("Error Connect Server " + xhr.status + ' ' + thrownError);
             swal("שים לב! ארעה שגיאה בשרת");
-            return null;
+            //return null;
         }
     });
     return Rows;
