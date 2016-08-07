@@ -30,24 +30,6 @@ function reportsMenue() {
         window.location = 'FreeBalancePerDate.html';
     });
 
-    DrawBackground();
-}
-
-function DrawBackground()
-{
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    // Create gradient
-    var grd = ctx.createLinearGradient(0, 0, 700, 0);
-
-    grd.addColorStop(0, "#375D3B");
-    grd.addColorStop(0.25, "#ABC8A4");
-    grd.addColorStop(0.5, "#C4D7A4");
-    grd.addColorStop(0.75, "#E1E6B9");
-    grd.addColorStop(1, "#E1E6B9");
-    // Fill with gradient
-    ctx.fillStyle = grd;
-    ctx.fillRect(0, 0, 1500, 800);
 }
 
 function TransactionsNextMounthOnLoad() {
