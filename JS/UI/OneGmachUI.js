@@ -72,7 +72,7 @@ function DrawColors() {
     grd.addColorStop(1, "#E1E6B9");
     // Fill with gradient
     ctx.fillStyle = grd;
-    ctx.fillRect(0, 0, 1500, 800);
+    ctx.fillRect(0, 0, 950, 300);
 }
 
 function numberWithCommas(x) {
