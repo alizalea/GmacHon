@@ -10,24 +10,27 @@
     <script type="text/javascript" src="../../JS/UI/ReportsUI.js"></script>
 </head>
 <body>
-    <header id="header">
-        <!-- Content will be inserted by jQuery from header.html -->
-    </header>
-    <main class="reports">
-        <h1>תפריט דוחות</h1>
-        <div>
-            <button type="button" id="ReturnForNextWeek" class="btn btn-default"> החזרים לשבוע הקרוב</button>
+    <canvas id="myCanvas" width="2000" height="1000" style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML5 canvas tag.
 
-        </div>
-        <div>
-            <button type="button" id="ReturnForNextMounth" class="btn btn-default"> החזרים לחודש הקרוב</button>
+        <header id="header">
+            <!-- Content will be inserted by jQuery from header.html -->
+        </header>
+        <main class="reports">
+            <h1>תפריט דוחות</h1>
+            <div>
+                <button type="button" id="ReturnForNextWeek" class="btn btn-default"> החזרים לשבוע הקרוב</button>
 
-        </div>
-        <div>
-            <button type="button" id="FreeBalancePerDate" class="btn btn-default"> יתרה פנויה לתאריך מסוים</button>
+            </div>
+            <div>
+                <button type="button" id="ReturnForNextMounth" class="btn btn-default"> החזרים לחודש הקרוב</button>
 
-        </div>
-    </main>
+            </div>
+            <div>
+                <button type="button" id="FreeBalancePerDate" class="btn btn-default"> יתרה פנויה לתאריך מסוים</button>
 
+            </div>
+        </main>
+    </canvas>
 </body>
 </html>
