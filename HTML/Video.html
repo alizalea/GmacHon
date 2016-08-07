@@ -5,10 +5,12 @@
     <meta charset="utf-8" />
 
     <link type="text/css" href="../CSS/GmacHon.css" rel="stylesheet" />
+    <link href="../Third Party Code/bootstrap.min.css" rel="stylesheet" />
 
     <script type="text/javascript" src="../../Third Party Code/jquery.min.js"></script>
 
-    <script src="../JS/UI/HeaderUI.js"></script>
+    <script type="text/javascript" src="../JS/UI/HeaderUI.js"></script>
+    <script type="text/javascript" src="../JS/UI/VideoUI.js"></script>
 
 </head>
 <body>
@@ -19,11 +21,16 @@
 
     <main>
         <h1>סרטון הסבר של בנק ישראל - שטר 200 החדש</h1>
+        <div class="centerAlign">
+            <button id="playVideo" type="button" class="btn btn-default">הפעל</button>
+        </div>
 
-        <video controls="controls">
-            <source src="../Media/200NISVideo.mp4" type="video/mp4" />
-        </video>
-       
+        <div>
+            <video id="video" controls="controls">
+                <source src="../Media/200NISVideo.mp4" type="video/mp4" />
+            </video>
+        </div>
+
     </main>
 </body>
 </html>
