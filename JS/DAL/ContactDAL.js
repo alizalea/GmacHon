@@ -75,13 +75,20 @@ GMach.DAL.Contact.SetDataContactOffline = function (contact, editid) {
 
 }
 
-GMach.DAL.Contact.SetDataContact = function (contact, editid) {
+GMach.DAL.Contact.SetDataContactWeb = function (contact, editid) {
 
     var contactData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/contact/Save', JSON.stringify(contact));
 
     if (contactData == null)
     { return false; }
     else { return true; }
+}
+
+GMach.DAL.Contact.SetDataContact = function (contact, editid) {
+
+    var succeed =  insertData(contact);
+    return succeed;
+    
 }
 
 
@@ -149,3 +156,25 @@ function retrieveData(idFilter) {
     });
     return rows;
 }
+
+function insertData(contact) {
+    debugger;
+    var succeed;
+        $.ajax({
+            url: "http://localhost:8733/GmacHonService/InsertData",
+            contentType: "application/json",
+            method: "POST",
+            data: JSON.stringify({ person: contact }),
+            success: function (data) {
+                succeed=true;
+                alert(data + " record saved");
+            },
+            async: false,
+            error: function (data) {
+                succeed=false;
+                alert("Error:\n" + data.responseText);
+            }
+        });
+        return succeed;
+    }
+
