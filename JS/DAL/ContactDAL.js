@@ -25,11 +25,18 @@ GMach.DAL.Contact.GetAllContactsOffline = function () {
 
 }
 
-GMach.DAL.Contact.GetAllContacts = function () {
+GMach.DAL.Contact.GetAllContactsWeb = function () {
     var contactData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/contact/GetAll', null);
     return contactData;
 
 }
+
+GMach.DAL.Contact.GetAllContacts = function () {
+    var contactData = retrieveData('');
+    return contactData;
+
+}
+
 
 GMach.DAL.Contact.SetDataContactOffline = function (contact, editid) {
     try {
@@ -77,11 +84,18 @@ GMach.DAL.Contact.SetDataContact = function (contact, editid) {
     else { return true; }
 }
 
-GMach.DAL.Contact.GetDataContact = function (contactID) {
+
+GMach.DAL.Contact.GetDataContactWeb = function (contactID) {
     var idString = '{Id:' + contactID + "}";
     var contactData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/contact/GetById', idString);
 
     return contactData;
+}
+
+GMach.DAL.Contact.GetDataContact = function (contactID) {
+    var contactData = retrieveData(contactID);
+    return contactData[0];
+
 }
 
 function getMax(arr, column) {
@@ -115,4 +129,23 @@ function ConnectServer(myUrl, MyData) {
         }
     });
     return Rows;
+}
+
+function retrieveData(idFilter) {
+    var rows;
+    $.ajax({
+        url: "http://localhost:8733/GmacHonService/RetrieveData",
+        contentType: "application/json",
+        method: "POST",
+        data: JSON.stringify({ tableName: "Person", idFilter: idFilter }),
+        success: function (data) {
+            rows = data;
+        },
+        async: false,
+        error: function (data) {
+            console.error("Error Connect Server " + data.responseText);
+            throw "ארעה שגיאה בשרת";
+        }
+    });
+    return rows;
 }
