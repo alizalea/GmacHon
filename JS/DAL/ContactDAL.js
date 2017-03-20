@@ -141,10 +141,10 @@ function ConnectServer(myUrl, MyData) {
 function retrieveData(idFilter) {
     var rows;
     $.ajax({
-        url: "http://localhost:8733/GmacHonService/RetrieveData",
+        url: "http://localhost:8733/GmacHonService/RetrieveDataPerson",
         contentType: "application/json",
         method: "POST",
-        data: JSON.stringify({ tableName: "Person", idFilter: idFilter }),
+        data: JSON.stringify({  idFilter: idFilter }),
         success: function (data) {
             rows = data;
         },
