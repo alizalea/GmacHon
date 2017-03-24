@@ -18,7 +18,7 @@ GMach.DAL.Transaction.GetAllTransactionsOffline = function () {
 
 };
 
-GMach.DAL.Transaction.GetAllTransactions = function () {
+GMach.DAL.Transaction.GetAllTransactionsWeb = function () {
     var transactionData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/transaction/GetAll', null);
     return transactionData;
 
@@ -76,6 +76,12 @@ GMach.DAL.Transaction.SetDataTransactionOffline = function (transaction, editid)
 
 }
 
+GMach.DAL.Transaction.GetAllTransactions = function () {
+    var transactionData = retrieveDataTransaction('');
+    return transactionData;
+
+}
+
 GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
     transaction.transactionType = transaction.constructor.name;
 
@@ -124,5 +130,45 @@ function ConnectServer(myUrl, MyData) {
         }
     });
     return Rows;
+}
+
+function retrieveDataTransaction(idFilter) {
+    var rows;
+    $.ajax({
+        url: "http://localhost:8733/GmacHonService/RetrieveDataTransaction",
+        contentType: "application/json",
+        method: "POST",
+        data: JSON.stringify({ idFilter: idFilter }),
+        success: function (data) {
+            rows = data;
+        },
+        async: false,
+        error: function (data) {
+            console.error("Error Connect Server " + data.responseText);
+            throw "ארעה שגיאה בשרת";
+        }
+    });
+    return rows;
+}
+
+function insertDataTransaction(transaction) {
+    debugger;
+    var succeed;
+    $.ajax({
+        url: "http://localhost:8733/GmacHonService/InsertDataTransaction",
+        contentType: "application/json",
+        method: "POST",
+        data: JSON.stringify({ transaction: transaction }),
+        success: function (data) {
+            succeed = true;
+            alert(data + " record saved");
+        },
+        async: false,
+        error: function (data) {
+            succeed = false;
+            alert("Error:\n" + data.responseText);
+        }
+    });
+    return succeed;
 }
 
