@@ -119,6 +119,7 @@ function GetTransactionDisplayType(transactionType) {
 
 function TransactionOnLoad() {
     $("#Transaction-form form").validate();
+    $('#ReturnAmount').val(0);
     $("#TransactionType").change(function () {
         showOrHideControls();
     });
@@ -136,7 +137,7 @@ function TransactionOnLoad() {
         $('#Contact').val(transaction.contactId);
         $('#Amount').val(transaction.amount);
         $('#TransactionDate').val(formatDate(transaction.transactionDate));
-        $('#ReturnDate').val(formatDate(transaction.returnDate));
+        $('#ReturnDate').val(transaction.returnDate);
         $('#Returned')[0].checked = transaction.returned;
         $('#ReturnAmount').val(transaction.returnAmount);
 
@@ -212,7 +213,7 @@ function TransactionOnLoad() {
         validContactSearch();
         if ($("#Transaction-form form").valid() && $('#Contact').val() != '') {
             transaction = GetTransactionObjectUI($('#TransactionType').val());
-            transaction.transactionId = idfromqs;
+            //transaction.transactionId = idfromqs;
 
             transaction.contactId = $('#Contact').val();//$('#basics').val().split("#")[1]
             transaction.amount = $('#Amount').val();
@@ -335,7 +336,7 @@ GMach.UI.Transaction.GetAllTransactionsVM = function (transList) {
         t.contact = contact.firstName + " " + contact.lastName;
         t.amount = tran.amount;
         t.transactionDate = formatDate(tran.transactionDate);
-        t.returnDate = formatDate(tran.returnDate);
+        t.returnDate = tran.returnDate;
 
 
         trans.push(t);
