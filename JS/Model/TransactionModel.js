@@ -121,6 +121,8 @@ GMach.Model.Transaction.GetDataTransaction = function (id) {
 }
 GMach.Model.Transaction.SetDataTransaction = function (transaction, idcon) {
 
+    transaction.transactionType = transaction.constructor.name;
+    transaction.transactionDate = timeConvertToDataBase(transaction.transactionDate);
     return GMach.DAL.Transaction.SetDataTransaction(transaction, idcon);
 
 }
@@ -188,6 +190,9 @@ function timeConvert(date) {
     var miliseconds = date.replace(/(^.*\()|([+-].*$)/g, '');
     miliseconds = parseInt(miliseconds);
     return new Date(miliseconds);
+}
+function timeConvertToDataBase(date) {
+    return "\/Date(" + new Date(date).getTime() + ")\/";
 }
 GMach.Model.Transaction.GetReturnLoanTransactions = function (scope) {
 
