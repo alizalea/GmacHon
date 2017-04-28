@@ -141,18 +141,18 @@ GMach.Model.Transaction.GetTransactionObject = function (dataBaseRow) {
     if (dataBaseRow.transactionType == "Loan") {
 
         var freind1 = new GMach.Model.Transaction.Freind();
-        freind1.first_name = dataBaseRow.freind1FirstName;
-        freind1.last_name = dataBaseRow.freind1LastName;
-        freind1.phone_number = dataBaseRow.freind1PhoneNumber;
-        freind1.remark = dataBaseRow.freind1Remark;
+        freind1.first_name = dataBaseRow.freind1.first_name;
+        freind1.last_name = dataBaseRow.freind1.last_name;
+        freind1.phone_number = dataBaseRow.freind1.phone_number;
+        freind1.remark = dataBaseRow.freind1.remark;
         curr.freind1 = freind1;
 
 
         var freind2 = new GMach.Model.Transaction.Freind();
-        freind2.first_name = dataBaseRow.freind2FirstName;
-        freind2.last_name = dataBaseRow.freind2LastName;
-        freind2.phone_number = dataBaseRow.freind2PhoneNumber;
-        freind2.remark = dataBaseRow.freind2Remark;
+        freind2.first_name = dataBaseRow.freind2.first_name;
+        freind2.last_name = dataBaseRow.freind2.last_name;
+        freind2.phone_number = dataBaseRow.freind2.phone_number;
+        freind2.remark = dataBaseRow.freind2.remark;
         curr.freind2 = freind2;
     }
 
