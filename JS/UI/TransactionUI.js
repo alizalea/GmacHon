@@ -213,7 +213,7 @@ function TransactionOnLoad() {
         validContactSearch();
         if ($("#Transaction-form form").valid() && $('#Contact').val() != '') {
             transaction = GetTransactionObjectUI($('#TransactionType').val());
-            //transaction.transactionId = idfromqs;
+            if (idfromqs != null) { transaction.transactionId = idfromqs; }
 
             transaction.contactId = $('#Contact').val();//$('#basics').val().split("#")[1]
             transaction.amount = $('#Amount').val();

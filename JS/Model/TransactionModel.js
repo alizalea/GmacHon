@@ -134,7 +134,7 @@ GMach.Model.Transaction.GetTransactionObject = function (dataBaseRow) {
     curr.amount = parseInt(dataBaseRow.amount);
     curr.transactionDate = timeConvert(dataBaseRow.transactionDate);
 
-    curr.returnDate = timeConvert(dataBaseRow.returnDate);
+    curr.returnDate = dataBaseRow.returnDate;
     curr.returned = dataBaseRow.returned;
     curr.returnAmount = dataBaseRow.returnAmount;
 
