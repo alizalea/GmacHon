@@ -24,6 +24,13 @@ GMach.DAL.Transaction.GetAllTransactionsWeb = function () {
 
 }
 
+GMach.DAL.Transaction.GetAllTransactions = function () {
+    var transactionData = retrieveDataTransaction('');
+    return transactionData;
+
+}
+
+
 GMach.DAL.Transaction.SetDataTransactionOffline = function (transaction, editid) {
     try {
         var con = GMach.DAL.Transaction.GetAllTransactions();
@@ -76,13 +83,7 @@ GMach.DAL.Transaction.SetDataTransactionOffline = function (transaction, editid)
 
 }
 
-GMach.DAL.Transaction.GetAllTransactions = function () {
-    var transactionData = retrieveDataTransaction('');
-    return transactionData;
-
-}
-
-GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
+GMach.DAL.Transaction.SetDataTransactionWeb = function (transaction, editid) {
     transaction.transactionType = transaction.constructor.name;
 
     var transactionData = ConnectServer('http://databarn.azurewebsites.net/Gmachhon/data/transaction/Save', JSON.stringify(transaction));
@@ -91,6 +92,13 @@ GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
     { return false; }
     else { return true; }
 }
+
+GMach.DAL.Transaction.SetDataTransaction = function (transaction, editid) {
+    
+    var succeed = insertDataTransaction(transaction);
+    return succeed;
+}
+
 
 GMach.DAL.Transaction.GetDataTransaction = function (transactionID) {
     var idString = '{Id:' + transactionID + "}";
