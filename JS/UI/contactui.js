@@ -178,12 +178,12 @@ function ContactOnLoad() {
     });
     $('#IdNumber').rules('add', {
         regex: "^[0-9]*$",
-        required: true,
+        required: false,
         maxlength: 9
     });
     $('#PhoneNumber').rules('add', {
         regex: "^[0-9-]*$",
-        required: true,
+        required: false,
         maxlength: 11
     });
     $('#MobileNumber').rules('add', {
