@@ -223,19 +223,19 @@ function TransactionOnLoad() {
             transaction.returned = $('#Returned')[0].checked;
             transaction.returnAmount = $('#ReturnAmount').val();
 
-            if (transaction.freind1 != undefined) {
+            //if (transaction.freind1 != undefined) {
                 transaction.freind1.first_name = $('#FirstNameFirstFreind').val();
                 transaction.freind1.last_name = $('#LastNameFirstFreind').val();
                 transaction.freind1.phone_number = $('#PhoneNumberFirstFreind').val();
                 transaction.freind1.remark = $('#RemarkFirstFreind').val();
-            }
+            //}
 
-            if (transaction.freind2 != undefined) {
+            //if (transaction.freind2 != undefined) {
                 transaction.freind2.first_name = $('#FirstNameSecondFreind').val();
                 transaction.freind2.last_name = $('#LastNameSecondFreind').val();
                 transaction.freind2.phone_number = $('#PhoneNumberSecondFreind').val();
                 transaction.freind2.remark = $('#RemarkSecondFreind').val();
-            }
+            //}
 
             if (GMach.Model.Transaction.SetDataTransaction(transaction, idfromqs)) {
                 window.location = "/HTML/Transactions.html";
@@ -304,8 +304,6 @@ function GetTransactionObjectUI(TransactionDisplayType) {
     switch (TransactionDisplayType) {
         case "הלוואה":
             object = new GMach.Model.Transaction.Loan();
-            object.freind1 = new GMach.Model.Transaction.Freind();
-            object.freind2 = new GMach.Model.Transaction.Freind();
             break;
         case "החזרת הלוואה":
             object = new GMach.Model.Transaction.ReturnLoan();
@@ -323,6 +321,9 @@ function GetTransactionObjectUI(TransactionDisplayType) {
             console.error("UnKnown TransactionDisplayType: " + TransactionDisplayType);
             throw "UnKnown TransactionDisplayType";
     }
+    object.freind1 = new GMach.Model.Transaction.Freind();
+    object.freind2 = new GMach.Model.Transaction.Freind();
+
     return object;
 }
 
