@@ -122,7 +122,6 @@ GMach.Model.Transaction.GetDataTransaction = function (id) {
 GMach.Model.Transaction.SetDataTransaction = function (transaction, idcon) {
 
     transaction.transactionType = transaction.constructor.name;
-    transaction.transactionDate = timeConvertToDataBase(transaction.transactionDate);
     return GMach.DAL.Transaction.SetDataTransaction(transaction, idcon);
 
 }
@@ -132,7 +131,7 @@ GMach.Model.Transaction.GetTransactionObject = function (dataBaseRow) {
     curr.transactionId = dataBaseRow.transactionId;
     curr.contactId = dataBaseRow.contactId;
     curr.amount = parseInt(dataBaseRow.amount);
-    curr.transactionDate = timeConvert(dataBaseRow.transactionDate);
+    curr.transactionDate = dataBaseRow.transactionDate;
 
     curr.returnDate = dataBaseRow.returnDate;
     curr.returned = dataBaseRow.returned;
@@ -185,14 +184,6 @@ function GetTransactionObjectByType(TransactionType) {
             throw "UnKnown TransactionType";
     }
     return object;
-}
-function timeConvert(date) {
-    var miliseconds = date.replace(/(^.*\()|([+-].*$)/g, '');
-    miliseconds = parseInt(miliseconds);
-    return new Date(miliseconds);
-}
-function timeConvertToDataBase(date) {
-    return "\/Date(" + new Date(date).getTime() + ")\/";
 }
 GMach.Model.Transaction.GetReturnLoanTransactions = function (scope) {
 
