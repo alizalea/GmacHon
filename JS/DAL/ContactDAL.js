@@ -167,7 +167,7 @@ function insertData(contact) {
             data: JSON.stringify({ person: contact }),
             success: function (data) {
                 succeed=true;
-                alert(data + " record saved");
+                //alert(data + " record saved");
             },
             async: false,
             error: function (data) {

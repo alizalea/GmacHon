@@ -72,7 +72,7 @@ function AllContactsOnLoad() {
 
     $('#contacts tbody').on('click', 'tr', function () {
         var id = table.row(this).data().contactId;
-        window.location = "/HTML/Contact.html?id=" + id;
+        window.location = "../HTML/Contact.html?id=" + id;
 
     });
 
@@ -83,7 +83,7 @@ function AllContactsOnLoad() {
         storeDefaultSumRowsView();
     });
     $(".contacts #addContact").click(function () {
-        window.location = '/HTML/Contact.html';
+        window.location = '../HTML/Contact.html';
     });
 
 
@@ -144,14 +144,14 @@ function ContactOnLoad() {
             contact.remarks = $('#Remarks').val();
             debugger;
             if (GMach.Model.Contact.SetDataContact(contact, idfromqs)) {
-                window.location = "/HTML/Contacts.html";
+                window.location = "../HTML/Contacts.html";
             }
         }
 
 
     });
     $("#btn_cancel, #btn_cancel1").click(function (contact) {
-        window.location = "/HTML/Contacts.html";
+        window.location = "../HTML/Contacts.html";
 
     });
 

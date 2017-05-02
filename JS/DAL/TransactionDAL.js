@@ -170,7 +170,7 @@ function insertDataTransaction(transaction) {
         data: JSON.stringify({ transaction: transaction }),
         success: function (data) {
             succeed = true;
-            alert(data + " record saved");
+            //alert(data + " record saved");
         },
         async: false,
         error: function (data) {

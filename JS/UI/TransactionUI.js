@@ -68,7 +68,7 @@ function AllTransactionsOnLoad() {
 
     $('#transactions tbody').on('click', 'tr', function () {
         var id = table.row(this).data().transactionId;
-        window.location = "/HTML/Transaction.html?id=" + id;
+        window.location = "../HTML/Transaction.html?id=" + id;
 
     });
 
@@ -77,7 +77,7 @@ function AllTransactionsOnLoad() {
     });
 
     $(".transactions #addTran").click(function () {
-        window.location = '/HTML/Transaction.html';
+        window.location = '../HTML/Transaction.html';
     });
 
 }
@@ -238,14 +238,14 @@ function TransactionOnLoad() {
             //}
 
             if (GMach.Model.Transaction.SetDataTransaction(transaction, idfromqs)) {
-                window.location = "/HTML/Transactions.html";
+                window.location = "../HTML/Transactions.html";
             }
 
         }
     });
 
     $("#btn_cancel, #btn_cancel1").click(function (transaction) {
-        window.location = "/HTML/Transactions.html";
+        window.location = "../HTML/Transactions.html";
 
     });
 
